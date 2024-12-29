@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "net.zepalesque.unity.mixin.mixins",
+  "plugin": "net.zepalesque.unity.mixin.UnityMixinPlugin",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "aether_unity.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "client.color.AetherColorResolversMixin"
+  ]
+}

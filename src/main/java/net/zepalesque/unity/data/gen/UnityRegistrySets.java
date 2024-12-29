@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.zepalesque.unity.data.resource.registries.UnityFeatureConfig;
+import net.zepalesque.unity.data.resource.registries.UnityPlacements;
 import org.apache.commons.compress.utils.Lists;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ import java.util.concurrent.CompletableFuture;
 public class UnityRegistrySets extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, UnityFeatureConfig::bootstrap)
-            /*.add(Registries.PLACED_FEATURE, UnityPlacements::bootstrap)*/;
+            .add(Registries.PLACED_FEATURE, UnityPlacements::bootstrap);
 
     public UnityRegistrySets(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, String modid, String... otherIds) {
         super(output, registries, BUILDER, buildModidList(modid, otherIds));

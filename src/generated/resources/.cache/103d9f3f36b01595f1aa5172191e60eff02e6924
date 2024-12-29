@@ -1,4 +1,5 @@
-// 1.21.1	2024-12-29T12:31:13.8928241	Registries
+// 1.21.1	2024-12-29T12:46:56.2518471	Registries
 adfbd0b31277b0d7e2b9eb37187263a57cb9ece9 data/aether/worldgen/configured_feature/grass_patch.json
 cbc01407f81c547e1384753574d83f4983bc738b data/aether/worldgen/configured_feature/tall_grass_patch.json
+69a9a1162a73e3960ecf56de93788fc80aa27bb1 data/aether/worldgen/placed_feature/aether_grass_bonemeal.json
 1d41ad1270674d2bad2ba348a65ef73b55862cdc data/aether_unity/worldgen/configured_feature/aether_grass_bonemeal.json

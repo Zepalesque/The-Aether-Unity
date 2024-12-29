@@ -9,11 +9,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.util.InclusiveRange;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.data.gen.UnityBlockStateData;
 import net.zepalesque.unity.data.gen.UnityItemModelData;
 import net.zepalesque.unity.data.gen.UnityLanguageData;
+import net.zepalesque.unity.data.gen.UnityRegistrySets;
 import net.zepalesque.unity.data.gen.tags.UnityBlockTagsData;
 import net.zepalesque.unity.data.gen.tags.UnityItemTagsData;
 
@@ -32,6 +35,12 @@ public class UnityData {
         generator.addProvider(event.includeClient(), new UnityItemModelData(packOutput, fileHelper));
         generator.addProvider(event.includeClient(), new UnityLanguageData(packOutput));
 
+
+        // Server Data
+        DatapackBuiltinEntriesProvider registrySets = new UnityRegistrySets(packOutput, lookupProvider, Unity.MODID);
+        // Use for structure and damage type data, plus any custom ones that need to access the condition registry
+        CompletableFuture<HolderLookup.Provider> registryProvider = registrySets.getRegistryProvider();
+        generator.addProvider(event.includeServer(), registrySets);
 
         // Tags
         UnityBlockTagsData blockTags = new UnityBlockTagsData(packOutput, lookupProvider, fileHelper);

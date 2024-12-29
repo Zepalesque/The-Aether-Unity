@@ -2,6 +2,7 @@ package net.zepalesque.unity;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -22,6 +23,8 @@ import net.zepalesque.unity.config.UnityConfig;
 import net.zepalesque.unity.config.UnityConfigHandler;
 import net.zepalesque.unity.data.UnityData;
 import net.zepalesque.unity.item.UnityItems;
+import net.zepalesque.unity.pack.PackUtils;
+import net.zepalesque.unity.pack.UnityPackConfig;
 import net.zepalesque.unity.tile.UnityTiles;
 import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
 import net.zepalesque.zenith.api.blockset.BlockSet;
@@ -89,7 +92,11 @@ public class Unity {
     }
 
     public  void packSetup(AddPackFindersEvent event) {
-        // TODO
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            String pathString = "resource/overrides_pack";
+            String id = "overrides_pack";
+            PackUtils.setupPack(event, pathString, id, true, UnityPackConfig::generate);
+        }
     }
 
     public static ResourceLocation loc(String path) {

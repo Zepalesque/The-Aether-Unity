@@ -1,6 +1,7 @@
 package net.zepalesque.unity.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.zepalesque.unity.pack.UnityPackConfig;
 import net.zepalesque.zenith.api.config.DataSerializableConfig;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -36,13 +37,13 @@ public class UnityConfig {
 
     public static class Client {
 
-        public final ModConfigSpec.ConfigValue<Boolean> test;
+        public final ModConfigSpec.ConfigValue<Boolean> tintable_grass;
 
         public Client(ModConfigSpec.Builder builder) {
             builder.push("TODO");
-            test = builder
-                    .comment("not done")
-                    .define("test", true);
+            tintable_grass = UnityPackConfig.register(builder
+                    .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!")
+                    .define("Tinted Grass", true), "resource/", "tintable_grass");
             builder.pop();
         }
     }

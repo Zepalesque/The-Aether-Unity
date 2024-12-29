@@ -1,0 +1,10 @@
+{
+  "block.aether_unity.golden_oak_leaf_pile": "Golden Oak Leaf Pile",
+  "block.aether_unity.short_aether_grass": "Short Aether Grass",
+  "block.aether_unity.skyroot_leaf_pile": "Skyroot Leaf Pile",
+  "lore.block.aether_unity.golden_oak_leaf_pile": "A pile of Golden Oak Leaves. These can be stacked on top of eachother to make various sizes!",
+  "lore.block.aether_unity.short_aether_grass": "Blades of the Aether's grass. It feels slightly cool to the touch.",
+  "lore.block.aether_unity.skyroot_leaf_pile": "A pile of Skyroot Leaves. These can be stacked on top of eachother to make various sizes!",
+  "pack.aether_unity.mod.description": "The Aether: Unity Resources",
+  "tooltip.aether_unity.shift_info": "Hold [%s] for more info..."
+}

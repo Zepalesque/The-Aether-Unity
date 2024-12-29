@@ -152,7 +152,6 @@ tasks.register('sourceJar', Jar) {
     archiveClassifier = 'sources'
 }
 
-// TODO: maybe?
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -163,7 +162,12 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/repo"
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/Zepalesque/The-Aether-Unity"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }

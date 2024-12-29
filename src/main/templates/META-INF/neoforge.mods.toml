@@ -38,12 +38,6 @@ type = "required" #mandatory
 versionRange = "[${aether_version},)"
 ordering = "AFTER"
 side = "BOTH"
-[[dependencies.${mod_id}]]
-modId = "aeroblender"
-type = "required" #mandatory
-versionRange = "[0,)"
-ordering = "AFTER"
-side = "BOTH"
 
 [[mixins]]
 config = "${mod_id}.mixins.json"

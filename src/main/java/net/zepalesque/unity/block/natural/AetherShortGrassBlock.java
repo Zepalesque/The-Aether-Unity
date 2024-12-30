@@ -33,7 +33,7 @@ import java.util.function.Predicate;
 public class AetherShortGrassBlock extends AetherBushBlock {
 
     /**
-     * See {@link UnityColors#enchantedGrassOverrides(BlockState, BlockAndTintGetter, BlockPos, int, Predicate, boolean)}
+     * See {@link UnityColors#unityColors(BlockState, BlockAndTintGetter, BlockPos, int, Predicate, boolean)}
      */
     public static final Collection<TintOverride> COLOR_OVERRIDES = new ArrayList<>();
 
@@ -87,7 +87,7 @@ public class AetherShortGrassBlock extends AetherBushBlock {
             GrassSize size = GrassSize.values()[i];
             BlockState b = state.setValue(UnityStates.GRASS_SIZE, size);
             BlockPos below = pos.below();
-            if (level.getBlockState(below).is(UnityTags.Blocks.ENCHANTED_GRASS_BLOCKS)) {
+            if (level.getBlockState(below).is(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING)) {
                 return b.setValue(UnityStates.ENCHANTED, true);
             }
             return b;
@@ -108,7 +108,7 @@ public class AetherShortGrassBlock extends AetherBushBlock {
             b = b.setValue(UnityStates.GRASS_SIZE, size);
         }
         if (b.hasProperty(UnityStates.ENCHANTED) && facing == Direction.DOWN) {
-            if (level.getBlockState(facingPos).is(UnityTags.Blocks.ENCHANTED_GRASS_BLOCKS)) {
+            if (level.getBlockState(facingPos).is(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING)) {
                 return b.setValue(UnityStates.ENCHANTED, true);
             }
             return b.setValue(UnityStates.ENCHANTED, false);

@@ -10,9 +10,12 @@ import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.block.natural.AetherShortGrassBlock;
 import net.zepalesque.unity.block.state.UnityStates;
+import net.zepalesque.unity.data.UnityTags;
 import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -77,17 +80,23 @@ public class UnityColors {
         return 0xFFFFFF;
     }
 
-    // Avoid constant Optional instantiation
-    public static final Optional<Integer> NO_TINT = Optional.of(0xFFFFFF);
 
     /**
      * See {@link AetherShortGrassBlock#COLOR_OVERRIDES} and {@link UnityColors#getColor}
      */
-    public static Optional<Integer> enchantedGrassOverrides(BlockState state, BlockAndTintGetter level, BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties) {
+    public static Optional<Integer> unityColors(BlockState state, BlockAndTintGetter level, BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties) {
         if (state.hasProperty(UnityStates.ENCHANTED) && state.getValue(UnityStates.ENCHANTED)) {
-            return NO_TINT;
+            return encapsulate(0xFFFFFF);
+        } else if (level.getBlockState(pos.below()).is(UnityTags.Blocks.SHORT_AETHER_GRASS_DEFAULT_COLORING)) {
+            return encapsulate(AETHER_GRASS_COLOR);
         }
         return Optional.empty();
+    }
+
+    // Avoid constant Optional instantiation
+    private static final Map<Integer, Optional<Integer>> CACHED_COLORS = new HashMap<>();
+    public static Optional<Integer> encapsulate(int color) {
+        return CACHED_COLORS.computeIfAbsent(color, Optional::of);
     }
 
 }

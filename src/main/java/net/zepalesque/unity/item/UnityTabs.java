@@ -15,13 +15,18 @@ import net.zepalesque.zenith.util.TabUtil;
 @EventBusSubscriber(modid = Unity.MODID, bus = Bus.MOD)
 public class UnityTabs {
     
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent(priority = EventPriority.LOW)
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         CreativeModeTab tab = event.getTab();
         if (tab == AetherCreativeTabs.AETHER_NATURAL_BLOCKS.get()) {
 
             TabUtil.putAfter(event, AetherBlocks.AETHER_GRASS_BLOCK,
                     UnityBlocks.SHORT_AETHER_GRASS
+            );
+
+            TabUtil.putBefore(event,AetherBlocks.HOLYSTONE,
+                    UnityBlocks.FLUTEMOSS_CARPET,
+                    UnityBlocks.FLUTEMOSS_BLOCK
             );
 
             TabUtil.putAfter(event,AetherBlocks.SKYROOT_LEAVES,

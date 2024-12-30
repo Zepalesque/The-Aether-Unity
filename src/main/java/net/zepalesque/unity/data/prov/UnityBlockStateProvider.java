@@ -171,6 +171,16 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                     }, CampfireBlock.SIGNAL_FIRE, CampfireBlock.WATERLOGGED);
     }
 
+    public void carpet(Block block, Block baseBlock, String location) {
+        this.simpleBlock(block, this.models().singleTexture(this.name(block), mcLoc("block/carpet"), "wool", this.texture(this.name(baseBlock), location)));
+    }
+
+    // Does both at the same time :D
+    public void mossSet(Block moss, Block carpet, String location) {
+        this.block(moss, location);
+        this.carpet(carpet, moss, location);
+    }
+
     public ResourceLocation texture(Block block, String location) {
         return ResourceLocation.fromNamespaceAndPath(BuiltInRegistries.BLOCK.getKey(block).getNamespace(), "block/" + location + name(block));
     }

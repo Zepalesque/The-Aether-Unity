@@ -6,13 +6,13 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.UnityTags;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -23,15 +23,29 @@ public class UnityBlockTagsData extends BlockTagsProvider {
         super(output, lookupProvider, Unity.MODID, existingFileHelper);
     }
 
-    @Override
     @SuppressWarnings("unchecked")
-    protected void addTags(HolderLookup.Provider provider) {
+    @Override
+    protected void addTags(@NotNull HolderLookup.Provider provider) {
         // Adds every single Unity block as a block that should be treaded as an Aether Block and get the tool debuff
         IntrinsicTagAppender<Block> tag = this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK);
         for (DeferredHolder<Block, ? extends Block> block : UnityBlocks.BLOCKS.getEntries()) {
             tag.add(block.get());
         }
-        this.tag(UnityTags.Blocks.ENCHANTED_GRASS_BLOCKS).add(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get());
+
+        this.tag(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING).add(
+                AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get()
+        );
+        this.tag(UnityTags.Blocks.SHORT_AETHER_GRASS_DEFAULT_COLORING).add(
+                UnityBlocks.FLUTEMOSS_BLOCK.get()
+        );
+
+        this.tag(UnityTags.Blocks.AETHER_CARVER_REPLACEABLES).addTags(
+                AetherTags.Blocks.HOLYSTONE, AetherTags.Blocks.AETHER_DIRT
+        );
+
+        this.tag(AetherTags.Blocks.AETHER_DIRT).add(
+                UnityBlocks.FLUTEMOSS_BLOCK.get()
+        );
 
         this.tag(BlockTags.REPLACEABLE).add(
                 UnityBlocks.SHORT_AETHER_GRASS.get()
@@ -39,7 +53,9 @@ public class UnityBlockTagsData extends BlockTagsProvider {
 
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
                 UnityBlocks.GOLDEN_OAK_LEAF_PILE.get(),
-                UnityBlocks.SKYROOT_LEAF_PILE.get()
+                UnityBlocks.SKYROOT_LEAF_PILE.get(),
+                UnityBlocks.FLUTEMOSS_BLOCK.get(),
+                UnityBlocks.FLUTEMOSS_CARPET.get()
         );
 
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(

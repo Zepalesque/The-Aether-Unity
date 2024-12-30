@@ -16,8 +16,11 @@ public class UnityTags {
 
 
     public static class Blocks {
-        // Blocks that should make Short Aether Grass use its enchanted state
-        public static final TagKey<Block> ENCHANTED_GRASS_BLOCKS = tag("enchanted_grass_blocks");
+        // Blocks that should make Short Aether Grass use its enchanted state when placed on top of
+        public static final TagKey<Block> SHORT_AETHER_GRASS_STATE_ENCHANTING = tag("short_aether_grass_state_enchanting");
+        // Blocks that should make Short Aether Grass use its default color rather than any biome colors when placed on top of
+        public static final TagKey<Block> SHORT_AETHER_GRASS_DEFAULT_COLORING = tag("short_aether_grass_default_coloring");
+        public static final TagKey<Block> AETHER_CARVER_REPLACEABLES = tag("aether_carver_replaceables");
 
         public static TagKey<Block> tag(String name) {
             return TagKey.create(Registries.BLOCK, Unity.loc(name));

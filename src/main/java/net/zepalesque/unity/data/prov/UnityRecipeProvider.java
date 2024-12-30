@@ -1,6 +1,5 @@
 package net.zepalesque.unity.data.prov;
 
-import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.data.providers.AetherRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -21,8 +20,8 @@ public abstract class UnityRecipeProvider extends AetherRecipeProvider {
     }
 
 
-    protected static void leafPile(RecipeOutput output, ItemLike carpet, ItemLike material) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, carpet, 6)
+    protected static void layerBlock(RecipeOutput output, ItemLike carpet, ItemLike material, int count) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, carpet, count)
                 .define('#', material).pattern("##")
                 .unlockedBy(getHasName(material), has(material))
                 .save(output);

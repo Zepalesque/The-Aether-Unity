@@ -1,6 +1,8 @@
 package net.zepalesque.unity.data.prov.loot;
 
+import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.data.providers.AetherBlockLootSubProvider;
+import com.aetherteam.aether.loot.functions.DoubleDrops;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -27,6 +29,16 @@ import java.util.function.Function;
 
 // Many of these are just public overrides with no differences, as this is used by the BlockSets
 public abstract class UnityBlockLootProvider extends AetherBlockLootSubProvider {
+
+    // Cool double drops stuff hopefully
+    @Override
+    protected void add(Block block, LootTable.Builder builder) {
+        if (block.defaultBlockState().hasProperty(AetherBlockStateProperties.DOUBLE_DROPS)) {
+            super.add(block, builder.apply(DoubleDrops.builder()));
+        } else {
+            super.add(block, builder);
+        }
+    }
 
     public UnityBlockLootProvider(Set<Item> items, FeatureFlagSet flags, HolderLookup.Provider registries) {
         super(items, flags, registries);

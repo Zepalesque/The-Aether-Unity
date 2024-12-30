@@ -25,6 +25,11 @@ public class UnityLanguageData extends UnityLanguageProvider {
         addBlock(UnityBlocks.AMBROSIUM_CAMPFIRE);
         addLore(UnityBlocks.AMBROSIUM_CAMPFIRE, "A campfire made of Ambrosium. You can use this to cook meat, or as a signal or light source!");
 
+        addBlock(UnityBlocks.FLUTEMOSS_BLOCK);
+        addLore(UnityBlocks.FLUTEMOSS_BLOCK, "The Aether's native moss species. This can be grown with Bone Meal!");
+        addBlock(UnityBlocks.FLUTEMOSS_CARPET);
+        addLore(UnityBlocks.FLUTEMOSS_CARPET, "A thin, blanket-like layer of Flutemoss. This is produced when growing Flutemoss with Bone Meal!");
+
         addTooltip("shift_info", "Hold [%s] for more info...");
         addPackDescription("mod", "The Aether: Unity Resources");
 

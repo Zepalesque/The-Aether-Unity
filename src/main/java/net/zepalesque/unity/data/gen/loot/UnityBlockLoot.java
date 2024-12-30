@@ -34,6 +34,9 @@ public class UnityBlockLoot extends UnityBlockLootProvider {
         this.add(UnityBlocks.SKYROOT_LEAF_PILE.get(), shears());
 
         this.add(UnityBlocks.AMBROSIUM_CAMPFIRE.get(), campfireFuelDrop(Items.CHARCOAL, AetherItems.AMBROSIUM_SHARD));
+
+        this.dropSelf(UnityBlocks.FLUTEMOSS_BLOCK.get());
+        this.dropSelf(UnityBlocks.FLUTEMOSS_CARPET.get());
     }
 
     @Override

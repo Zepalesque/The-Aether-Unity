@@ -5,6 +5,6 @@ import net.zepalesque.unity.block.natural.AetherShortGrassBlock;
 public class UnityClient {
 
     public static void registerTintOverrides() {
-        AetherShortGrassBlock.COLOR_OVERRIDES.add(UnityColors::enchantedGrassOverrides);
+        AetherShortGrassBlock.COLOR_OVERRIDES.add(UnityColors::unityColors);
     }
 }

@@ -6,16 +6,15 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
@@ -46,11 +45,14 @@ public abstract class UnityBlockLootProvider extends AetherBlockLootSubProvider 
     public Function<Block, LootTable.Builder> campfireFuelDrop(ItemLike charcoal, ItemLike fuel) {
         return block -> this.createSilkTouchDispatchTable(
                 block, this.applyExplosionCondition(
-                        block, LootItem.lootTableItem(charcoal).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                                .append(
-                                        LootItem.lootTableItem(fuel).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
-                                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CampfireBlock.LIT, true)))
-                                )));
+                        block, LootItem.lootTableItem(charcoal).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionCondition(block, LootItem.lootTableItem(fuel))
+                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                        .hasProperty(CampfireBlock.LIT, true)))
+                        .when(this.doesNotHaveSilkTouch())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                ));
     }
 
 

@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.util.Unit;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.zepalesque.unity.block.UnityBlocks;
@@ -32,7 +33,7 @@ public class UnityBlockLoot extends UnityBlockLootProvider {
         this.add(UnityBlocks.GOLDEN_OAK_LEAF_PILE.get(), shears());
         this.add(UnityBlocks.SKYROOT_LEAF_PILE.get(), shears());
 
-        this.add(UnityBlocks.AMBROSIUM_CAMPFIRE.get(), campfire(AetherItems.AMBROSIUM_SHARD));
+        this.add(UnityBlocks.AMBROSIUM_CAMPFIRE.get(), campfireFuelDrop(Items.CHARCOAL, AetherItems.AMBROSIUM_SHARD));
     }
 
     @Override

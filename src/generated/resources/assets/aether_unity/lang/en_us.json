@@ -1,9 +1,13 @@
 {
   "block.aether_unity.ambrosium_campfire": "Ambrosium Campfire",
+  "block.aether_unity.flutemoss_block": "Flutemoss Block",
+  "block.aether_unity.flutemoss_carpet": "Flutemoss Carpet",
   "block.aether_unity.golden_oak_leaf_pile": "Golden Oak Leaf Pile",
   "block.aether_unity.short_aether_grass": "Short Aether Grass",
   "block.aether_unity.skyroot_leaf_pile": "Skyroot Leaf Pile",
   "lore.block.aether_unity.ambrosium_campfire": "A campfire made of Ambrosium. You can use this to cook meat, or as a signal or light source!",
+  "lore.block.aether_unity.flutemoss_block": "The Aether's native moss species. This can be grown with Bone Meal!",
+  "lore.block.aether_unity.flutemoss_carpet": "A thin, blanket-like layer of Flutemoss. This is produced when growing Flutemoss with Bone Meal!",
   "lore.block.aether_unity.golden_oak_leaf_pile": "A pile of Golden Oak Leaves. These can be stacked on top of eachother to make various sizes!",
   "lore.block.aether_unity.short_aether_grass": "Blades of the Aether's grass. It feels slightly cool to the touch.",
   "lore.block.aether_unity.skyroot_leaf_pile": "A pile of Skyroot Leaves. These can be stacked on top of eachother to make various sizes!",

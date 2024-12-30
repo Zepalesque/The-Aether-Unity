@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "aether_unity:short_aether_grass",
+            "Properties": {
+              "enchanted": "false",
+              "grass_size": "medium"
+            }
+          },
+          "weight": 150
+        }
+      ]
+    }
+  }
+}

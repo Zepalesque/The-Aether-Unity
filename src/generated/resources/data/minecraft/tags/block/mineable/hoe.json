@@ -1,6 +1,8 @@
 {
   "values": [
     "aether_unity:golden_oak_leaf_pile",
-    "aether_unity:skyroot_leaf_pile"
+    "aether_unity:skyroot_leaf_pile",
+    "aether_unity:flutemoss_block",
+    "aether_unity:flutemoss_carpet"
   ]
 }

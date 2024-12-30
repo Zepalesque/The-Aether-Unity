@@ -1,5 +1,7 @@
-// 1.21.1	2024-12-30T15:06:31.0703338	Loot Tables
-3486b5962f3bf19269d54401f6dd3d8ced90d127 data/aether_unity/loot_table/blocks/ambrosium_campfire.json
+// 1.21.1	2024-12-30T16:21:42.5652642	Loot Tables
+1b44cca21b17021005851da4370f7181913fc36c data/aether_unity/loot_table/blocks/ambrosium_campfire.json
+2b90791af2d0c4d21331255797b782a2f485bd51 data/aether_unity/loot_table/blocks/flutemoss_block.json
+40ef3225e990a92845ecd5db41ae46598709651c data/aether_unity/loot_table/blocks/flutemoss_carpet.json
 a13e1d96b1889b60c90618d19c1393a5f5b145fe data/aether_unity/loot_table/blocks/golden_oak_leaf_pile.json
 fd0a6de742f795043430e386b82471d9de48a39e data/aether_unity/loot_table/blocks/short_aether_grass.json
 04fb1d6821aa6f81d8bdba1a8c207c95d28c63d5 data/aether_unity/loot_table/blocks/skyroot_leaf_pile.json

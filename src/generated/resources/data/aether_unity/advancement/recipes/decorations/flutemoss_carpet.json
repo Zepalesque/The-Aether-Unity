@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_flutemoss_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "aether_unity:flutemoss_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "aether_unity:flutemoss_carpet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_flutemoss_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "aether_unity:flutemoss_carpet"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "aether_unity:block/natural/flutemoss_block"
+  }
+}

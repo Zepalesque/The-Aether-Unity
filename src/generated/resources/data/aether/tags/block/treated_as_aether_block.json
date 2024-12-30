@@ -3,6 +3,8 @@
     "aether_unity:short_aether_grass",
     "aether_unity:skyroot_leaf_pile",
     "aether_unity:golden_oak_leaf_pile",
-    "aether_unity:ambrosium_campfire"
+    "aether_unity:ambrosium_campfire",
+    "aether_unity:flutemoss_block",
+    "aether_unity:flutemoss_carpet"
   ]
 }

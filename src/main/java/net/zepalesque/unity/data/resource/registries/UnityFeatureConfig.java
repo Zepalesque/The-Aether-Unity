@@ -28,7 +28,7 @@ import java.util.List;
 
 public class UnityFeatureConfig extends UnityFeatureBuilders {
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FLUTEMOSS_VEGETATION = createKey("flutemoss_bonemeal");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLUTEMOSS_VEGETATION = createKey("flutemoss_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLUTEMOSS_BONEMEAL = createKey("flutemoss_bonemeal");
 
     // Overrides

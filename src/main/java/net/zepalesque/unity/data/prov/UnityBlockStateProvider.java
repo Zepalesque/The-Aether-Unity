@@ -161,7 +161,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                                     .texture("log", this.modLoc("block/" + location + this.name(block) + "_log"))
                                     .texture("fire", this.modLoc("block/" + location + this.name(block) + "_fire"))
                                     .texture("lit_log", this.modLoc("block/" + location + this.name(block) + "_log_lit")).renderType("cutout");
-                    BlockModelBuilder off = this.models().singleTexture(this.name(block) + "_off", Unity.loc("block/template/campfire_off"), "log", this.modLoc("block/" + location + this.name(block) + "_log")).renderType("cutout");
+                    BlockModelBuilder off = this.models().singleTexture(this.name(block) + "_off", Unity.loc("block/template/campfire_off"), "log", this.modLoc("block/" + location + this.name(block) + "_log"));
 
                     Direction d = state.getValue(CampfireBlock.FACING);
                     int rotDeg = d.get2DDataValue() * 90;

@@ -29,51 +29,73 @@
               "name": "aether_unity:ambrosium_campfire"
             },
             {
-              "type": "minecraft:group",
-              "children": [
-                {
-                  "type": "minecraft:item",
-                  "functions": [
-                    {
-                      "add": false,
-                      "count": {
-                        "type": "minecraft:uniform",
-                        "max": 2.0,
-                        "min": 1.0
-                      },
-                      "function": "minecraft:set_count"
-                    }
-                  ],
-                  "name": "minecraft:charcoal"
-                },
-                {
-                  "type": "minecraft:item",
-                  "conditions": [
-                    {
-                      "block": "aether_unity:ambrosium_campfire",
-                      "condition": "minecraft:block_state_property",
-                      "properties": {
-                        "lit": "true"
-                      }
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "add": false,
-                      "count": 1.0,
-                      "function": "minecraft:set_count"
-                    }
-                  ],
-                  "name": "aether:ambrosium_shard"
-                }
-              ],
+              "type": "minecraft:item",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
                 }
-              ]
+              ],
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 2.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:charcoal"
             }
           ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
+            },
+            {
+              "block": "aether_unity:ambrosium_campfire",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "lit": "true"
+              }
+            },
+            {
+              "condition": "minecraft:inverted",
+              "term": {
+                "condition": "minecraft:match_tool",
+                "predicate": {
+                  "predicates": {
+                    "minecraft:enchantments": [
+                      {
+                        "enchantments": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "aether:ambrosium_shard"
         }
       ],
       "rolls": 1.0

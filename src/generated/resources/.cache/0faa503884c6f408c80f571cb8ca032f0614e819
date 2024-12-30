@@ -1,7 +1,10 @@
-// 1.21.1	2024-12-29T12:31:13.9298047	Block States: aether_unity
+// 1.21.1	2024-12-30T13:50:36.6606794	Block States: aether_unity
+e5ba6dcaab7fffc78b68d46090c07e46f0250d01 assets/aether_unity/blockstates/ambrosium_campfire.json
 f4b17fc2886670a6681d3c622c9a386a410aef0d assets/aether_unity/blockstates/golden_oak_leaf_pile.json
 4a025a8e87648734ccb2d0b81ad943cdd0920583 assets/aether_unity/blockstates/short_aether_grass.json
 b45d80904097fe9db4e7f91eca16f530be855238 assets/aether_unity/blockstates/skyroot_leaf_pile.json
+eed5e2fc810478046b3ec2065b11d23e72a77d03 assets/aether_unity/models/block/ambrosium_campfire.json
+3c0cfe345c048c45879b0b63b2de13431b0e7e5d assets/aether_unity/models/block/ambrosium_campfire_off.json
 1ddd69b6b15b3445d9aa9c536b3e46994c50fba9 assets/aether_unity/models/block/golden_oak_leaf_pile_full.json
 e5603fb8b0f91bc4603f17ea14e9d888f0ca87ad assets/aether_unity/models/block/golden_oak_leaf_pile_size_1.json
 70a790aeaf1a5017b7a74a84116a2858ef2499eb assets/aether_unity/models/block/golden_oak_leaf_pile_size_10.json

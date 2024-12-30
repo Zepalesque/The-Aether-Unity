@@ -1,5 +1,7 @@
-// 1.21.1	2024-12-29T12:31:13.8758341	Tags for minecraft:block mod id aether_unity
-5adde61f14602c87ebc2d4762fd37e34c20c4944 data/aether/tags/block/treated_as_aether_block.json
+// 1.21.1	2024-12-30T13:50:36.6516865	Tags for minecraft:block mod id aether_unity
+8bef83349702522c65f67295ea915f9cf2a7976a data/aether/tags/block/treated_as_aether_block.json
 f88e31ba010e8b41d4256635de26d1cf8a0aa221 data/aether_unity/tags/block/enchanted_grass_blocks.json
+eff07a8637935b9be7d8450e3dbe6d1d55424d55 data/minecraft/tags/block/campfires.json
+eff07a8637935b9be7d8450e3dbe6d1d55424d55 data/minecraft/tags/block/mineable/axe.json
 7da17fbb00c2880fe9a8a65fd46032fe33091938 data/minecraft/tags/block/mineable/hoe.json
 560e0b718cda417dab710a65ab69dd8f901405f6 data/minecraft/tags/block/replaceable.json

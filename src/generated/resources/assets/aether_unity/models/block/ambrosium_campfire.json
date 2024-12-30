@@ -1,0 +1,8 @@
+{
+  "parent": "aether_unity:block/template/campfire",
+  "textures": {
+    "fire": "aether_unity:block/utility/ambrosium_campfire_fire",
+    "lit_log": "aether_unity:block/utility/ambrosium_campfire_log_lit",
+    "log": "aether_unity:block/utility/ambrosium_campfire_log"
+  }
+}

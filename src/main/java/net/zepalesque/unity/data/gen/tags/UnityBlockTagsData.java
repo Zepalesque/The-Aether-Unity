@@ -41,5 +41,13 @@ public class UnityBlockTagsData extends BlockTagsProvider {
                 UnityBlocks.GOLDEN_OAK_LEAF_PILE.get(),
                 UnityBlocks.SKYROOT_LEAF_PILE.get()
         );
+
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(
+                UnityBlocks.AMBROSIUM_CAMPFIRE.get()
+        );
+        
+        this.tag(BlockTags.CAMPFIRES).add(
+                UnityBlocks.AMBROSIUM_CAMPFIRE.get()
+        );
     }
 }

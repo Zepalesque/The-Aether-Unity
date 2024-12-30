@@ -16,6 +16,7 @@ import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.data.gen.UnityBlockStateData;
 import net.zepalesque.unity.data.gen.UnityItemModelData;
 import net.zepalesque.unity.data.gen.UnityLanguageData;
+import net.zepalesque.unity.data.gen.UnityRecipeData;
 import net.zepalesque.unity.data.gen.UnityRegistrySets;
 import net.zepalesque.unity.data.gen.tags.UnityBlockTagsData;
 import net.zepalesque.unity.data.gen.tags.UnityItemTagsData;
@@ -41,6 +42,7 @@ public class UnityData {
         // Use for structure and damage type data, plus any custom ones that need to access the condition registry
         CompletableFuture<HolderLookup.Provider> registryProvider = registrySets.getRegistryProvider();
         generator.addProvider(event.includeServer(), registrySets);
+        generator.addProvider(event.includeServer(), new UnityRecipeData(packOutput, registryProvider));
 
         // Tags
         UnityBlockTagsData blockTags = new UnityBlockTagsData(packOutput, lookupProvider, fileHelper);

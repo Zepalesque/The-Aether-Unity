@@ -22,6 +22,9 @@ public class UnityLanguageData extends UnityLanguageProvider {
         addBlock(UnityBlocks.SKYROOT_LEAF_PILE);
         addLore(UnityBlocks.SKYROOT_LEAF_PILE, "A pile of Skyroot Leaves. These can be stacked on top of eachother to make various sizes!");
 
+        addBlock(UnityBlocks.AMBROSIUM_CAMPFIRE);
+        addLore(UnityBlocks.AMBROSIUM_CAMPFIRE, "A campfire made of Ambrosium. You can use this to cook meat, or as a signal or light source!");
+
         addTooltip("shift_info", "Hold [%s] for more info...");
         addPackDescription("mod", "The Aether: Unity Resources");
 

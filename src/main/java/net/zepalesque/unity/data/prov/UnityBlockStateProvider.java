@@ -1,10 +1,12 @@
 package net.zepalesque.unity.data.prov;
 
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CampfireBlock;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -150,6 +152,23 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                         this.models().singleTexture(this.name(block) + "_size_" + state.getValue(LeafPileBlock.LAYERS),
                                 this.modLoc("block/template/layer/layer_size" + state.getValue(LeafPileBlock.LAYERS)),
                                 "block", this.texture(baseBlock, location)).renderType("cutout")).build());
+    }
+
+    public void campfire(Block block, String location) {
+        this.getVariantBuilder(block).forAllStatesExcept(
+                state -> {
+                    BlockModelBuilder on = this.models().withExistingParent(this.name(block), Unity.loc("block/template/campfire"))
+                                    .texture("log", this.modLoc("block/" + location + this.name(block) + "_log"))
+                                    .texture("fire", this.modLoc("block/" + location + this.name(block) + "_fire"))
+                                    .texture("lit_log", this.modLoc("block/" + location + this.name(block) + "_log_lit"));
+                    BlockModelBuilder off = this.models().singleTexture(this.name(block) + "_off", Unity.loc("block/template/campfire_off"), "log", this.modLoc("block/" + location + this.name(block) + "_log"));
+
+                    Direction d = state.getValue(CampfireBlock.FACING);
+                    int rotDeg = d.get2DDataValue() * 90;
+                    boolean lit = state.getValue(CampfireBlock.LIT);
+
+                    return ConfiguredModel.builder().modelFile(lit ? on : off).rotationY(rotDeg).build();
+                    }, CampfireBlock.SIGNAL_FIRE, CampfireBlock.WATERLOGGED);
     }
 
     public ResourceLocation texture(Block block, String location) {

@@ -19,6 +19,7 @@ public class UnityBlockStateData extends UnityBlockStateProvider {
         this.tintableShortGrass(UnityBlocks.SHORT_AETHER_GRASS.get(), "natural/");
         this.leafPile(UnityBlocks.GOLDEN_OAK_LEAF_PILE.get(), AetherBlocks.GOLDEN_OAK_LEAVES.get(), "natural/");
         this.leafPile(UnityBlocks.SKYROOT_LEAF_PILE.get(), AetherBlocks.SKYROOT_LEAVES.get(), "natural/");
+        this.campfire(UnityBlocks.AMBROSIUM_CAMPFIRE.get(), "utility/");
 
     }
 }

@@ -2,6 +2,7 @@ package net.zepalesque.unity.block;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour.OffsetType;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -30,6 +31,9 @@ public class UnityBlocks extends UnityBlockBuilders {
 
     public static DeferredBlock<LeafPileBlock> GOLDEN_OAK_LEAF_PILE = register("golden_oak_leaf_pile",
             () -> new LeafPileBlock(AetherBlocks.GOLDEN_OAK_LEAVES));
+
+    public static DeferredBlock<CampfireBlock> AMBROSIUM_CAMPFIRE = register("ambrosium_campfire",
+            () -> new CampfireBlock(false, 1, Properties.ofFullCopy(Blocks.CAMPFIRE)));
 
     public static void registerFlammability() {
         FireAccessor accessor = (FireAccessor) Blocks.FIRE;

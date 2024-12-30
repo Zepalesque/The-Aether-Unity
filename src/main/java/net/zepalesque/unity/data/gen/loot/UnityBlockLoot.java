@@ -1,7 +1,9 @@
 package net.zepalesque.unity.data.gen.loot;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.util.Unit;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
@@ -29,6 +31,8 @@ public class UnityBlockLoot extends UnityBlockLootProvider {
 
         this.add(UnityBlocks.GOLDEN_OAK_LEAF_PILE.get(), shears());
         this.add(UnityBlocks.SKYROOT_LEAF_PILE.get(), shears());
+
+        this.add(UnityBlocks.AMBROSIUM_CAMPFIRE.get(), campfire(AetherItems.AMBROSIUM_SHARD));
     }
 
     @Override

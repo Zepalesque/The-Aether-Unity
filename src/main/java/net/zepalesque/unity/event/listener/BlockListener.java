@@ -7,7 +7,7 @@ import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
 
-@EventBusSubscriber(modid = Unity.MODID)
+@EventBusSubscriber(modid = Unity.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class BlockListener {
     @SubscribeEvent
     public static void registerBlockEntityBlocks(BlockEntityTypeAddBlocksEvent event) {

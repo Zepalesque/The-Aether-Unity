@@ -45,14 +45,14 @@ public abstract class UnityBlockLootProvider extends AetherBlockLootSubProvider 
     public Function<Block, LootTable.Builder> campfireFuelDrop(ItemLike charcoal, ItemLike fuel) {
         return block -> this.createSilkTouchDispatchTable(
                 block, this.applyExplosionCondition(
-                        block, LootItem.lootTableItem(charcoal).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))))
+                        block, LootItem.lootTableItem(charcoal).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))))
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionCondition(block, LootItem.lootTableItem(fuel))
                         .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                                 .setProperties(StatePropertiesPredicate.Builder.properties()
                                         .hasProperty(CampfireBlock.LIT, true)))
                         .when(this.doesNotHaveSilkTouch())
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
-                ));
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
+                );
     }
 
 

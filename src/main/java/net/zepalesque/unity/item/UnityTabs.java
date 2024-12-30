@@ -30,5 +30,9 @@ public class UnityTabs {
 
             TabUtil.putAfter(event, AetherBlocks.GOLDEN_OAK_LEAVES, UnityBlocks.GOLDEN_OAK_LEAF_PILE);
         }
+
+        if (tab == AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.get()) {
+            TabUtil.putAfter(event, AetherBlocks.SUN_ALTAR, UnityBlocks.AMBROSIUM_CAMPFIRE);
+        }
     }
 }

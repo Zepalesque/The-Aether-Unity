@@ -1,5 +1,6 @@
 package net.zepalesque.unity.data;
 
+import com.aetherteam.aether.data.generators.AetherRegistrySets;
 import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -17,6 +18,7 @@ import net.zepalesque.unity.data.gen.UnityBlockStateData;
 import net.zepalesque.unity.data.gen.UnityItemModelData;
 import net.zepalesque.unity.data.gen.UnityLanguageData;
 import net.zepalesque.unity.data.gen.UnityLootData;
+import net.zepalesque.unity.data.gen.UnityMapData;
 import net.zepalesque.unity.data.gen.UnityRecipeData;
 import net.zepalesque.unity.data.gen.UnityRegistrySets;
 import net.zepalesque.unity.data.gen.tags.UnityBlockTagsData;
@@ -37,14 +39,16 @@ public class UnityData {
         generator.addProvider(event.includeClient(), new UnityItemModelData(packOutput, fileHelper));
         generator.addProvider(event.includeClient(), new UnityLanguageData(packOutput));
 
+        AetherRegistrySets patch = new AetherRegistrySets(packOutput, lookupProvider);
+        lookupProvider = patch.getRegistryProvider();
 
         // Server Data
         DatapackBuiltinEntriesProvider registrySets = new UnityRegistrySets(packOutput, lookupProvider, Unity.MODID);
-        // Use for structure and damage type data, plus any custom ones that need to access the condition registry
-        CompletableFuture<HolderLookup.Provider> registryProvider = registrySets.getRegistryProvider();
         generator.addProvider(event.includeServer(), registrySets);
-        generator.addProvider(event.includeServer(), new UnityRecipeData(packOutput, registryProvider));
+        lookupProvider = registrySets.getRegistryProvider();
+        generator.addProvider(event.includeServer(), new UnityRecipeData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), UnityLootData.create(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new UnityMapData(packOutput, lookupProvider));
 
         // Tags
         UnityBlockTagsData blockTags = new UnityBlockTagsData(packOutput, lookupProvider, fileHelper);

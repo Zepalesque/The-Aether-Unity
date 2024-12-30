@@ -16,6 +16,7 @@ import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.data.gen.UnityBlockStateData;
 import net.zepalesque.unity.data.gen.UnityItemModelData;
 import net.zepalesque.unity.data.gen.UnityLanguageData;
+import net.zepalesque.unity.data.gen.UnityLootData;
 import net.zepalesque.unity.data.gen.UnityRecipeData;
 import net.zepalesque.unity.data.gen.UnityRegistrySets;
 import net.zepalesque.unity.data.gen.tags.UnityBlockTagsData;
@@ -43,6 +44,7 @@ public class UnityData {
         CompletableFuture<HolderLookup.Provider> registryProvider = registrySets.getRegistryProvider();
         generator.addProvider(event.includeServer(), registrySets);
         generator.addProvider(event.includeServer(), new UnityRecipeData(packOutput, registryProvider));
+        generator.addProvider(event.includeServer(), UnityLootData.create(packOutput, lookupProvider));
 
         // Tags
         UnityBlockTagsData blockTags = new UnityBlockTagsData(packOutput, lookupProvider, fileHelper);

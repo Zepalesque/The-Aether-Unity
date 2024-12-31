@@ -44,7 +44,8 @@ public class UnityBlockTagsData extends BlockTagsProvider {
         );
 
         this.tag(AetherTags.Blocks.AETHER_DIRT).add(
-                UnityBlocks.FLUTEMOSS_BLOCK.get()
+                UnityBlocks.FLUTEMOSS_BLOCK.get(),
+                UnityBlocks.AETHER_MUD.get()
         );
 
         this.tag(BlockTags.REPLACEABLE).add(
@@ -61,7 +62,20 @@ public class UnityBlockTagsData extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 UnityBlocks.AMBROSIUM_CAMPFIRE.get()
         );
-        
+
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                UnityBlocks.PACKED_AETHER_MUD.get(),
+                UnityBlocks.AETHER_MUD_BRICKS.get(),
+                UnityBlocks.AETHER_MUD_BRICK_WALL.get(),
+                UnityBlocks.AETHER_MUD_BRICK_STAIRS.get(),
+                UnityBlocks.AETHER_MUD_BRICK_SLAB.get()
+        );
+
+        this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
+                UnityBlocks.AETHER_MUD.get()
+
+        );
+
         this.tag(BlockTags.CAMPFIRES).add(
                 UnityBlocks.AMBROSIUM_CAMPFIRE.get()
         );

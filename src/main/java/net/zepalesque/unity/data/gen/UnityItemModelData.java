@@ -22,5 +22,12 @@ public class UnityItemModelData extends UnityItemModelProvider {
 
         this.itemBlock(UnityBlocks.FLUTEMOSS_BLOCK.get());
         this.itemBlock(UnityBlocks.FLUTEMOSS_CARPET.get());
+
+        this.itemBlock(UnityBlocks.AETHER_MUD.get());
+        this.itemBlock(UnityBlocks.PACKED_AETHER_MUD.get());
+        this.itemBlock(UnityBlocks.AETHER_MUD_BRICKS.get());
+        this.itemWallBlock(UnityBlocks.AETHER_MUD_BRICK_WALL.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
+        this.itemBlock(UnityBlocks.AETHER_MUD_BRICK_STAIRS.get());
+        this.itemBlock(UnityBlocks.AETHER_MUD_BRICK_SLAB.get());
     }
 }

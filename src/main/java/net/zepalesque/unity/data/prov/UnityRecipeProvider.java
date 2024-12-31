@@ -8,6 +8,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
 
@@ -20,14 +21,14 @@ public abstract class UnityRecipeProvider extends AetherRecipeProvider {
     }
 
 
-    protected static void layerBlock(RecipeOutput output, ItemLike carpet, ItemLike material, int count) {
+    public static void layerBlock(RecipeOutput output, ItemLike carpet, ItemLike material, int count) {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, carpet, count)
                 .define('#', material).pattern("##")
                 .unlockedBy(getHasName(material), has(material))
                 .save(output);
     }
 
-    protected static void campfire(RecipeOutput output, ItemLike result, ItemLike fuel) {
+    public static void campfire(RecipeOutput output, ItemLike result, ItemLike fuel) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result)
                 .define('S', Tags.Items.RODS_WOODEN).define('F', fuel).define('L', ItemTags.LOGS)
                 .pattern(" S ")
@@ -35,6 +36,23 @@ public abstract class UnityRecipeProvider extends AetherRecipeProvider {
                 .pattern("LLL").unlockedBy(getHasName(fuel), has(fuel))
                 .save(output);
 
+    }
+
+    public static void brick(RecipeOutput recipeOutput, RecipeCategory category, ItemLike brick, ItemLike base) {
+        ShapedRecipeBuilder.shaped(category, brick, 4)
+                .define('#', base)
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy(getHasName(base), has(base))
+                .save(recipeOutput);
+    }
+
+    public static void stoneSet(RecipeOutput output, RecipeCategory category, ItemLike base, ItemLike wall, ItemLike stairs, ItemLike slab) {
+        wall(output, category, wall, base);
+        stairBuilder(stairs, Ingredient.of(base))
+                .unlockedBy(getHasName(base), has(base))
+                .save(output);
+        slab(output, category, slab, base);
     }
 
 

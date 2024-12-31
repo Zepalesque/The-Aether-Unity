@@ -24,6 +24,10 @@ public class UnityTabs {
                     UnityBlocks.SHORT_AETHER_GRASS
             );
 
+            TabUtil.putAfter(event, AetherBlocks.AETHER_FARMLAND,
+                    UnityBlocks.AETHER_MUD
+            );
+
             TabUtil.putBefore(event,AetherBlocks.HOLYSTONE,
                     UnityBlocks.FLUTEMOSS_CARPET,
                     UnityBlocks.FLUTEMOSS_BLOCK
@@ -34,10 +38,10 @@ public class UnityTabs {
             );
 
             TabUtil.putAfter(event, AetherBlocks.GOLDEN_OAK_LEAVES, UnityBlocks.GOLDEN_OAK_LEAF_PILE);
-        }
-
-        if (tab == AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.get()) {
+        } else if (tab == AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.get()) {
             TabUtil.putAfter(event, AetherBlocks.SUN_ALTAR, UnityBlocks.AMBROSIUM_CAMPFIRE);
+        } else if (tab == AetherCreativeTabs.AETHER_BUILDING_BLOCKS.get()) {
+            TabUtil.putBefore(event, AetherBlocks.ICESTONE, UnityBlocks.AETHER_MUD_BRICK_WALL, UnityBlocks.AETHER_MUD_BRICK_SLAB, UnityBlocks.AETHER_MUD_BRICK_STAIRS, UnityBlocks.AETHER_MUD_BRICKS, UnityBlocks.PACKED_AETHER_MUD);
         }
     }
 }

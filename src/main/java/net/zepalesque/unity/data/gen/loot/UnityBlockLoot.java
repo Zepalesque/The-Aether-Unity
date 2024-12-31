@@ -37,6 +37,13 @@ public class UnityBlockLoot extends UnityBlockLootProvider {
 
         this.dropSelf(UnityBlocks.FLUTEMOSS_BLOCK.get());
         this.dropSelf(UnityBlocks.FLUTEMOSS_CARPET.get());
+
+        this.dropSelf(UnityBlocks.AETHER_MUD.get());
+        this.dropSelf(UnityBlocks.PACKED_AETHER_MUD.get());
+        this.dropSelf(UnityBlocks.AETHER_MUD_BRICKS.get());
+        this.dropSelf(UnityBlocks.AETHER_MUD_BRICK_WALL.get());
+        this.dropSelf(UnityBlocks.AETHER_MUD_BRICK_STAIRS.get());
+        this.dropSelf(UnityBlocks.AETHER_MUD_BRICK_SLAB.get());
     }
 
     @Override

@@ -20,5 +20,11 @@ public class UnityBlockStateData extends UnityBlockStateProvider {
         this.leafPile(UnityBlocks.SKYROOT_LEAF_PILE.get(), AetherBlocks.SKYROOT_LEAVES.get(), "natural/");
         this.campfire(UnityBlocks.AMBROSIUM_CAMPFIRE.get(), "utility/");
         this.mossSet(UnityBlocks.FLUTEMOSS_BLOCK.get(), UnityBlocks.FLUTEMOSS_CARPET.get(), "natural/");
+        this.block(UnityBlocks.AETHER_MUD.get(), "natural/");
+        this.block(UnityBlocks.PACKED_AETHER_MUD.get(), "natural/");
+        this.block(UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
+        this.wallBlock(UnityBlocks.AETHER_MUD_BRICK_WALL.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
+        this.stairs(UnityBlocks.AETHER_MUD_BRICK_STAIRS.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
+        this.slab(UnityBlocks.AETHER_MUD_BRICK_SLAB.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
     }
 }

@@ -30,6 +30,20 @@ public class UnityLanguageData extends UnityLanguageProvider {
         addBlock(UnityBlocks.FLUTEMOSS_CARPET);
         addLore(UnityBlocks.FLUTEMOSS_CARPET, "A thin, blanket-like layer of Flutemoss. This is produced when growing Flutemoss with Bone Meal!");
 
+        addBlock(UnityBlocks.AETHER_MUD);
+        addLore(UnityBlocks.AETHER_MUD, "A squelchy soil comprised of Aether Dirt. These can be smelted into Packed Aether Mud, which can be used to make some nice decorative bricks!");
+        addBlock(UnityBlocks.PACKED_AETHER_MUD);
+        addLore(UnityBlocks.PACKED_AETHER_MUD, "The hardened variant of Aether Mud. These can be used as a building block, or they can be turned into decorative bricks!");
+
+        addBlock(UnityBlocks.AETHER_MUD_BRICKS);
+        addLore(UnityBlocks.AETHER_MUD_BRICKS, "The hardened variant of Aether Mud. These can be used as a building block, or they can be turned into decorative bricks!");
+        addBlock(UnityBlocks.AETHER_MUD_BRICK_WALL);
+        addBlock(UnityBlocks.AETHER_MUD_BRICK_STAIRS);
+        addBlock(UnityBlocks.AETHER_MUD_BRICK_SLAB);
+        addLore(UnityBlocks.AETHER_MUD_BRICK_WALL, "Crafted from Holystone Bricks. " + LoreDetails.WALL);
+        addLore(UnityBlocks.AETHER_MUD_BRICK_STAIRS, "The hardened variant of Aether Mud. " + LoreDetails.STAIRS);
+        addLore(UnityBlocks.AETHER_MUD_BRICK_SLAB, "The hardened variant of Aether Mud. " + LoreDetails.SLAB);
+
         addTooltip("shift_info", "Hold [%s] for more info...");
         addPackDescription("mod", "The Aether: Unity Resources");
 

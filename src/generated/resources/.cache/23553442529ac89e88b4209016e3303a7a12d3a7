@@ -1,7 +1,13 @@
-// 1.21.1	2024-12-30T16:21:42.5672629	Item Models: aether_unity
+// 1.21.1	2024-12-30T20:55:43.1134565	Item Models: aether_unity
+a1c05c4d4982a57e7060f246a93463bee327f6fe assets/aether_unity/models/item/aether_mud.json
+f03c5873879e445cf847e8897db3fecc0a98a743 assets/aether_unity/models/item/aether_mud_bricks.json
+95311012f4f2899dd1b1d800e9171b15913dcc7d assets/aether_unity/models/item/aether_mud_brick_slab.json
+8b31f7b57298e5fc69a2c6e7862d6baddd5f8c40 assets/aether_unity/models/item/aether_mud_brick_stairs.json
+5483839a5a3cc34c86b6c5b7ce1f84fa6ccf8646 assets/aether_unity/models/item/aether_mud_brick_wall.json
 6e67ce1bb97cb1da08bf86f4ea1f240e94376430 assets/aether_unity/models/item/ambrosium_campfire.json
 bb66bcaf7a0129a7875937c3cb5bfb5bf7b3783b assets/aether_unity/models/item/flutemoss_block.json
 917683302411c61a33625e6aad5ad8b84c3a5e79 assets/aether_unity/models/item/flutemoss_carpet.json
 61a61982958ad578a9aba3f0d655624b3928b8c4 assets/aether_unity/models/item/golden_oak_leaf_pile.json
+7d7fc37199474722b0ff7409a103f0034c32940b assets/aether_unity/models/item/packed_aether_mud.json
 762ff8caadc1e2d86247061b600f1b7bc0e46880 assets/aether_unity/models/item/short_aether_grass.json
 fee10625ca0f9fc87fdaf960acb5023e85f970be assets/aether_unity/models/item/skyroot_leaf_pile.json

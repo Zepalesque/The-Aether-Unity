@@ -10,7 +10,7 @@ import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
-import net.zepalesque.zenith.util.TabUtil;
+import net.zepalesque.zenith.api.item.TabUtil;
 
 @EventBusSubscriber(modid = Unity.MODID, bus = Bus.MOD)
 public class UnityTabs {

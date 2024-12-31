@@ -11,8 +11,6 @@ import net.zepalesque.unity.item.UnityItems;
 import java.util.function.Function;
 
 public class UnityBlockBuilders {
-
-
     protected static <T extends Block> DeferredBlock<T> register(final String name, final Supplier<? extends T> block, Function<DeferredBlock<T>, Supplier<? extends Item>> item) {
         DeferredBlock<T> obj = UnityBlocks.BLOCKS.register(name, block);
         UnityItems.ITEMS.register(name, item.apply(obj));

@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
-import net.zepalesque.zenith.util.DatagenUtil;
+import net.zepalesque.zenith.api.data.DatagenUtil;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

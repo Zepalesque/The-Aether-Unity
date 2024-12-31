@@ -12,7 +12,6 @@ import java.nio.file.Files;
 public class UnityConfigHandler {
 
     public static void setup(ModContainer mod, IEventBus bus) {
-
         try {
             Files.createDirectories(FMLPaths.CONFIGDIR.get().resolve(Unity.MODID));
             mod.registerConfig(ModConfig.Type.CLIENT, UnityConfig.CLIENT_SPEC, Unity.MODID + "/client.toml");

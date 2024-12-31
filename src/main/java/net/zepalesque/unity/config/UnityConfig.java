@@ -2,7 +2,7 @@ package net.zepalesque.unity.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.zepalesque.unity.pack.UnityPackConfig;
-import net.zepalesque.zenith.api.config.DataSerializableConfig;
+import net.zepalesque.zenith.api.serialization.config.DataSerializableConfig;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class UnityConfig {

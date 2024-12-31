@@ -15,9 +15,6 @@ import net.zepalesque.unity.block.natural.DoubleDropsGrowthBlock;
 import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.unity.block.state.UnityBlockBuilders;
 import net.zepalesque.unity.data.resource.registries.UnityFeatureConfig;
-import net.zepalesque.unity.event.hook.ToolActionHooks;
-import net.zepalesque.zenith.api.blockset.AbstractWoodSet;
-import net.zepalesque.zenith.block.SpreadingPatchBlock;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
 
 public class UnityBlocks extends UnityBlockBuilders {

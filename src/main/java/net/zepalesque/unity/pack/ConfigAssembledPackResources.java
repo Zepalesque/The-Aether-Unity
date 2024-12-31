@@ -33,7 +33,7 @@ import java.util.function.Supplier;
 
 
 // frick, need to rewrite stuff
-// TODO: Wire up the data side of this
+// TODO: Wire up the data side of this and move to Zenith
 public class ConfigAssembledPackResources extends AbstractPackResources {
 
     private final Map<Supplier<Boolean>, PackResources> packs;

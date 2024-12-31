@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+// TODO: Abstract-ify and move to Zenith
 public class PackUtils {
 
     public static void setupPack(AddPackFindersEvent event, String path, String id, boolean required, Function<Path, Pack.ResourcesSupplier> packBuilder) {

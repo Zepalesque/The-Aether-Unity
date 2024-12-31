@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
@@ -38,5 +39,13 @@ public class UnityRecipeData extends UnityRecipeProvider {
                 UnityBlocks.AETHER_MUD_BRICK_STAIRS,
                 UnityBlocks.AETHER_MUD_BRICK_SLAB
         );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, UnityBlocks.COARSE_AETHER_DIRT, 4)
+                .define('D', AetherBlocks.AETHER_DIRT)
+                .define('G', UnityTags.Items.AETHER_GRAVEL)
+                .pattern("DG")
+                .pattern("GD")
+                .unlockedBy("has_aether_gravel", has(UnityTags.Items.AETHER_GRAVEL))
+                .save(output);
     }
 }

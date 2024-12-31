@@ -46,7 +46,6 @@ public abstract class UnityRecipeProvider extends AetherRecipeProvider {
                 .unlockedBy(getHasName(base), has(base))
                 .save(recipeOutput);
     }
-
     public static void stoneSet(RecipeOutput output, RecipeCategory category, ItemLike base, ItemLike wall, ItemLike stairs, ItemLike slab) {
         wall(output, category, wall, base);
         stairBuilder(stairs, Ingredient.of(base))

@@ -45,7 +45,8 @@ public class UnityBlockTagsData extends BlockTagsProvider {
 
         this.tag(AetherTags.Blocks.AETHER_DIRT).add(
                 UnityBlocks.FLUTEMOSS_BLOCK.get(),
-                UnityBlocks.AETHER_MUD.get()
+                UnityBlocks.AETHER_MUD.get(),
+                UnityBlocks.COARSE_AETHER_DIRT.get()
         );
 
         this.tag(BlockTags.REPLACEABLE).add(
@@ -72,8 +73,8 @@ public class UnityBlockTagsData extends BlockTagsProvider {
         );
 
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
-                UnityBlocks.AETHER_MUD.get()
-
+                UnityBlocks.AETHER_MUD.get(),
+                UnityBlocks.COARSE_AETHER_DIRT.get()
         );
 
         this.tag(BlockTags.CAMPFIRES).add(

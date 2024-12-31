@@ -44,6 +44,9 @@ public class UnityLanguageData extends UnityLanguageProvider {
         addLore(UnityBlocks.AETHER_MUD_BRICK_STAIRS, "The hardened variant of Aether Mud. " + LoreDetails.STAIRS);
         addLore(UnityBlocks.AETHER_MUD_BRICK_SLAB, "The hardened variant of Aether Mud. " + LoreDetails.SLAB);
 
+        addBlock(UnityBlocks.COARSE_AETHER_DIRT);
+        addLore(UnityBlocks.COARSE_AETHER_DIRT, "The coarse variation of Aether Dirt.");
+
         addTooltip("shift_info", "Hold [%s] for more info...");
         addPackDescription("mod", "The Aether: Unity Resources");
 

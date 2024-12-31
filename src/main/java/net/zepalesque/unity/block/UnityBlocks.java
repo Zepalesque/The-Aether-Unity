@@ -22,6 +22,7 @@ import net.zepalesque.unity.block.natural.DoubleDropsMud;
 import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.unity.block.state.UnityBlockBuilders;
 import net.zepalesque.unity.data.resource.registries.UnityFeatureConfig;
+import net.zepalesque.unity.event.hook.ToolActionHooks;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
 
 public class UnityBlocks extends UnityBlockBuilders {
@@ -63,6 +64,10 @@ public class UnityBlocks extends UnityBlockBuilders {
     public static final DeferredBlock<SlabBlock> AETHER_MUD_BRICK_SLAB = register("aether_mud_brick_slab",
             () -> new SlabBlock(Block.Properties.ofFullCopy(AETHER_MUD_BRICKS.get()).strength(0.5F, 6.0F)));
 
+    public static DeferredBlock<AetherDoubleDropBlock> COARSE_AETHER_DIRT = register("coarse_aether_dirt",
+            () -> new AetherDoubleDropBlock(Properties.ofFullCopy(AetherBlocks.AETHER_DIRT.get())));
+
+
 
 
 
@@ -72,5 +77,7 @@ public class UnityBlocks extends UnityBlockBuilders {
     }
 
     public static void registerToolConversions() {
+        ToolActionHooks.FLATTENABLES.put(COARSE_AETHER_DIRT.get(), AetherBlocks.AETHER_DIRT_PATH.get());
+        ToolActionHooks.TILLABLES.put(COARSE_AETHER_DIRT.get(), AetherBlocks.AETHER_DIRT.get());
     }
 }

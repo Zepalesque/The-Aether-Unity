@@ -26,5 +26,6 @@ public class UnityBlockStateData extends UnityBlockStateProvider {
         this.wallBlock(UnityBlocks.AETHER_MUD_BRICK_WALL.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
         this.stairs(UnityBlocks.AETHER_MUD_BRICK_STAIRS.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
         this.slab(UnityBlocks.AETHER_MUD_BRICK_SLAB.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
+        this.block(UnityBlocks.COARSE_AETHER_DIRT.get(), "natural/");
     }
 }

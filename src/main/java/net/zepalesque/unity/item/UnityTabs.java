@@ -24,6 +24,10 @@ public class UnityTabs {
                     UnityBlocks.SHORT_AETHER_GRASS
             );
 
+            TabUtil.putAfter(event, AetherBlocks.AETHER_DIRT,
+                    UnityBlocks.COARSE_AETHER_DIRT
+            );
+
             TabUtil.putAfter(event, AetherBlocks.AETHER_FARMLAND,
                     UnityBlocks.AETHER_MUD
             );

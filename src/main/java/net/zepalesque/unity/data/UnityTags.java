@@ -30,6 +30,7 @@ public class UnityTags {
     public static class Items {
         public static final TagKey<Item> AETHER_GRASS_NONREPLACING = tag("aether_grass_nonreplacing");
         public static final TagKey<Item> PACKED_AETHER_MUD_CRAFTING = tag("packed_aether_mud_crafting");
+        public static final TagKey<Item> AETHER_GRAVEL = tag("aether_gravel");
 
         public static TagKey<Item> tag(String name) {
             return TagKey.create(Registries.ITEM, Unity.loc(name));

@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.zepalesque.zenith.api.block.type.SpreadingPatchBlock;
+import net.zepalesque.zenith.core.block.type.SpreadingPatchBlock;
 
 public class DoubleDropsGrowthBlock extends SpreadingPatchBlock {
     public DoubleDropsGrowthBlock(Properties properties, ResourceKey<ConfiguredFeature<?, ?>> featureKey) {

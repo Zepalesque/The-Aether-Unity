@@ -20,16 +20,16 @@ public abstract class UnityLanguageProvider extends AetherLanguageProvider {
     }
 
     public void addItem(DeferredItem<? extends Item> key) {
-        this.addItem(key, DatagenUtil.getNameLocalized(key));
+        this.addItem(key, DatagenUtil.localize(key));
     }
 
     public void addBlock(DeferredBlock<? extends Block> key) {
-        this.addBlock(key, DatagenUtil.getNameLocalized(key));
+        this.addBlock(key, DatagenUtil.localize(key));
     }
 
 
     public void addEntityType(DeferredHolder<EntityType<?>, ? extends EntityType<?>> key) {
-        this.addEntityType(key, DatagenUtil.getNameLocalized(key));
+        this.addEntityType(key, DatagenUtil.localize(key));
     }
 
     public void addTooltip(String key, String name) {

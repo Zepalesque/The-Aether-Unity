@@ -18,7 +18,7 @@ public class UnityTabs {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         CreativeModeTab tab = event.getTab();
-        if (tab == AetherCreativeTabs.AETHER_NATURAL_BLOCKS.get()) {
+        if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_NATURAL_BLOCKS)) {
 
             TabUtil.putAfter(event, AetherBlocks.AETHER_GRASS_BLOCK,
                     UnityBlocks.SHORT_AETHER_GRASS
@@ -42,9 +42,9 @@ public class UnityTabs {
             );
 
             TabUtil.putAfter(event, AetherBlocks.GOLDEN_OAK_LEAVES, UnityBlocks.GOLDEN_OAK_LEAF_PILE);
-        } else if (tab == AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.get()) {
+        } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS)) {
             TabUtil.putAfter(event, AetherBlocks.SUN_ALTAR, UnityBlocks.AMBROSIUM_CAMPFIRE);
-        } else if (tab == AetherCreativeTabs.AETHER_BUILDING_BLOCKS.get()) {
+        } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_BUILDING_BLOCKS)) {
             TabUtil.putBefore(event, AetherBlocks.ICESTONE, UnityBlocks.AETHER_MUD_BRICK_WALL, UnityBlocks.AETHER_MUD_BRICK_SLAB, UnityBlocks.AETHER_MUD_BRICK_STAIRS, UnityBlocks.AETHER_MUD_BRICKS, UnityBlocks.PACKED_AETHER_MUD);
         }
     }

@@ -22,7 +22,6 @@ import net.zepalesque.unity.data.UnityTags;
 public class UnityDispenserBehaviors {
 
     public static void bootstrap() {
-
         DispenserBlock.registerBehavior(
                 Items.POTION,
                 new DefaultDispenseItemBehavior() {

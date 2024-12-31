@@ -13,9 +13,6 @@ import net.zepalesque.unity.data.resource.builders.UnityPlacementBuilders;
 
 public class UnityPlacements extends UnityPlacementBuilders {
 
-
-
-
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configs = context.lookup(Registries.CONFIGURED_FEATURE);
         DungeonBlacklistFilter blacklist = new DungeonBlacklistFilter();

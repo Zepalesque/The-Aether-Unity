@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 // TODO: Abstract-ify and move to Zenith
@@ -35,9 +36,9 @@ public class UnityPackConfig {
         return new PathPackResources(loc, resource);
     }
 
-    public static <B, T extends ModConfigSpec.ConfigValue<B>> T register(T config, String path, String id, Function<B, Boolean> predicate) {
+    public static <B, T extends ModConfigSpec.ConfigValue<B>> T register(T config, String path, String id, Predicate<B> predicate) {
         if (!locked) {
-            RESOURCES.putIfAbsent(() -> predicate.apply(config.get()), createPack(path, id));
+            RESOURCES.putIfAbsent(() -> predicate.test(config.get()), createPack(path, id));
             Unity.LOGGER.info("Registered pack config for pack {}{}...", path, id);
         } else {
             Unity.LOGGER.warn("Attempted to register pack config for pack {}{} after locking was already complete!", path, id);

@@ -31,7 +31,12 @@ public class UnityRecipeData extends UnityRecipeProvider {
         campfire(output, UnityBlocks.AMBROSIUM_CAMPFIRE, AetherItems.AMBROSIUM_SHARD);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, UnityBlocks.PACKED_AETHER_MUD, 1)
                 .requires(UnityBlocks.AETHER_MUD).requires(UnityTags.Items.PACKED_AETHER_MUD_CRAFTING)
-                .unlockedBy(getHasName(UnityBlocks.AETHER_MUD), has(UnityBlocks.AETHER_MUD));
+                .unlockedBy(getHasName(UnityBlocks.AETHER_MUD), has(UnityBlocks.AETHER_MUD))
+                .save(output);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherBlocks.MOSSY_HOLYSTONE, 1)
+                .requires(UnityBlocks.FLUTEMOSS_BLOCK).requires(AetherBlocks.HOLYSTONE)
+                .unlockedBy(getHasName(UnityBlocks.FLUTEMOSS_BLOCK), has(UnityBlocks.FLUTEMOSS_BLOCK))
+                .save(output, "mossy_holystone_from_flutemoss");
         brick(output, RecipeCategory.BUILDING_BLOCKS, UnityBlocks.AETHER_MUD_BRICKS, UnityBlocks.PACKED_AETHER_MUD);
         stoneSet(output, RecipeCategory.BUILDING_BLOCKS,
                 UnityBlocks.AETHER_MUD_BRICKS,
@@ -45,7 +50,7 @@ public class UnityRecipeData extends UnityRecipeProvider {
                 .define('G', UnityTags.Items.AETHER_GRAVEL)
                 .pattern("DG")
                 .pattern("GD")
-                .unlockedBy("has_aether_gravel", has(UnityTags.Items.AETHER_GRAVEL))
+                .unlockedBy(getHasName(AetherBlocks.AETHER_DIRT.get()), has(AetherBlocks.AETHER_DIRT.get()))
                 .save(output);
     }
 }

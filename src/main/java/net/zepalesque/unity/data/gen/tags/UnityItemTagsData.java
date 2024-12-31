@@ -6,6 +6,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
@@ -27,7 +28,9 @@ public class UnityItemTagsData extends ItemTagsProvider {
         this.tag(UnityTags.Items.PACKED_AETHER_MUD_CRAFTING).add(
                 Items.WHEAT
         );
-        /*this.tag(UnityTags.Items.AETHER_GRAVEL).add(
-        );*/
+        // TODO: Actual Aether Gravel (Holysilt?)
+        this.tag(UnityTags.Items.AETHER_GRAVEL).add(
+                Blocks.GRAVEL.asItem()
+        );
     }
 }

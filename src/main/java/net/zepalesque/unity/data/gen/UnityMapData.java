@@ -25,5 +25,7 @@ public class UnityMapData extends UnityDataMapProvider {
 
         var compostables = this.builder(NeoForgeDataMaps.COMPOSTABLES);
         this.addCompost(compostables, UnityBlocks.SHORT_AETHER_GRASS, 0.3F);
+        this.addCompost(compostables, UnityBlocks.FLUTEMOSS_BLOCK, 0.65F);
+        this.addCompost(compostables, UnityBlocks.FLUTEMOSS_CARPET, 0.3F);
     }
 }

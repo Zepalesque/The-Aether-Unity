@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "aether_unity:block/construction/aether_mud_bricks"
+  }
+}

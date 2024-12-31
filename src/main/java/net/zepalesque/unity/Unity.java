@@ -1,5 +1,6 @@
 package net.zepalesque.unity;
 
+import com.google.common.reflect.Reflection;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -17,6 +18,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 import net.zepalesque.unity.attachment.UnityDataAttachments;
 import net.zepalesque.unity.block.UnityBlocks;
+import net.zepalesque.unity.blockset.stone.UnityStoneSets;
 import net.zepalesque.unity.client.UnityClient;
 import net.zepalesque.unity.client.UnityColors;
 import net.zepalesque.unity.config.UnityConfig;
@@ -52,6 +54,8 @@ public class Unity {
             bus.addListener(UnityColors::itemColors);
             bus.addListener(UnityColors::resolvers);
         }
+
+        Reflection.initialize(UnityStoneSets.class);
 
         DeferredRegister<?>[] registers = {
                 UnityBlocks.BLOCKS,

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "aether_unity:block/construction/aether_mud_bricks",
+    "side": "aether_unity:block/construction/aether_mud_bricks",
+    "top": "aether_unity:block/construction/aether_mud_bricks"
+  }
+}

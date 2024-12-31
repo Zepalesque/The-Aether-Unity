@@ -5,7 +5,7 @@ import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.prov.UnityLanguageProvider;
 
-public class UnityLanguageData extends UnityLanguageProvider {
+public class UnityLanguageData extends UnityLanguageProvider<UnityLanguageData> {
 
     public UnityLanguageData(PackOutput output) {
         super(output, Unity.MODID);
@@ -13,6 +13,7 @@ public class UnityLanguageData extends UnityLanguageProvider {
 
     @Override
     protected void addTranslations() {
+        this.doBlockSetGeneration();
         addBlock(UnityBlocks.SHORT_AETHER_GRASS);
         addLore(UnityBlocks.SHORT_AETHER_GRASS, "Blades of the Aether's grass. It feels slightly cool to the touch.");
 

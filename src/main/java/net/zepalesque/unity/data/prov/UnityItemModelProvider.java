@@ -10,10 +10,12 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.loaders.ItemLayerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.zepalesque.zenith.api.blockset.BlockSet;
+import net.zepalesque.zenith.api.blockset.BlockSetDatagen;
 
 import java.util.function.Function;
 
-public abstract class UnityItemModelProvider extends AetherItemModelProvider {
+public abstract class UnityItemModelProvider<P extends UnityItemModelProvider<P>> extends AetherItemModelProvider implements BlockSetDatagen<P> {
 
     public UnityItemModelProvider(PackOutput output, String id, ExistingFileHelper helper) {
         super(output, id, helper);
@@ -105,6 +107,10 @@ public abstract class UnityItemModelProvider extends AetherItemModelProvider {
 
     public void leafPile(Block block) {
         this.itemBlockWithParent(block, b -> modLoc(BLOCK_FOLDER + "/" + this.blockName(b) + "_size_1"));
+    }
 
+    @Override
+    public <B extends BlockSet> void generateDataForBlockSet(B set) {
+        set.itemData(this);
     }
 }

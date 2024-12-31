@@ -5,10 +5,6 @@
     "aether_unity:golden_oak_leaf_pile",
     "aether_unity:ambrosium_campfire",
     "aether_unity:flutemoss_block",
-    "aether_unity:flutemoss_carpet",
-    "aether_unity:aether_mud_bricks",
-    "aether_unity:aether_mud_brick_stairs",
-    "aether_unity:aether_mud_brick_slab",
-    "aether_unity:aether_mud_brick_wall"
+    "aether_unity:flutemoss_carpet"
   ]
 }

@@ -6,21 +6,18 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.UnityTags;
-import net.zepalesque.unity.data.prov.tags.UnityBlockTagsProvider;
-import net.zepalesque.zenith.api.blockset.BlockSet;
-import net.zepalesque.zenith.api.blockset.BlockSetDatagen;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class UnityBlockTagsData extends UnityBlockTagsProvider<UnityBlockTagsData> {
+public class UnityBlockTagsData extends BlockTagsProvider {
 
     public UnityBlockTagsData(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, Unity.MODID, existingFileHelper);
@@ -29,9 +26,6 @@ public class UnityBlockTagsData extends UnityBlockTagsProvider<UnityBlockTagsDat
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags(@NotNull HolderLookup.Provider provider) {
-
-        this.doBlockSetGeneration();
-
         // Adds every single Unity block as a block that should be treaded as an Aether Block and get the tool debuff
         IntrinsicTagAppender<Block> tag = this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK);
         for (DeferredHolder<Block, ? extends Block> block : UnityBlocks.BLOCKS.getEntries()) {

@@ -10,7 +10,7 @@ import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
 
 import java.util.concurrent.CompletableFuture;
 
-public class UnityMapData extends UnityDataMapProvider<UnityMapData> {
+public class UnityMapData extends UnityDataMapProvider {
 
     public UnityMapData(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
@@ -18,8 +18,6 @@ public class UnityMapData extends UnityDataMapProvider<UnityMapData> {
 
     @Override
     protected void gather() {
-        doBlockSetGeneration();
-
         var biomeTints = this.builder(UnityBiomeTints.AETHER_GRASS.get().getDataMap());
         biomeTints.add(AetherBiomes.SKYROOT_FOREST, 0xA2F2BC, false);
         biomeTints.add(AetherBiomes.SKYROOT_WOODLAND, 0x96E8B0, false);

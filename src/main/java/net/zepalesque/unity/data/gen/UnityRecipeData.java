@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class UnityRecipeData extends UnityRecipeProvider<UnityRecipeData> {
+public class UnityRecipeData extends UnityRecipeProvider {
 
     public UnityRecipeData(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(output, lookupProvider, Unity.MODID);
@@ -20,7 +20,6 @@ public class UnityRecipeData extends UnityRecipeProvider<UnityRecipeData> {
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput output) {
-        doBlockSetGeneration(output);
 
         layerBlock(output, UnityBlocks.GOLDEN_OAK_LEAF_PILE, AetherBlocks.GOLDEN_OAK_LEAVES, 6);
         layerBlock(output, UnityBlocks.SKYROOT_LEAF_PILE, AetherBlocks.SKYROOT_LEAVES, 6);

@@ -16,10 +16,8 @@ import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.natural.AetherShortGrassBlock;
 import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.unity.block.state.UnityStates;
-import net.zepalesque.zenith.api.blockset.BlockSet;
-import net.zepalesque.zenith.api.blockset.BlockSetDatagen;
 
-public abstract class UnityBlockStateProvider<P extends UnityBlockStateProvider<P>> extends AetherBlockStateProvider implements BlockSetDatagen<P> {
+public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
 
     public UnityBlockStateProvider(PackOutput output, String id, ExistingFileHelper helper) {
         super(output, id, helper);
@@ -187,8 +185,4 @@ public abstract class UnityBlockStateProvider<P extends UnityBlockStateProvider<
         return ResourceLocation.fromNamespaceAndPath(BuiltInRegistries.BLOCK.getKey(block).getNamespace(), "block/" + location + name(block));
     }
 
-    @Override
-    public <B extends BlockSet> void generateDataForBlockSet(B set) {
-        set.blockData(this);
-    }
 }

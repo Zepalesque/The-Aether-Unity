@@ -1,8 +1,4 @@
-// 1.21.1	2024-12-30T19:19:40.0838701	Loot Tables
-535bd4ef3bedf71082d9c9412630d53137d36e58 data/aether_unity/loot_table/blocks/aether_mud_bricks.json
-ca98510c797f28ca17df1132601d7e4b7fcbbbf3 data/aether_unity/loot_table/blocks/aether_mud_brick_slab.json
-65efe48e352d8908e44d0953dfe972c677632e61 data/aether_unity/loot_table/blocks/aether_mud_brick_stairs.json
-546c89472756c9c37e40d1b7fee46de28185c7e5 data/aether_unity/loot_table/blocks/aether_mud_brick_wall.json
+// 1.21.1	2024-12-30T16:21:42.5652642	Loot Tables
 1b44cca21b17021005851da4370f7181913fc36c data/aether_unity/loot_table/blocks/ambrosium_campfire.json
 2b90791af2d0c4d21331255797b782a2f485bd51 data/aether_unity/loot_table/blocks/flutemoss_block.json
 40ef3225e990a92845ecd5db41ae46598709651c data/aether_unity/loot_table/blocks/flutemoss_carpet.json

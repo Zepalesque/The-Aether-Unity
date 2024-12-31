@@ -22,21 +22,28 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.zepalesque.zenith.api.blockset.BlockSetDatagen;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Set;
 import java.util.function.Function;
 
-@ParametersAreNonnullByDefault
 // Many of these are just public overrides with no differences, as this is used by the BlockSets
-public abstract class UnityBlockLootProvider<P extends UnityBlockLootProvider<P>> extends AetherBlockLootSubProvider implements BlockSetDatagen<P> {
+public abstract class UnityBlockLootProvider extends AetherBlockLootSubProvider {
+
+    // Cool double drops stuff hopefully
+    @Override
+    protected void add(Block block, LootTable.Builder builder) {
+        if (block.defaultBlockState().hasProperty(AetherBlockStateProperties.DOUBLE_DROPS)) {
+            super.add(block, builder.apply(DoubleDrops.builder()));
+        } else {
+            super.add(block, builder);
+        }
+    }
 
     public UnityBlockLootProvider(Set<Item> items, FeatureFlagSet flags, HolderLookup.Provider registries) {
         super(items, flags, registries);
     }
+
 
     public Function<Block, LootTable.Builder> campfire(ItemLike drop) {
         return block -> this.createSilkTouchDispatchTable(
@@ -80,54 +87,4 @@ public abstract class UnityBlockLootProvider<P extends UnityBlockLootProvider<P>
         return shearsOr(drop, 0.25F);
     }
 
-
-    // Cool double drops stuff hopefully
-    @Override
-    public void add(Block block, LootTable.Builder builder) {
-        if (block.defaultBlockState().hasProperty(AetherBlockStateProperties.DOUBLE_DROPS)) {
-            super.add(block, builder.apply(DoubleDrops.builder()));
-        } else {
-            super.add(block, builder);
-        }
-    }
-
-    @Override
-    public void add(Block block, Function<Block, LootTable.Builder> factory) {
-        super.add(block, factory);
-    }
-
-    @Override
-    public void dropSelf(Block block) {
-        super.dropSelf(block);
-    }
-
-    @Override
-    public void dropOther(Block block, ItemLike item) {
-        super.dropOther(block, item);
-    }
-
-    @Override
-    public LootTable.Builder createDoorTable(Block pDoorBlock) {
-        return super.createDoorTable(pDoorBlock);
-    }
-
-    @Override
-    public void dropPottedContents(Block pFlowerPot) {
-        super.dropPottedContents(pFlowerPot);
-    }
-
-    @Override
-    public LootTable.Builder createSlabItemTable(Block pBlock) {
-        return super.createSlabItemTable(pBlock);
-    }
-
-    @Override
-    public LootTable.Builder createSingleItemTableWithSilkTouch(Block pBlock, ItemLike pItem) {
-        return super.createSingleItemTableWithSilkTouch(pBlock, pItem);
-    }
-
-    @Override
-    public LootTable.Builder createSingleItemTableWithSilkTouch(Block pBlock, ItemLike pItem, NumberProvider pCount) {
-        return super.createSingleItemTableWithSilkTouch(pBlock, pItem, pCount);
-    }
 }

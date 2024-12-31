@@ -9,14 +9,12 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
-import net.zepalesque.zenith.api.blockset.BlockSet;
-import net.zepalesque.zenith.api.blockset.BlockSetDatagen;
 import net.zepalesque.zenith.util.DatagenUtil;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public abstract class UnityLanguageProvider<P extends UnityLanguageProvider<P>> extends AetherLanguageProvider implements BlockSetDatagen<P> {
+public abstract class UnityLanguageProvider extends AetherLanguageProvider {
     public UnityLanguageProvider(PackOutput output, String id) {
         super(output, id);
     }
@@ -39,10 +37,5 @@ public abstract class UnityLanguageProvider<P extends UnityLanguageProvider<P>> 
 
     public void addSubtitle(Supplier<SoundEvent> sound, Function<SoundEvent, String> factory, String subtitle) {
         this.add(factory.apply(sound.get()), subtitle);
-    }
-
-    @Override
-    public <B extends BlockSet> void generateDataForBlockSet(B set) {
-        set.langData(this);
     }
 }

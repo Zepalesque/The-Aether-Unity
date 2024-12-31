@@ -23,15 +23,11 @@ import net.zepalesque.unity.data.gen.UnityRecipeData;
 import net.zepalesque.unity.data.gen.UnityRegistrySets;
 import net.zepalesque.unity.data.gen.tags.UnityBlockTagsData;
 import net.zepalesque.unity.data.gen.tags.UnityItemTagsData;
-import net.zepalesque.zenith.api.blockset.BlockSetDatagen;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class UnityData {
-
-
-    @SuppressWarnings("unchecked")
     public static void dataSetup(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
@@ -39,9 +35,9 @@ public class UnityData {
         PackOutput packOutput = generator.getPackOutput();
 
         // Client Data
-        generator.addProvider(event.includeClient(), new UnityBlockStateData(packOutput, fileHelper).withBlockSets(Unity.BLOCK_SETS));
-        generator.addProvider(event.includeClient(), new UnityItemModelData(packOutput, fileHelper).withBlockSets(Unity.BLOCK_SETS));
-        generator.addProvider(event.includeClient(), new UnityLanguageData(packOutput).withBlockSets(Unity.BLOCK_SETS));
+        generator.addProvider(event.includeClient(), new UnityBlockStateData(packOutput, fileHelper));
+        generator.addProvider(event.includeClient(), new UnityItemModelData(packOutput, fileHelper));
+        generator.addProvider(event.includeClient(), new UnityLanguageData(packOutput));
 
         AetherRegistrySets patch = new AetherRegistrySets(packOutput, lookupProvider);
         lookupProvider = patch.getRegistryProvider();
@@ -50,9 +46,9 @@ public class UnityData {
         DatapackBuiltinEntriesProvider registrySets = new UnityRegistrySets(packOutput, lookupProvider, Unity.MODID);
         generator.addProvider(event.includeServer(), registrySets);
         lookupProvider = registrySets.getRegistryProvider();
-        generator.addProvider(event.includeServer(), new UnityRecipeData(packOutput, lookupProvider).withBlockSets(Unity.BLOCK_SETS));
+        generator.addProvider(event.includeServer(), new UnityRecipeData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), UnityLootData.create(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new UnityMapData(packOutput, lookupProvider).withBlockSets(Unity.BLOCK_SETS));
+        generator.addProvider(event.includeServer(), new UnityMapData(packOutput, lookupProvider));
 
         // Tags
         UnityBlockTagsData blockTags = new UnityBlockTagsData(packOutput, lookupProvider, fileHelper);

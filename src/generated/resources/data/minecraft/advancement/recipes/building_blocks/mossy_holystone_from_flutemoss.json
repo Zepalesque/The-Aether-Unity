@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_aether_dirt": {
+    "has_flutemoss_block": {
       "conditions": {
         "items": [
           {
-            "items": "aether:aether_dirt"
+            "items": "aether_unity:flutemoss_block"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether_unity:coarse_aether_dirt"
+        "recipe": "minecraft:mossy_holystone_from_flutemoss"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_aether_dirt"
+      "has_flutemoss_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "aether_unity:coarse_aether_dirt"
+      "minecraft:mossy_holystone_from_flutemoss"
     ]
   }
 }

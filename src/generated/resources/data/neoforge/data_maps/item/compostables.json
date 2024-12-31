@@ -1,5 +1,11 @@
 {
   "values": {
+    "aether_unity:flutemoss_block": {
+      "chance": 0.65
+    },
+    "aether_unity:flutemoss_carpet": {
+      "chance": 0.3
+    },
     "aether_unity:short_aether_grass": {
       "chance": 0.3
     }

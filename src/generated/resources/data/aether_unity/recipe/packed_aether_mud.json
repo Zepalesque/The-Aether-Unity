@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "aether_unity:aether_mud"
+    },
+    {
+      "tag": "aether_unity:packed_aether_mud_crafting"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "aether_unity:packed_aether_mud"
+  }
+}

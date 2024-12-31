@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "aether_unity:flutemoss_block"
+    },
+    {
+      "item": "aether:holystone"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "aether:mossy_holystone"
+  }
+}

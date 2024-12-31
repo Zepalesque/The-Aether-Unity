@@ -80,5 +80,11 @@ public class UnityBlockTagsData extends BlockTagsProvider {
         this.tag(BlockTags.CAMPFIRES).add(
                 UnityBlocks.AMBROSIUM_CAMPFIRE.get()
         );
+
+        this.tag(BlockTags.CONVERTABLE_TO_MUD).remove(AetherBlocks.AETHER_DIRT.get());
+        this.tag(UnityTags.Blocks.CONVERTABLE_TO_AETHER_MUD).add(
+                AetherBlocks.AETHER_DIRT.get(),
+                UnityBlocks.COARSE_AETHER_DIRT.get()
+        );
     }
 }

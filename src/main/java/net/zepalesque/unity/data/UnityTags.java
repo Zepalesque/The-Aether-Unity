@@ -22,6 +22,8 @@ public class UnityTags {
         public static final TagKey<Block> SHORT_AETHER_GRASS_DEFAULT_COLORING = tag("short_aether_grass_default_coloring");
         public static final TagKey<Block> AETHER_CARVER_REPLACEABLES = tag("aether_carver_replaceables");
 
+        public static final TagKey<Block> CONVERTABLE_TO_AETHER_MUD = tag("convertable_to_aether_mud");
+
         public static TagKey<Block> tag(String name) {
             return TagKey.create(Registries.BLOCK, Unity.loc(name));
         }

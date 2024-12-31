@@ -5,7 +5,6 @@ import com.aetherteam.aether.block.natural.AetherDoubleDropBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.MudBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
@@ -22,7 +21,7 @@ import net.zepalesque.unity.block.natural.DoubleDropsMud;
 import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.unity.block.state.UnityBlockBuilders;
 import net.zepalesque.unity.data.resource.registries.UnityFeatureConfig;
-import net.zepalesque.unity.event.hook.ToolActionHooks;
+import net.zepalesque.unity.event.hook.BlockHooks;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
 
 public class UnityBlocks extends UnityBlockBuilders {
@@ -77,7 +76,7 @@ public class UnityBlocks extends UnityBlockBuilders {
     }
 
     public static void registerToolConversions() {
-        ToolActionHooks.FLATTENABLES.put(COARSE_AETHER_DIRT.get(), AetherBlocks.AETHER_DIRT_PATH.get());
-        ToolActionHooks.TILLABLES.put(COARSE_AETHER_DIRT.get(), AetherBlocks.AETHER_DIRT.get());
+        BlockHooks.ToolConversions.FLATTENABLES.put(COARSE_AETHER_DIRT.get(), AetherBlocks.AETHER_DIRT_PATH.get());
+        BlockHooks.ToolConversions.TILLABLES.put(COARSE_AETHER_DIRT.get(), AetherBlocks.AETHER_DIRT.get());
     }
 }

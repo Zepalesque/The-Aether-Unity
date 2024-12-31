@@ -11,6 +11,7 @@
     "aether_unity:aether_mud_bricks",
     "aether_unity:aether_mud_brick_wall",
     "aether_unity:aether_mud_brick_stairs",
-    "aether_unity:aether_mud_brick_slab"
+    "aether_unity:aether_mud_brick_slab",
+    "aether_unity:coarse_aether_dirt"
   ]
 }

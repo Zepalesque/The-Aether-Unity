@@ -27,5 +27,7 @@ public class UnityMapData extends UnityDataMapProvider {
         this.addCompost(compostables, UnityBlocks.SHORT_AETHER_GRASS, 0.3F);
         this.addCompost(compostables, UnityBlocks.FLUTEMOSS_BLOCK, 0.65F);
         this.addCompost(compostables, UnityBlocks.FLUTEMOSS_CARPET, 0.3F);
+        this.addCompost(compostables, UnityBlocks.SKYROOT_LEAF_PILE, 0.05F);
+        this.addCompost(compostables, UnityBlocks.GOLDEN_OAK_LEAF_PILE, 0.05F);
     }
 }

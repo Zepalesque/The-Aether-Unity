@@ -23,8 +23,13 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.UnityTags;
 import net.zepalesque.unity.data.resource.builders.UnityFeatureBuilders;
+import net.zepalesque.unity.extendablestate.UnityStateLists;
+import net.zepalesque.zenith.api.world.feature.gen.ExtendableStateListBlockFeature;
+import net.zepalesque.zenith.core.Zenith;
+import net.zepalesque.zenith.core.registry.ZenithFeatures;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UnityFeatureConfig extends UnityFeatureBuilders {
 
@@ -38,12 +43,7 @@ public class UnityFeatureConfig extends UnityFeatureBuilders {
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configs = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        register(context, FLUTEMOSS_VEGETATION, Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(new WeightedStateProvider(
-                        SimpleWeightedRandomList.<BlockState>builder()
-                                .add(drops(UnityBlocks.SHORT_AETHER_GRASS), 150)
-                        // TODO: special blockstate provider with registerable modifiers for addons utilizing this one
-                )));
+        register(context, FLUTEMOSS_VEGETATION, ZenithFeatures.EXTENDABLE_STATE_LIST_BLOCK.get(), new ExtendableStateListBlockFeature.Config(UnityStateLists.FLUTEMOSS.get(), Optional.empty()));
 
         register(context, FLUTEMOSS_BONEMEAL, Feature.VEGETATION_PATCH,
                 new VegetationPatchConfiguration(UnityTags.Blocks.AETHER_CARVER_REPLACEABLES,

@@ -24,23 +24,23 @@ public class BaseFeatureBuilders {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 
-    protected static String name(DeferredHolder<?, ?> reg) {
+    public static String name(DeferredHolder<?, ?> reg) {
         return reg.getId().getPath();
     }
 
-    protected static BlockStateProvider prov(BlockState state) {
+    public static BlockStateProvider prov(BlockState state) {
         return BlockStateProvider.simple(drops(state));
     }
 
-    protected static BlockStateProvider prov(Supplier<? extends Block> block) {
+    public static BlockStateProvider prov(Supplier<? extends Block> block) {
         return prov(block.get().defaultBlockState());
     }
 
-    protected static BlockState drops(BlockState state) {
+    public static BlockState drops(BlockState state) {
         return state.hasProperty(AetherBlockStateProperties.DOUBLE_DROPS) ? state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, true) : state;
     }
 
-    protected static BlockState drops(Supplier<? extends Block> block) {
+    public static BlockState drops(Supplier<? extends Block> block) {
         return drops(block.get().defaultBlockState());
     }
 

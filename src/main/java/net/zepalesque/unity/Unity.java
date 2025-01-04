@@ -23,11 +23,10 @@ import net.zepalesque.unity.config.UnityConfig;
 import net.zepalesque.unity.config.UnityConfigHandler;
 import net.zepalesque.unity.data.UnityData;
 import net.zepalesque.unity.item.UnityItems;
-import net.zepalesque.unity.pack.PackUtils;
-import net.zepalesque.unity.pack.UnityPackConfig;
 import net.zepalesque.unity.tile.UnityTiles;
 import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
 import net.zepalesque.zenith.api.blockset.BlockSet;
+import net.zepalesque.zenith.api.packconfig.PackConfig;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
@@ -39,6 +38,8 @@ public class Unity {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final Collection<BlockSet> BLOCK_SETS = new ArrayList<>();
+
+    public static final PackConfig PACK_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES);
 
     public Unity(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(EventPriority.LOWEST, UnityData::dataSetup);
@@ -92,17 +93,11 @@ public class Unity {
     }
 
     public  void packSetup(AddPackFindersEvent event) {
-        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            String pathString = "resource/overrides_pack";
-            String id = "overrides_pack";
-            PackUtils.setupPack(event, pathString, id, true, UnityPackConfig::generate);
-        }
+
+        PACK_CONFIG.setup(event);
     }
 
     public static ResourceLocation loc(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
-
-
-
 }

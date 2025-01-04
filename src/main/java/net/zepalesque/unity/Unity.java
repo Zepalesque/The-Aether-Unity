@@ -10,6 +10,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -37,9 +38,7 @@ public class Unity {
     public static final String MODID = "aether_unity";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final Collection<BlockSet> BLOCK_SETS = new ArrayList<>();
-
-    public static final PackConfig PACK_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES);
+    public static final PackConfig PACK_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES, !FMLLoader.isProduction());
 
     public Unity(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(EventPriority.LOWEST, UnityData::dataSetup);
@@ -80,9 +79,7 @@ public class Unity {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            UnityClient.registerTintOverrides();
-        });
+        event.enqueueWork(UnityClient::registerTintOverrides);
     }
 
     public void registerPackets(RegisterPayloadHandlersEvent event) {

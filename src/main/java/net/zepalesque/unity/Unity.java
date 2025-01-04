@@ -93,7 +93,6 @@ public class Unity {
     }
 
     public  void packSetup(AddPackFindersEvent event) {
-
         PACK_CONFIG.setup(event);
     }
 

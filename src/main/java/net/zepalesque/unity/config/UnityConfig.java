@@ -43,7 +43,7 @@ public class UnityConfig {
             builder.push("TODO");
             tintable_grass = Unity.PACK_CONFIG.register(builder
                     .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!")
-                    .define("Tinted Grass", true), "resource/", "tintable_grass");
+                    .define("Tinted Grass", true), "tintable_grass");
             builder.pop();
         }
     }

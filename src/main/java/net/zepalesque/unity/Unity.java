@@ -38,7 +38,7 @@ public class Unity {
     public static final String MODID = "aether_unity";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final PackConfig PACK_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES, !FMLLoader.isProduction());
+    public static final PackConfig PACK_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES);
 
     public Unity(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(EventPriority.LOWEST, UnityData::dataSetup);

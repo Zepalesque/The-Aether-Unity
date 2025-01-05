@@ -23,6 +23,7 @@ import net.zepalesque.unity.client.UnityColors;
 import net.zepalesque.unity.config.UnityConfig;
 import net.zepalesque.unity.config.UnityConfigHandler;
 import net.zepalesque.unity.data.UnityData;
+import net.zepalesque.unity.extendablestate.UnityStateLists;
 import net.zepalesque.unity.item.UnityItems;
 import net.zepalesque.unity.tile.UnityTiles;
 import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
@@ -58,7 +59,8 @@ public class Unity {
                 UnityItems.ITEMS,
                 UnityTiles.TILES,
                 UnityBiomeTints.TINTS,
-                UnityDataAttachments.ATTACHMENTS
+                UnityDataAttachments.ATTACHMENTS,
+                UnityStateLists.STATE_LISTS
         };
 
         for (DeferredRegister<?> register : registers) {

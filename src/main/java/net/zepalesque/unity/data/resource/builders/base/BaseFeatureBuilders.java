@@ -1,6 +1,7 @@
 package net.zepalesque.unity.data.resource.builders.base;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConf
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.zenith.api.world.feature.gen.BlockWithPredicateFeature;
 import net.zepalesque.zenith.core.registry.ZenithFeatures;
 
@@ -44,8 +46,7 @@ public class BaseFeatureBuilders {
         return drops(block.get().defaultBlockState());
     }
 
-    // TODO
-    // public static final BlockPredicate NOT_ON_COARSE_DIRT = BlockPredicate.not(BlockPredicate.matchesTag(new Vec3i(0, -1, 0), UnityTags.Blocks.COARSE_AETHER_DIRT));
+     public static final BlockPredicate NOT_ON_COARSE_DIRT = BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), UnityBlocks.COARSE_AETHER_DIRT.get()));
 
     public static RandomPatchConfiguration patch(int tries, int xz, int y, BlockStateProvider state) {
         return new RandomPatchConfiguration(tries, xz, y, PlacementUtils.onlyWhenEmpty(

@@ -14,6 +14,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.zenith.api.world.feature.gen.BlockWithPredicateFeature;
@@ -46,7 +47,7 @@ public class BaseFeatureBuilders {
         return drops(block.get().defaultBlockState());
     }
 
-     public static final BlockPredicate NOT_ON_COARSE_DIRT = BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), UnityBlocks.COARSE_AETHER_DIRT.get()));
+     public static final Lazy<BlockPredicate> NOT_ON_COARSE_DIRT = Lazy.of(() -> BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), UnityBlocks.COARSE_AETHER_DIRT.get())));
 
     public static RandomPatchConfiguration patch(int tries, int xz, int y, BlockStateProvider state) {
         return new RandomPatchConfiguration(tries, xz, y, PlacementUtils.onlyWhenEmpty(

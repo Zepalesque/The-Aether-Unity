@@ -1,20 +1,6 @@
 {
-  "type": "minecraft:simple_block",
+  "type": "zenith:extendable_state_list",
   "config": {
-    "to_place": {
-      "type": "minecraft:weighted_state_provider",
-      "entries": [
-        {
-          "data": {
-            "Name": "aether_unity:short_aether_grass",
-            "Properties": {
-              "enchanted": "false",
-              "grass_size": "medium"
-            }
-          },
-          "weight": 150
-        }
-      ]
-    }
+    "to_place": "aether_unity:flutemoss"
   }
 }

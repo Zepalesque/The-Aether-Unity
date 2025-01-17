@@ -6,8 +6,14 @@
     "aether_unity:flutemoss_carpet": {
       "chance": 0.3
     },
+    "aether_unity:golden_oak_leaf_pile": {
+      "chance": 0.05
+    },
     "aether_unity:short_aether_grass": {
       "chance": 0.3
+    },
+    "aether_unity:skyroot_leaf_pile": {
+      "chance": 0.05
     }
   }
 }

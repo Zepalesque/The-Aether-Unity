@@ -4,6 +4,14 @@
     "aether_unity:aether_mud_bricks",
     "aether_unity:aether_mud_brick_wall",
     "aether_unity:aether_mud_brick_stairs",
-    "aether_unity:aether_mud_brick_slab"
+    "aether_unity:aether_mud_brick_slab",
+    "aether_unity:valkyrie_bricks",
+    "aether_unity:valkyrie_brick_wall",
+    "aether_unity:valkyrie_brick_stairs",
+    "aether_unity:valkyrie_brick_slab",
+    "aether_unity:valkyrie_tiles",
+    "aether_unity:valkyrie_tile_wall",
+    "aether_unity:valkyrie_tile_stairs",
+    "aether_unity:valkyrie_tile_slab"
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "aether_unity:valkyrie_tiles"
+  },
+  "result": {
+    "count": 1,
+    "id": "aether_unity:valkyrie_tile_wall"
+  }
+}

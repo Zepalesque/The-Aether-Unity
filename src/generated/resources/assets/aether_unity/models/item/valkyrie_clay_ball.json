@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "aether_unity:item/materials/valkyrie_clay_ball"
+  }
+}

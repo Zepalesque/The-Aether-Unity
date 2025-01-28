@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "V": {
+      "item": "aether_unity:valkyrie_brick"
+    }
+  },
+  "pattern": [
+    "V V",
+    " V "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:flower_pot"
+  }
+}

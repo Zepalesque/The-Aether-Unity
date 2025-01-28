@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "aether_unity:block/valkyrie_brick_slab"
+    },
+    "type=double": {
+      "model": "aether_unity:block/valkyrie_bricks"
+    },
+    "type=top": {
+      "model": "aether_unity:block/valkyrie_brick_slab_top"
+    }
+  }
+}

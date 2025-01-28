@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-30T21:19:38.6585487	Item Models: aether_unity
+// 1.21.1	2025-01-27T20:10:06.3352316	Item Models: aether_unity
 a1c05c4d4982a57e7060f246a93463bee327f6fe assets/aether_unity/models/item/aether_mud.json
 f03c5873879e445cf847e8897db3fecc0a98a743 assets/aether_unity/models/item/aether_mud_bricks.json
 95311012f4f2899dd1b1d800e9171b15913dcc7d assets/aether_unity/models/item/aether_mud_brick_slab.json
@@ -12,3 +12,14 @@ bb66bcaf7a0129a7875937c3cb5bfb5bf7b3783b assets/aether_unity/models/item/flutemo
 7d7fc37199474722b0ff7409a103f0034c32940b assets/aether_unity/models/item/packed_aether_mud.json
 762ff8caadc1e2d86247061b600f1b7bc0e46880 assets/aether_unity/models/item/short_aether_grass.json
 fee10625ca0f9fc87fdaf960acb5023e85f970be assets/aether_unity/models/item/skyroot_leaf_pile.json
+a237c0ea0cac993547fdf6e2cb7b0f9a496fc512 assets/aether_unity/models/item/valkyrie_brick.json
+8b76f31605fd541da05869c0d6b7c02045a6265e assets/aether_unity/models/item/valkyrie_bricks.json
+5ca82aa7a1986ce092c1e72ef57542d1a8933658 assets/aether_unity/models/item/valkyrie_brick_slab.json
+fc2f9635ae79b5d395f79043157156bed957fe41 assets/aether_unity/models/item/valkyrie_brick_stairs.json
+4fe66d050e6dfecff769b7516f57a7b8185a46e6 assets/aether_unity/models/item/valkyrie_brick_wall.json
+ffd20ed7f1441448eed66c1e1c65bb09022fbd2c assets/aether_unity/models/item/valkyrie_clay.json
+f08e73c2750346a19094035631e90501457a3d65 assets/aether_unity/models/item/valkyrie_clay_ball.json
+ad952527a9a38d9f641b16bad054216ef930335b assets/aether_unity/models/item/valkyrie_tiles.json
+abcbf7da1653eb1819f084b76748f42d68fc936e assets/aether_unity/models/item/valkyrie_tile_slab.json
+c2bd82f2130af82a463df83d51adb6910040e6bb assets/aether_unity/models/item/valkyrie_tile_stairs.json
+d569307461b81a986c5999369d19d207610758d4 assets/aether_unity/models/item/valkyrie_tile_wall.json

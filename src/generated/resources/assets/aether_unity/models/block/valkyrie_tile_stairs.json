@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "aether_unity:block/construction/valkyrie_tiles",
+    "side": "aether_unity:block/construction/valkyrie_tiles",
+    "top": "aether_unity:block/construction/valkyrie_tiles"
+  }
+}

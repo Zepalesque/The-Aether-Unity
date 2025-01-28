@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "aether_unity:packed_aether_mud"
+  },
+  "result": {
+    "count": 1,
+    "id": "aether_unity:aether_mud_brick_slab"
+  }
+}

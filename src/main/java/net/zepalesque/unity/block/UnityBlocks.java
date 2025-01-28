@@ -6,11 +6,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour.OffsetType;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.unity.Unity;
@@ -25,6 +27,7 @@ import net.zepalesque.unity.event.hook.BlockHooks;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
 
 public class UnityBlocks extends UnityBlockBuilders {
+
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Unity.MODID);
 
@@ -56,7 +59,7 @@ public class UnityBlocks extends UnityBlockBuilders {
             () -> new AetherDoubleDropBlock(Properties.ofFullCopy(Blocks.PACKED_MUD).mapColor(MapColor.TERRACOTTA_CYAN)));
 
     public static DeferredBlock<Block> AETHER_MUD_BRICKS = register("aether_mud_bricks",
-            () -> new Block(Properties.ofFullCopy(Blocks.PACKED_MUD).mapColor(MapColor.TERRACOTTA_CYAN)));
+            () -> new Block(Properties.ofFullCopy(Blocks.MUD_BRICKS).mapColor(MapColor.TERRACOTTA_CYAN)));
     public static final DeferredBlock<WallBlock> AETHER_MUD_BRICK_WALL = register("aether_mud_brick_wall", () -> new WallBlock(Block.Properties.ofFullCopy(AETHER_MUD_BRICKS.get()).forceSolidOn()));
     public static final DeferredBlock<StairBlock> AETHER_MUD_BRICK_STAIRS = register("aether_mud_brick_stairs",
             () -> new StairBlock(AETHER_MUD_BRICKS.get().defaultBlockState(), Block.Properties.ofFullCopy(AETHER_MUD_BRICKS.get())));
@@ -65,6 +68,31 @@ public class UnityBlocks extends UnityBlockBuilders {
 
     public static DeferredBlock<AetherDoubleDropBlock> COARSE_AETHER_DIRT = register("coarse_aether_dirt",
             () -> new AetherDoubleDropBlock(Properties.ofFullCopy(AetherBlocks.AETHER_DIRT.get())));
+
+    // TODO: inline, just here to modify easier
+    private static final SoundType CLAY_BRICKS = SoundType.TUFF_BRICKS;
+
+    public static DeferredBlock<AetherDoubleDropBlock> VALKYRIE_CLAY = register("valkyrie_clay",
+            () -> new AetherDoubleDropBlock(Properties.ofFullCopy(Blocks.CLAY).mapColor(MapColor.QUARTZ)));
+
+    // this is why i added blocksets to redux oh my goddddddddddddddddddddddddddddddddddddd
+    public static DeferredBlock<Block> VALKYRIE_BRICKS = register("valkyrie_bricks",
+            () -> new Block(Properties.ofFullCopy(Blocks.BRICKS).sound(CLAY_BRICKS).mapColor(MapColor.TERRACOTTA_CYAN)));
+    public static final DeferredBlock<WallBlock> VALKYRIE_BRICK_WALL = register("valkyrie_brick_wall", () -> new WallBlock(Block.Properties.ofFullCopy(VALKYRIE_BRICKS.get()).forceSolidOn()));
+    public static final DeferredBlock<StairBlock> VALKYRIE_BRICK_STAIRS = register("valkyrie_brick_stairs",
+            () -> new StairBlock(VALKYRIE_BRICKS.get().defaultBlockState(), Block.Properties.ofFullCopy(VALKYRIE_BRICKS.get())));
+    public static final DeferredBlock<SlabBlock> VALKYRIE_BRICK_SLAB = register("valkyrie_brick_slab",
+            () -> new SlabBlock(Block.Properties.ofFullCopy(VALKYRIE_BRICKS.get()).strength(0.5F, 6.0F)));
+
+
+    public static DeferredBlock<Block> VALKYRIE_TILES = register("valkyrie_tiles",
+            () -> new Block(Properties.ofFullCopy(VALKYRIE_BRICKS.get()).mapColor(MapColor.TERRACOTTA_CYAN)));
+    public static final DeferredBlock<WallBlock> VALKYRIE_TILE_WALL = register("valkyrie_tile_wall", () -> new WallBlock(Block.Properties.ofFullCopy(VALKYRIE_TILES.get()).forceSolidOn()));
+    public static final DeferredBlock<StairBlock> VALKYRIE_TILE_STAIRS = register("valkyrie_tile_stairs",
+            () -> new StairBlock(VALKYRIE_TILES.get().defaultBlockState(), Block.Properties.ofFullCopy(VALKYRIE_TILES.get())));
+    public static final DeferredBlock<SlabBlock> VALKYRIE_TILE_SLAB = register("valkyrie_tile_slab",
+            () -> new SlabBlock(Block.Properties.ofFullCopy(VALKYRIE_TILES.get()).strength(0.5F, 6.0F)));
+
 
 
 
@@ -78,5 +106,10 @@ public class UnityBlocks extends UnityBlockBuilders {
     public static void registerToolConversions() {
         BlockHooks.ToolConversions.FLATTENABLES.put(COARSE_AETHER_DIRT.get(), AetherBlocks.AETHER_DIRT_PATH.get());
         BlockHooks.ToolConversions.TILLABLES.put(COARSE_AETHER_DIRT.get(), AetherBlocks.AETHER_DIRT.get());
+    }
+
+    public static void replaceBlockSFX() {
+        AetherBlocks.PILLAR.get().soundType = CLAY_BRICKS;
+        AetherBlocks.PILLAR_TOP.get().soundType = CLAY_BRICKS;
     }
 }

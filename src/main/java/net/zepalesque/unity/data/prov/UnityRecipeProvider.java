@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -46,12 +47,31 @@ public abstract class UnityRecipeProvider extends AetherRecipeProvider {
                 .unlockedBy(getHasName(base), has(base))
                 .save(recipeOutput);
     }
-    public static void stoneSet(RecipeOutput output, RecipeCategory category, ItemLike base, ItemLike wall, ItemLike stairs, ItemLike slab) {
+    public void craftStoneSet(RecipeOutput output, RecipeCategory category, ItemLike base, ItemLike wall, ItemLike stairs, ItemLike slab) {
         wall(output, category, wall, base);
         stairBuilder(stairs, Ingredient.of(base))
                 .unlockedBy(getHasName(base), has(base))
                 .save(output);
         slab(output, category, slab, base);
+    }
+
+    public void stonecutStoneSet(RecipeOutput output, RecipeCategory category, ItemLike base, ItemLike wall, ItemLike stairs, ItemLike slab) {
+        stonecut(output, category, wall, base);
+        stonecut(output, category, stairs, base);
+        stonecut(output, category, slab, base);
+    }
+
+    public void stonecutAndCraftStoneSet(RecipeOutput output, RecipeCategory category, ItemLike base, ItemLike wall, ItemLike stairs, ItemLike slab) {
+        craftStoneSet(output, category, base, wall, stairs, slab);
+        stonecutStoneSet(output, category, base, wall, stairs, slab);
+    }
+
+    protected void stonecut(RecipeOutput output, RecipeCategory category, ItemLike item, ItemLike ingredient) {
+        stonecut(output, category, item, ingredient, 1);
+    }
+
+    protected void stonecut(RecipeOutput output, RecipeCategory category, ItemLike item, ItemLike ingredient, int count) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), category, item, count).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, name(getConversionRecipeName(item, ingredient) + "_stonecutting"));
     }
 
 

@@ -25,7 +25,16 @@ public class UnityBlockStateData extends UnityBlockStateProvider {
         this.block(UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
         this.wallBlock(UnityBlocks.AETHER_MUD_BRICK_WALL.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
         this.stairs(UnityBlocks.AETHER_MUD_BRICK_STAIRS.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
-        this.slab(UnityBlocks.AETHER_MUD_BRICK_SLAB.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
         this.block(UnityBlocks.COARSE_AETHER_DIRT.get(), "natural/");
+        this.block(UnityBlocks.VALKYRIE_CLAY.get(), "natural/");
+        this.slab(UnityBlocks.AETHER_MUD_BRICK_SLAB.get(), UnityBlocks.AETHER_MUD_BRICKS.get(), "construction/");
+        this.block(UnityBlocks.VALKYRIE_BRICKS.get(), "construction/");
+        this.wallBlock(UnityBlocks.VALKYRIE_BRICK_WALL.get(), UnityBlocks.VALKYRIE_BRICKS.get(), "construction/");
+        this.stairs(UnityBlocks.VALKYRIE_BRICK_STAIRS.get(), UnityBlocks.VALKYRIE_BRICKS.get(), "construction/");
+        this.slab(UnityBlocks.VALKYRIE_BRICK_SLAB.get(), UnityBlocks.VALKYRIE_BRICKS.get(), "construction/");
+        this.block(UnityBlocks.VALKYRIE_TILES.get(), "construction/");
+        this.wallBlock(UnityBlocks.VALKYRIE_TILE_WALL.get(), UnityBlocks.VALKYRIE_TILES.get(), "construction/");
+        this.stairs(UnityBlocks.VALKYRIE_TILE_STAIRS.get(), UnityBlocks.VALKYRIE_TILES.get(), "construction/");
+        this.slab(UnityBlocks.VALKYRIE_TILE_SLAB.get(), UnityBlocks.VALKYRIE_TILES.get(), "construction/");
     }
 }

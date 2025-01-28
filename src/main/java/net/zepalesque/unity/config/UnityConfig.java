@@ -37,13 +37,16 @@ public class UnityConfig {
 
     public static class Client {
 
-        public final ModConfigSpec.ConfigValue<Boolean> tintable_grass;
+        public final ModConfigSpec.ConfigValue<Boolean> tintable_grass, lang_overrides;
 
         public Client(ModConfigSpec.Builder builder) {
-            builder.push("TODO");
+            builder.push("Asset Overrides");
             tintable_grass = Unity.PACK_CONFIG.register(builder
                     .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!")
                     .define("Tinted Grass", true), "tintable_grass");
+            lang_overrides = Unity.PACK_CONFIG.register(builder
+                    .comment("Changes some of the Aether's default translations to be consistent with Unity's changes to the mod.")
+                    .define("Localization overrides", true), "lang_overrides");
             builder.pop();
         }
     }

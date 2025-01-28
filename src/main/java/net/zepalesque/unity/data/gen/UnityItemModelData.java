@@ -6,6 +6,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.prov.UnityItemModelProvider;
+import net.zepalesque.unity.item.UnityItems;
 
 public class UnityItemModelData extends UnityItemModelProvider {
 
@@ -30,5 +31,17 @@ public class UnityItemModelData extends UnityItemModelProvider {
         this.itemBlock(UnityBlocks.AETHER_MUD_BRICK_STAIRS.get());
         this.itemBlock(UnityBlocks.AETHER_MUD_BRICK_SLAB.get());
         this.itemBlock(UnityBlocks.COARSE_AETHER_DIRT.get());
+        this.itemBlock(UnityBlocks.VALKYRIE_CLAY.get());
+        this.itemBlock(UnityBlocks.VALKYRIE_BRICKS.get());
+        this.itemWallBlock(UnityBlocks.VALKYRIE_BRICK_WALL.get(), UnityBlocks.VALKYRIE_BRICKS.get(), "construction/");
+        this.itemBlock(UnityBlocks.VALKYRIE_BRICK_STAIRS.get());
+        this.itemBlock(UnityBlocks.VALKYRIE_BRICK_SLAB.get());
+        this.itemBlock(UnityBlocks.VALKYRIE_TILES.get());
+        this.itemWallBlock(UnityBlocks.VALKYRIE_TILE_WALL.get(), UnityBlocks.VALKYRIE_TILES.get(), "construction/");
+        this.itemBlock(UnityBlocks.VALKYRIE_TILE_STAIRS.get());
+        this.itemBlock(UnityBlocks.VALKYRIE_TILE_SLAB.get());
+
+        this.item(UnityItems.VALKYRIE_CLAY_BALL.get(), "materials/");
+        this.item(UnityItems.VALKYRIE_BRICK.get(), "materials/");
     }
 }

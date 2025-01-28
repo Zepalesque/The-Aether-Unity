@@ -4,14 +4,17 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.level.block.Blocks;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.UnityTags;
 import net.zepalesque.unity.data.prov.UnityRecipeProvider;
+import net.zepalesque.unity.item.UnityItems;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -37,12 +40,32 @@ public class UnityRecipeData extends UnityRecipeProvider {
                 .requires(UnityBlocks.FLUTEMOSS_BLOCK).requires(AetherBlocks.HOLYSTONE)
                 .unlockedBy(getHasName(UnityBlocks.FLUTEMOSS_BLOCK), has(UnityBlocks.FLUTEMOSS_BLOCK))
                 .save(output, "mossy_holystone_from_flutemoss");
+
         brick(output, RecipeCategory.BUILDING_BLOCKS, UnityBlocks.AETHER_MUD_BRICKS, UnityBlocks.PACKED_AETHER_MUD);
-        stoneSet(output, RecipeCategory.BUILDING_BLOCKS,
+        stonecutAndCraftStoneSet(output, RecipeCategory.BUILDING_BLOCKS,
                 UnityBlocks.AETHER_MUD_BRICKS,
                 UnityBlocks.AETHER_MUD_BRICK_WALL,
                 UnityBlocks.AETHER_MUD_BRICK_STAIRS,
                 UnityBlocks.AETHER_MUD_BRICK_SLAB
+        );
+        stonecutStoneSet(output, RecipeCategory.BUILDING_BLOCKS,
+                UnityBlocks.PACKED_AETHER_MUD,
+                UnityBlocks.AETHER_MUD_BRICK_WALL,
+                UnityBlocks.AETHER_MUD_BRICK_STAIRS,
+                UnityBlocks.AETHER_MUD_BRICK_SLAB
+        );
+
+        twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, UnityBlocks.VALKYRIE_CLAY.get(), UnityItems.VALKYRIE_CLAY_BALL.get());
+        twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, UnityBlocks.VALKYRIE_BRICKS.get(), UnityItems.VALKYRIE_BRICK.get());
+        smeltingOreRecipe(UnityItems.VALKYRIE_BRICK.get(), UnityItems.VALKYRIE_CLAY_BALL.get(), 0.3F);
+
+
+
+        stonecutAndCraftStoneSet(output, RecipeCategory.BUILDING_BLOCKS,
+                UnityBlocks.VALKYRIE_TILES,
+                UnityBlocks.VALKYRIE_TILE_WALL,
+                UnityBlocks.VALKYRIE_TILE_STAIRS,
+                UnityBlocks.VALKYRIE_TILE_SLAB
         );
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, UnityBlocks.COARSE_AETHER_DIRT, 4)
@@ -52,5 +75,27 @@ public class UnityRecipeData extends UnityRecipeProvider {
                 .pattern("GD")
                 .unlockedBy(getHasName(AetherBlocks.AETHER_DIRT.get()), has(AetherBlocks.AETHER_DIRT.get()))
                 .save(output);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AetherBlocks.PILLAR.get(), 2)
+                .define('V', UnityBlocks.VALKYRIE_BRICKS.get())
+                .pattern("V")
+                .pattern("V")
+                .unlockedBy(getHasName(UnityBlocks.VALKYRIE_BRICKS.get()), has(UnityBlocks.VALKYRIE_BRICKS.get()))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.FLOWER_POT)
+                .define('V', UnityItems.VALKYRIE_BRICK.get())
+                .pattern("V V")
+                .pattern(" V ")
+                .unlockedBy(getHasName(UnityItems.VALKYRIE_BRICK.get()), has(UnityItems.VALKYRIE_BRICK.get()))
+                .save(output, name("flower_pot_from_valkyrie_bricks"));
+
+        brick(output, RecipeCategory.BUILDING_BLOCKS, UnityBlocks.VALKYRIE_TILES, UnityBlocks.VALKYRIE_BRICKS);
+
+        brick(output, RecipeCategory.BUILDING_BLOCKS, AetherBlocks.PILLAR_TOP, AetherBlocks.PILLAR);
+
     }
+
+
 }

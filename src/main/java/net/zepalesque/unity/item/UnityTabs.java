@@ -2,6 +2,7 @@ package net.zepalesque.unity.item;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -29,7 +30,8 @@ public class UnityTabs {
             );
 
             TabUtil.putAfter(event, AetherBlocks.AETHER_FARMLAND,
-                    UnityBlocks.AETHER_MUD
+                    UnityBlocks.AETHER_MUD,
+                    UnityBlocks.VALKYRIE_CLAY
             );
 
             TabUtil.putBefore(event,AetherBlocks.HOLYSTONE,
@@ -45,7 +47,25 @@ public class UnityTabs {
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS)) {
             TabUtil.putAfter(event, AetherBlocks.SUN_ALTAR, UnityBlocks.AMBROSIUM_CAMPFIRE);
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_BUILDING_BLOCKS)) {
-            TabUtil.putBefore(event, AetherBlocks.ICESTONE, UnityBlocks.AETHER_MUD_BRICK_WALL, UnityBlocks.AETHER_MUD_BRICK_SLAB, UnityBlocks.AETHER_MUD_BRICK_STAIRS, UnityBlocks.AETHER_MUD_BRICKS, UnityBlocks.PACKED_AETHER_MUD);
+            TabUtil.putBefore(event, AetherBlocks.ICESTONE,
+                    UnityBlocks.AETHER_MUD_BRICK_WALL,
+                    UnityBlocks.AETHER_MUD_BRICK_SLAB,
+                    UnityBlocks.AETHER_MUD_BRICK_STAIRS,
+                    UnityBlocks.AETHER_MUD_BRICKS,
+                    UnityBlocks.PACKED_AETHER_MUD,
+                    AetherBlocks.PILLAR_TOP,
+                    AetherBlocks.PILLAR,
+                    UnityBlocks.VALKYRIE_TILE_WALL,
+                    UnityBlocks.VALKYRIE_TILE_SLAB,
+                    UnityBlocks.VALKYRIE_TILE_STAIRS,
+                    UnityBlocks.VALKYRIE_TILES,
+                    UnityBlocks.VALKYRIE_BRICK_WALL,
+                    UnityBlocks.VALKYRIE_BRICK_SLAB,
+                    UnityBlocks.VALKYRIE_BRICK_STAIRS,
+                    UnityBlocks.VALKYRIE_BRICKS
+            );
+        } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_INGREDIENTS)) {
+            TabUtil.putBefore(event, AetherItems.SWET_BALL, UnityItems.VALKYRIE_BRICK, UnityItems.VALKYRIE_CLAY_BALL);
         }
     }
 }

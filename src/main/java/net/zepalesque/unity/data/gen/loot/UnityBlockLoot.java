@@ -9,6 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.prov.loot.UnityBlockLootProvider;
 
@@ -45,6 +47,19 @@ public class UnityBlockLoot extends UnityBlockLootProvider {
         this.dropSelf(UnityBlocks.AETHER_MUD_BRICK_STAIRS.get());
         this.dropSelf(UnityBlocks.AETHER_MUD_BRICK_SLAB.get());
         this.dropSelf(UnityBlocks.COARSE_AETHER_DIRT.get());
+
+        this.add(UnityBlocks.VALKYRIE_CLAY.get(), block -> this.createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ConstantValue.exactly(4.0F)));
+
+
+        this.dropSelf(UnityBlocks.VALKYRIE_BRICKS.get());
+        this.dropSelf(UnityBlocks.VALKYRIE_BRICK_WALL.get());
+        this.dropSelf(UnityBlocks.VALKYRIE_BRICK_STAIRS.get());
+        this.dropSelf(UnityBlocks.VALKYRIE_BRICK_SLAB.get());
+        this.dropSelf(UnityBlocks.VALKYRIE_TILES.get());
+        this.dropSelf(UnityBlocks.VALKYRIE_TILE_WALL.get());
+        this.dropSelf(UnityBlocks.VALKYRIE_TILE_STAIRS.get());
+        this.dropSelf(UnityBlocks.VALKYRIE_TILE_SLAB.get());
+
     }
 
     @Override

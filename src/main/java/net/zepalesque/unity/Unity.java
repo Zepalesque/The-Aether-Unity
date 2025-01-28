@@ -10,7 +10,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -27,19 +26,15 @@ import net.zepalesque.unity.extendablestate.UnityStateLists;
 import net.zepalesque.unity.item.UnityItems;
 import net.zepalesque.unity.tile.UnityTiles;
 import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
-import net.zepalesque.zenith.api.blockset.BlockSet;
 import net.zepalesque.zenith.api.packconfig.PackConfig;
 import org.slf4j.Logger;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Mod(Unity.MODID)
 public class Unity {
     public static final String MODID = "aether_unity";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final PackConfig PACK_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES);
+    public static final PackConfig PACK_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES, false);
 
     public Unity(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(EventPriority.LOWEST, UnityData::dataSetup);
@@ -77,8 +72,11 @@ public class Unity {
         event.enqueueWork(() -> {
             UnityBlocks.registerToolConversions();
             UnityBlocks.registerFlammability();
+            UnityBlocks.replaceBlockSFX();
         });
     }
+
+
 
     private void clientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(UnityClient::registerTintOverrides);

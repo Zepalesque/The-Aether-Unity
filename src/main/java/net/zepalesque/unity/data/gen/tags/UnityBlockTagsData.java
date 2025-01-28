@@ -69,12 +69,21 @@ public class UnityBlockTagsData extends BlockTagsProvider {
                 UnityBlocks.AETHER_MUD_BRICKS.get(),
                 UnityBlocks.AETHER_MUD_BRICK_WALL.get(),
                 UnityBlocks.AETHER_MUD_BRICK_STAIRS.get(),
-                UnityBlocks.AETHER_MUD_BRICK_SLAB.get()
+                UnityBlocks.AETHER_MUD_BRICK_SLAB.get(),
+                UnityBlocks.VALKYRIE_BRICKS.get(),
+                UnityBlocks.VALKYRIE_BRICK_WALL.get(),
+                UnityBlocks.VALKYRIE_BRICK_STAIRS.get(),
+                UnityBlocks.VALKYRIE_BRICK_SLAB.get(),
+                UnityBlocks.VALKYRIE_TILES.get(),
+                UnityBlocks.VALKYRIE_TILE_WALL.get(),
+                UnityBlocks.VALKYRIE_TILE_STAIRS.get(),
+                UnityBlocks.VALKYRIE_TILE_SLAB.get()
         );
 
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 UnityBlocks.AETHER_MUD.get(),
-                UnityBlocks.COARSE_AETHER_DIRT.get()
+                UnityBlocks.COARSE_AETHER_DIRT.get(),
+                UnityBlocks.VALKYRIE_CLAY.get()
         );
 
         this.tag(BlockTags.CAMPFIRES).add(

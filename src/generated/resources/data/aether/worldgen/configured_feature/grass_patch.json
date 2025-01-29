@@ -3,8 +3,20 @@
   "config": {
     "feature": {
       "feature": {
-        "type": "minecraft:simple_block",
+        "type": "zenith:block_with_predicate",
         "config": {
+          "predicate": {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "aether_unity:coarse_aether_dirt",
+              "offset": [
+                0,
+                -1,
+                0
+              ]
+            }
+          },
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {

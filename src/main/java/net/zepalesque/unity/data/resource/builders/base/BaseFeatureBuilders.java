@@ -3,7 +3,6 @@ package net.zepalesque.unity.data.resource.builders.base;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.resources.AetherFeatureStates;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -83,7 +82,8 @@ public class BaseFeatureBuilders {
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
                                                 BlockPredicate.matchesBlocks(b),
-                                                BlockPredicate.matchesTag(new Vec3i(0, 1, 0), BlockTags.AIR)
+                                                BlockPredicate.not(BlockPredicate.solid(new Vec3i(0, 1, 0))),
+                                                BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.WATER))
                                         ), prov(grass)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(

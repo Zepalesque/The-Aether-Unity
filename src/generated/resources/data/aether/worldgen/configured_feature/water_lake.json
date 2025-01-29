@@ -82,7 +82,7 @@
             "predicates": [
               {
                 "type": "zenith:perlin_noise",
-                "max_threshold": 1.7976931348623157E308,
+                "max_threshold": 0.3,
                 "min_threshold": 0.0,
                 "noise": "minecraft:surface_swamp",
                 "seed_offset": 2743
@@ -123,14 +123,9 @@
               },
               {
                 "type": "zenith:perlin_noise",
-                "max_threshold": 0.5,
-                "min_threshold": 0.0,
-                "noise": {
-                  "amplitudes": [
-                    0.1
-                  ],
-                  "firstOctave": -1
-                },
+                "max_threshold": 1.7976931348623157E308,
+                "min_threshold": 0.3,
+                "noise": "minecraft:surface_swamp",
                 "seed_offset": 2743
               }
             ]

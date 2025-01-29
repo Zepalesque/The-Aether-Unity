@@ -1,7 +1,7 @@
-// 1.21.1	2025-01-28T20:59:28.504199	Registries
+// 1.21.1	2025-01-28T21:06:23.7327389	Registries
 cfd7910cba2b91458e38c4637936d06a1353c476 data/aether/worldgen/configured_feature/grass_patch.json
 cbc01407f81c547e1384753574d83f4983bc738b data/aether/worldgen/configured_feature/tall_grass_patch.json
-651bb319615f9a046afeceb515cd8aad04eeef3a data/aether/worldgen/configured_feature/water_lake.json
+540c06ff278a834a4dd104975c7520816f1bcb1f data/aether/worldgen/configured_feature/water_lake.json
 69a9a1162a73e3960ecf56de93788fc80aa27bb1 data/aether/worldgen/placed_feature/aether_grass_bonemeal.json
 1d41ad1270674d2bad2ba348a65ef73b55862cdc data/aether_unity/worldgen/configured_feature/aether_grass_bonemeal.json
 ba03c9034b85c4b574ea9fee9ef363f0c80e72d3 data/aether_unity/worldgen/configured_feature/flutemoss_bonemeal.json

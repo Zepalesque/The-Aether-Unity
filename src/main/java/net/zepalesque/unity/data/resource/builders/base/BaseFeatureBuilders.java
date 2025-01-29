@@ -76,6 +76,7 @@ public class BaseFeatureBuilders {
 
     public static RuleBasedLakeFeature.Config lakeWithGrassBlock(Supplier<? extends Block> grass, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
         Block b = grass.get();
+        double mudClayThreshold;
         return new RuleBasedLakeFeature.Config(
                 BlockStateProvider.simple(Blocks.WATER), Optional.of(
                         new RuleBasedBlockStateProvider(BlockStateProvider.simple(AetherFeatureStates.AETHER_DIRT), Stream.concat(Stream.of(
@@ -94,7 +95,7 @@ public class BaseFeatureBuilders {
 
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
-                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, 0.0, 0.3),
+                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, 0.0, mudClayThreshold = 0.2),
                                                 BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.WATER)
                                                 ),
                                         prov(UnityBlocks.AETHER_MUD)
@@ -103,7 +104,7 @@ public class BaseFeatureBuilders {
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
                                                 BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.WATER),
-                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, 0.3, Double.MAX_VALUE)
+                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, mudClayThreshold, Double.MAX_VALUE)
                                         ),
                                         prov(UnityBlocks.VALKYRIE_CLAY)
                                 ),

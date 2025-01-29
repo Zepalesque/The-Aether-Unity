@@ -44,11 +44,96 @@
         },
         {
           "if_true": {
-            "type": "zenith:perlin_noise",
-            "max_threshold": 1.7976931348623157E308,
-            "min_threshold": 0.0,
-            "noise": "minecraft:surface_swamp",
-            "seed_offset": 2743
+            "type": "minecraft:any_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "aether:aether_grass_block",
+                "offset": [
+                  0,
+                  1,
+                  0
+                ]
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "aether:aether_dirt",
+                "offset": [
+                  0,
+                  1,
+                  0
+                ]
+              }
+            ]
+          },
+          "then": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "aether:aether_dirt",
+              "Properties": {
+                "double_drops": "true"
+              }
+            }
+          }
+        },
+        {
+          "if_true": {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "zenith:perlin_noise",
+                "max_threshold": 1.7976931348623157E308,
+                "min_threshold": 0.0,
+                "noise": "minecraft:surface_swamp",
+                "seed_offset": 2743
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:water",
+                "offset": [
+                  0,
+                  1,
+                  0
+                ]
+              }
+            ]
+          },
+          "then": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "aether_unity:aether_mud",
+              "Properties": {
+                "double_drops": "true"
+              }
+            }
+          }
+        },
+        {
+          "if_true": {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:water",
+                "offset": [
+                  0,
+                  1,
+                  0
+                ]
+              },
+              {
+                "type": "zenith:perlin_noise",
+                "max_threshold": 0.5,
+                "min_threshold": 0.0,
+                "noise": {
+                  "amplitudes": [
+                    0.1
+                  ],
+                  "firstOctave": -1
+                },
+                "seed_offset": 2743
+              }
+            ]
           },
           "then": {
             "type": "minecraft:simple_state_provider",

@@ -1,7 +1,9 @@
 package net.zepalesque.unity.data.resource.builders.base;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.resources.AetherFeatureStates;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -84,7 +86,25 @@ public class BaseFeatureBuilders {
                                         ), prov(grass)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(
-                                        new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, 0.0, Double.MAX_VALUE),
+                                        BlockPredicate.anyOf(
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), b),
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), AetherBlocks.AETHER_DIRT.get())
+                                        ), prov(AetherBlocks.AETHER_DIRT)
+                                ),
+
+                                new RuleBasedBlockStateProvider.Rule(
+                                        BlockPredicate.allOf(
+                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, 0.0, Double.MAX_VALUE),
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.WATER)
+                                                ),
+                                        prov(UnityBlocks.AETHER_MUD)
+                                ),
+
+                                new RuleBasedBlockStateProvider.Rule(
+                                        BlockPredicate.allOf(
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.WATER),
+                                                new NoisePredicate(Holder.direct(new NormalNoise.NoiseParameters(-1, 0.1)), 2743L, 0.0, 0.5),
+                                        ),
                                         prov(UnityBlocks.VALKYRIE_CLAY)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(

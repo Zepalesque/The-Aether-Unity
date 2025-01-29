@@ -73,17 +73,17 @@ public class BaseFeatureBuilders {
                 ZenithFeatures.BLOCK_WITH_PREDICATE.get(), new BlockWithPredicateFeature.Config(state, predicate)));
     }
 
-    public static RuleBasedLakeFeature.Config lakeWithGrassBlock(Supplier<? extends Block> grass, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
+    public static RuleBasedLakeFeature.Config lakeWithGrassBlock(Supplier<? extends Block> grass, Supplier<? extends Block> fluid, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
         Block b = grass.get();
         double mudClayThreshold;
         return new RuleBasedLakeFeature.Config(
-                BlockStateProvider.simple(Blocks.WATER), Optional.of(
+                prov(fluid), Optional.of(
                         new RuleBasedBlockStateProvider(BlockStateProvider.simple(AetherFeatureStates.AETHER_DIRT), Stream.concat(Stream.of(
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
                                                 BlockPredicate.matchesBlocks(b),
                                                 BlockPredicate.not(BlockPredicate.solid(new Vec3i(0, 1, 0))),
-                                                BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.WATER))
+                                                BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), fluid.get()))
                                         ), prov(grass)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(
@@ -103,7 +103,7 @@ public class BaseFeatureBuilders {
 
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
-                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.WATER),
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), fluid.get()),
                                                 new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, mudClayThreshold, Double.MAX_VALUE)
                                         ),
                                         prov(UnityBlocks.VALKYRIE_CLAY)

@@ -80,7 +80,7 @@ public class UnityFeatureConfig extends UnityFeatureBuilders {
         register(context, AetherConfiguredFeatures.GRASS_PATCH_CONFIGURATION, Feature.RANDOM_PATCH, patch(48, 7, 3, prov(UnityBlocks.SHORT_AETHER_GRASS), NOT_ON_COARSE_DIRT.get()));
         register(context, AetherConfiguredFeatures.TALL_GRASS_PATCH_CONFIGURATION, Feature.NO_OP, new NoneFeatureConfiguration());
 
-        register(context, AetherConfiguredFeatures.WATER_LAKE_CONFIGURATION, ZenithFeatures.RULE_BASED_LAKE.get(), lakeWithGrassBlock(AetherBlocks.AETHER_GRASS_BLOCK, noises));
+        register(context, AetherConfiguredFeatures.WATER_LAKE_CONFIGURATION, ZenithFeatures.RULE_BASED_LAKE.get(), lakeWithGrassBlock(AetherBlocks.AETHER_GRASS_BLOCK, () -> Blocks.WATER, noises));
 
         register(context, GRASS_BONEMEAL, Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(prov(UnityBlocks.SHORT_AETHER_GRASS)));

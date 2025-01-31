@@ -30,6 +30,8 @@ import net.zepalesque.zenith.api.world.feature.gen.BlockWithPredicateFeature;
 import net.zepalesque.zenith.api.world.feature.gen.RuleBasedLakeFeature;
 import net.zepalesque.zenith.core.registry.ZenithFeatures;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -61,7 +63,10 @@ public class BaseFeatureBuilders {
         return drops(block.get().defaultBlockState());
     }
 
-     public static final Lazy<BlockPredicate> NOT_ON_COARSE_DIRT = Lazy.of(() -> BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), UnityBlocks.COARSE_AETHER_DIRT.get())));
+    public static final Vec3i OFFSET_ABOVE = new Vec3i(0, 1, 0);
+    public static final Vec3i OFFSET_BELOW = new Vec3i(0, -1, 0);
+
+    public static final Lazy<BlockPredicate> NOT_ON_COARSE_DIRT = Lazy.of(() -> BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_BELOW, UnityBlocks.COARSE_AETHER_DIRT.get())));
 
     public static RandomPatchConfiguration patch(int tries, int xz, int y, BlockStateProvider state) {
         return new RandomPatchConfiguration(tries, xz, y, PlacementUtils.onlyWhenEmpty(
@@ -75,45 +80,61 @@ public class BaseFeatureBuilders {
 
     public static RuleBasedLakeFeature.Config lakeWithGrassBlock(Supplier<? extends Block> grass, Supplier<? extends Block> fluid, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
         Block b = grass.get();
-        double mudClayThreshold;
+        double threshold;
         return new RuleBasedLakeFeature.Config(
                 prov(fluid), Optional.of(
                         new RuleBasedBlockStateProvider(BlockStateProvider.simple(AetherFeatureStates.AETHER_DIRT), Stream.concat(Stream.of(
                                 new RuleBasedBlockStateProvider.Rule(
-                                        BlockPredicate.allOf(
-                                                BlockPredicate.matchesBlocks(b),
-                                                BlockPredicate.not(BlockPredicate.solid(new Vec3i(0, 1, 0))),
-                                                BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), fluid.get()))
+                                        BlockPredicate.anyOf(
+                                                BlockPredicate.allOf(
+                                                        BlockPredicate.matchesBlocks(b),
+                                                        BlockPredicate.not(BlockPredicate.solid(OFFSET_ABOVE)),
+                                                        BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()))
+                                                ),
+                                                BlockPredicate.allOf(
+                                                        BlockPredicate.not(touchingHorizontal())
+
+                                                )
                                         ), prov(grass)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.anyOf(
-                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), b),
-                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), AetherBlocks.AETHER_DIRT.get())
+                                                BlockPredicate.matchesBlocks(OFFSET_ABOVE, b),
+                                                BlockPredicate.matchesBlocks(OFFSET_ABOVE, AetherBlocks.AETHER_DIRT.get())
                                         ), prov(AetherBlocks.AETHER_DIRT)
                                 ),
 
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
-                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, 0.0, mudClayThreshold = 0.2),
-                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.WATER)
+                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, -0.3, threshold = 0.1),
+                                                BlockPredicate.matchesBlocks(OFFSET_ABOVE, Blocks.WATER)
                                                 ),
                                         prov(UnityBlocks.AETHER_MUD)
                                 ),
 
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
-                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), fluid.get()),
-                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, mudClayThreshold, Double.MAX_VALUE)
+                                                // Use same seed, mud will surround clay
+                                                BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()),
+                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, threshold, Double.MAX_VALUE)
                                         ),
                                         prov(UnityBlocks.VALKYRIE_CLAY)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
                                                 BlockPredicate.matchesBlocks(b),
-                                                BlockPredicate.matchesTag(new Vec3i(0, 1, 0), BlockTags.AIR)
+                                                BlockPredicate.matchesTag(OFFSET_ABOVE, BlockTags.AIR)
                                         ), prov(grass)
                                 )
                         ), Stream.of(others)).toList())));
+    }
+
+    public static BlockPredicate touchingHorizontal(Block... blocks) {
+        return BlockPredicate.anyOf(
+                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), blocks),
+                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), blocks),
+                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 1), blocks),
+                BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), blocks)
+        );
     }
 }

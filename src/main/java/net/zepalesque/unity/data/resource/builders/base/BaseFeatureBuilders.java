@@ -85,16 +85,10 @@ public class BaseFeatureBuilders {
                 prov(fluid), Optional.of(
                         new RuleBasedBlockStateProvider(BlockStateProvider.simple(AetherFeatureStates.AETHER_DIRT), Stream.concat(Stream.of(
                                 new RuleBasedBlockStateProvider.Rule(
-                                        BlockPredicate.anyOf(
-                                                BlockPredicate.allOf(
-                                                        BlockPredicate.matchesBlocks(b),
-                                                        BlockPredicate.not(BlockPredicate.solid(OFFSET_ABOVE)),
-                                                        BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()))
-                                                ),
-                                                BlockPredicate.allOf(
-                                                        BlockPredicate.not(touchingHorizontal())
-
-                                                )
+                                        BlockPredicate.allOf(
+                                                BlockPredicate.matchesBlocks(b),
+                                                BlockPredicate.not(BlockPredicate.solid(OFFSET_ABOVE)),
+                                                BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()))
                                         ), prov(grass)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(

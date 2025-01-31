@@ -21,13 +21,27 @@
                 "blocks": "aether:aether_grass_block"
               },
               {
-                "type": "minecraft:matching_block_tag",
-                "offset": [
-                  0,
-                  1,
-                  0
-                ],
-                "tag": "minecraft:air"
+                "type": "minecraft:not",
+                "predicate": {
+                  "type": "minecraft:solid",
+                  "offset": [
+                    0,
+                    1,
+                    0
+                  ]
+                }
+              },
+              {
+                "type": "minecraft:not",
+                "predicate": {
+                  "type": "minecraft:matching_blocks",
+                  "blocks": "minecraft:water",
+                  "offset": [
+                    0,
+                    1,
+                    0
+                  ]
+                }
               }
             ]
           },

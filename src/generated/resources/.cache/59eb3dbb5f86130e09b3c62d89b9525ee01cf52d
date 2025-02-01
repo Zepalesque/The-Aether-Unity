@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-27T20:10:06.3312334	Loot Tables
+// 1.21.1	2025-02-01T12:10:19.5850643	Loot Tables
 436ad25a37a9ad1bcface3b73ca83abed532f1d3 data/aether_unity/loot_table/blocks/aether_mud.json
 8638ecd634292f5e2b09523be4f611393e4e7549 data/aether_unity/loot_table/blocks/aether_mud_bricks.json
 2e2b6be895fc77cabc86facfb521bd69819be727 data/aether_unity/loot_table/blocks/aether_mud_brick_slab.json
@@ -16,7 +16,7 @@ fd0a6de742f795043430e386b82471d9de48a39e data/aether_unity/loot_table/blocks/sho
 27f29bfbc74ae240488e1f33f4f66f3875ce2a33 data/aether_unity/loot_table/blocks/valkyrie_brick_slab.json
 25496e8bc2c14b817ff99723d9c89bbb6dea43d1 data/aether_unity/loot_table/blocks/valkyrie_brick_stairs.json
 f21b451b96568c182437dbfee5a0865e5f8e4374 data/aether_unity/loot_table/blocks/valkyrie_brick_wall.json
-3a5821ec7ba862fabdfd5bfa7b5775990aa7ff40 data/aether_unity/loot_table/blocks/valkyrie_clay.json
+9c73bda5be28cd681f70eda55753d93be6a5ff63 data/aether_unity/loot_table/blocks/valkyrie_clay.json
 2b95ffc929937a1612cfa38d1c1ba7dbff3dfc0f data/aether_unity/loot_table/blocks/valkyrie_tiles.json
 3845b28e3af3c162dc07e383d6c2239616091eda data/aether_unity/loot_table/blocks/valkyrie_tile_slab.json
 1465fb9a895a50f22b8aff87e86cd66dd77ac8fd data/aether_unity/loot_table/blocks/valkyrie_tile_stairs.json

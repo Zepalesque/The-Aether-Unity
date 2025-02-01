@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-27T20:10:06.3382297	Recipes
+// 1.21.1	2025-02-01T12:10:19.5920604	Recipes
 fbf9bae280e52150a78cda982336631be3e84203 data/aether/advancement/recipes/building_blocks/pillar.json
 f28d124545cd5c54cde6ae75f28ed9e659051cf0 data/aether/advancement/recipes/building_blocks/pillar_top.json
 37027902609a1435e14a84b44b30e2a3cd78f7b8 data/aether/recipe/pillar.json
@@ -29,6 +29,7 @@ a881c6de5ab8015dd84f2378b79c018f0ea618ba data/aether_unity/advancement/recipes/d
 5d235f6ec1d9077879f61e782270d4c4a0ee50f9 data/aether_unity/advancement/recipes/decorations/golden_oak_leaf_pile.json
 4c9c256a043cbeda05416dfb664849e664b74d38 data/aether_unity/advancement/recipes/decorations/skyroot_leaf_pile.json
 c8c5cafaa17ea13664b2e773c189a6152bea3350 data/aether_unity/advancement/recipes/misc/ambrosium_campfire.json
+19446a8b6e045cb8a8351862910c65550d7d5f71 data/aether_unity/advancement/recipes/misc/valkyrie_brick.json
 5047b63a1f7df2e59e928cc73b11942daa1322b8 data/aether_unity/recipe/aether_mud_bricks.json
 73b8a2df7c9be01314b1760f45b562d61a47762b data/aether_unity/recipe/aether_mud_brick_slab.json
 24d4300376240568c2518574e1a9c4e9e07cd435 data/aether_unity/recipe/aether_mud_brick_slab_from_aether_mud_bricks_stonecutting.json
@@ -46,6 +47,7 @@ eee4e0950c8ac37b08cce9d32efc93ffaba9e518 data/aether_unity/recipe/flower_pot_fro
 a1e833b2dda89bcc42427a467296bec27e1e4e87 data/aether_unity/recipe/golden_oak_leaf_pile.json
 3a49b0eea74551126d193380924256404a269a6c data/aether_unity/recipe/packed_aether_mud.json
 72344da9972e2660a7f8842eff8e7426b717db3f data/aether_unity/recipe/skyroot_leaf_pile.json
+0066bcbf2c4a1126750abef8a30730bd006a1c45 data/aether_unity/recipe/valkyrie_brick.json
 7f1414df9e46e6361e321845f639d3c570bb73ea data/aether_unity/recipe/valkyrie_bricks.json
 e22329351c58b3f8c6d772e978bbc724b001aa2b data/aether_unity/recipe/valkyrie_clay.json
 6a12cb82b8b37de108cec181b956e77a378f27f0 data/aether_unity/recipe/valkyrie_tiles.json

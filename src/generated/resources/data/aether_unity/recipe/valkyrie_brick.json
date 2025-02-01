@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.3,
+  "ingredient": {
+    "item": "aether_unity:valkyrie_clay_ball"
+  },
+  "result": {
+    "count": 1,
+    "id": "aether_unity:valkyrie_brick"
+  }
+}

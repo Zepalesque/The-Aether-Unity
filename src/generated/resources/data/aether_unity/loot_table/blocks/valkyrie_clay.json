@@ -45,7 +45,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "minecraft:clay_ball"
+              "name": "aether_unity:valkyrie_clay_ball"
             }
           ]
         }

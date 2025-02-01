@@ -122,13 +122,4 @@ public class BaseFeatureBuilders {
                                 )
                         ), Stream.of(others)).toList())));
     }
-
-    public static BlockPredicate touchingHorizontal(Block... blocks) {
-        return BlockPredicate.anyOf(
-                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), blocks),
-                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), blocks),
-                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 1), blocks),
-                BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), blocks)
-        );
-    }
 }

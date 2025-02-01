@@ -57,9 +57,7 @@ public class UnityRecipeData extends UnityRecipeProvider {
 
         twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, UnityBlocks.VALKYRIE_CLAY.get(), UnityItems.VALKYRIE_CLAY_BALL.get());
         twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, UnityBlocks.VALKYRIE_BRICKS.get(), UnityItems.VALKYRIE_BRICK.get());
-        smeltingOreRecipe(UnityItems.VALKYRIE_BRICK.get(), UnityItems.VALKYRIE_CLAY_BALL.get(), 0.3F);
-
-
+        smeltingOreRecipe(UnityItems.VALKYRIE_BRICK.get(), UnityItems.VALKYRIE_CLAY_BALL.get(), 0.3F).save(output);
 
         stonecutAndCraftStoneSet(output, RecipeCategory.BUILDING_BLOCKS,
                 UnityBlocks.VALKYRIE_TILES,

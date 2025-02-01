@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.prov.loot.UnityBlockLootProvider;
+import net.zepalesque.unity.item.UnityItems;
 
 import java.util.Set;
 import java.util.function.Supplier;
@@ -48,7 +49,7 @@ public class UnityBlockLoot extends UnityBlockLootProvider {
         this.dropSelf(UnityBlocks.AETHER_MUD_BRICK_SLAB.get());
         this.dropSelf(UnityBlocks.COARSE_AETHER_DIRT.get());
 
-        this.add(UnityBlocks.VALKYRIE_CLAY.get(), block -> this.createSingleItemTableWithSilkTouch(block, Items.CLAY_BALL, ConstantValue.exactly(4.0F)));
+        this.add(UnityBlocks.VALKYRIE_CLAY.get(), block -> this.createSingleItemTableWithSilkTouch(block, UnityItems.VALKYRIE_CLAY_BALL.get(), ConstantValue.exactly(4.0F)));
 
 
         this.dropSelf(UnityBlocks.VALKYRIE_BRICKS.get());

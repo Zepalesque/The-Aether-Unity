@@ -1,5 +1,5 @@
 {
-    "parent": "aether_unity:block/cube_glow",
+    "parent": "aether_unity:block/template/cube/cube_glow",
     "textures": {
         "particle": "#all",
         "down": "#all",

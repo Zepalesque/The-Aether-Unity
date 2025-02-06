@@ -145,7 +145,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
 
     // Cubes
 
-    public void cubeGlow(Block block, String location) {
+    public void cubeAllGlow(Block block, String location) {
         BlockModelBuilder cross = models().withExistingParent(this.name(block), Unity.loc("block/template/cube/cube_all_glow"))
                 .texture("all", this.texture(this.name(block), location))
                 .texture("glow", this.texture(this.name(block) + "_glow", location)).renderType("cutout");

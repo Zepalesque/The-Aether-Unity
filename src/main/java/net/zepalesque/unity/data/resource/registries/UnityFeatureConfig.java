@@ -45,8 +45,6 @@ public class UnityFeatureConfig extends UnityFeatureBuilders {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLUTEMOSS_VEGETATION = createKey("flutemoss_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLUTEMOSS_BONEMEAL = createKey("flutemoss_bonemeal");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> VALKYRIE_CLAY_DISK = createKey("valkyrie_clay_disk");
-
     // Overrides
     public static final ResourceKey<ConfiguredFeature<?, ?>> GRASS_BONEMEAL = createKey("aether_grass_bonemeal");
 
@@ -69,12 +67,6 @@ public class UnityFeatureConfig extends UnityFeatureBuilders {
                         0.8F,
                         UniformInt.of(1, 2),
                         0.75F));
-
-        register(context, VALKYRIE_CLAY_DISK, Feature.DISK,
-                new DiskConfiguration(
-                        RuleBasedBlockStateProvider.simple(prov(UnityBlocks.VALKYRIE_CLAY)),
-                        BlockPredicate.matchesBlocks(List.of(AetherBlocks.AETHER_DIRT.get(), UnityBlocks.VALKYRIE_CLAY.get())), UniformInt.of(2, 3), 1
-                ));
 
         // Overrides
         register(context, AetherConfiguredFeatures.GRASS_PATCH_CONFIGURATION, Feature.RANDOM_PATCH, patch(48, 7, 3, prov(UnityBlocks.SHORT_AETHER_GRASS), NOT_ON_COARSE_DIRT.get()));

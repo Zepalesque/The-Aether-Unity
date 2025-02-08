@@ -1,8 +1,10 @@
 package net.zepalesque.unity.data.resource.builders.base;
 
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.resources.AetherFeatureStates;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -78,22 +80,21 @@ public class BaseFeatureBuilders {
                 ZenithFeatures.BLOCK_WITH_PREDICATE.get(), new BlockWithPredicateFeature.Config(state, predicate)));
     }
 
-    public static RuleBasedLakeFeature.Config lakeWithGrassBlock(Supplier<? extends Block> grass, Supplier<? extends Block> fluid, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
-        Block b = grass.get();
+    public static RuleBasedLakeFeature.Config lakeWithGrassBlock(Holder<Block> skip, Supplier<? extends Block> fluid, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
         double threshold;
         return new RuleBasedLakeFeature.Config(
                 prov(fluid), Optional.of(
                         new RuleBasedBlockStateProvider(BlockStateProvider.simple(AetherFeatureStates.AETHER_DIRT), Stream.concat(Stream.of(
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
-                                                BlockPredicate.matchesBlocks(b),
+                                                BlockPredicate.matchesBlocks(skip.value()),
                                                 BlockPredicate.not(BlockPredicate.solid(OFFSET_ABOVE)),
                                                 BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()))
-                                        ), prov(grass)
+                                        ), prov(skip::value)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.anyOf(
-                                                BlockPredicate.matchesBlocks(OFFSET_ABOVE, b),
+                                                BlockPredicate.matchesTag(OFFSET_ABOVE, AetherTags.Blocks.AETHER_DIRT),
                                                 BlockPredicate.matchesBlocks(OFFSET_ABOVE, AetherBlocks.AETHER_DIRT.get())
                                         ), prov(AetherBlocks.AETHER_DIRT)
                                 ),
@@ -116,10 +117,10 @@ public class BaseFeatureBuilders {
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
-                                                BlockPredicate.matchesBlocks(b),
+                                                BlockPredicate.matchesBlocks(skip.value()),
                                                 BlockPredicate.matchesTag(OFFSET_ABOVE, BlockTags.AIR)
-                                        ), prov(grass)
+                                        ), prov(skip::value)
                                 )
-                        ), Stream.of(others)).toList())));
+                        ), Stream.of(others)).toList())), Optional.of(skip));
     }
 }

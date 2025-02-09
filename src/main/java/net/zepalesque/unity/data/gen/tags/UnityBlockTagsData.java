@@ -44,7 +44,7 @@ public class UnityBlockTagsData extends BlockTagsProvider {
                 AetherTags.Blocks.AETHER_DIRT
         );
 
-        this.tag(UnityTags.Blocks.AETHER_LAKE_SKIP_PLACEMENT).add(
+        this.tag(UnityTags.Blocks.AETHER_LAKE_SKIP_REPLACEMENT).add(
                 AetherBlocks.AETHER_GRASS_BLOCK.get(),
                 UnityBlocks.COARSE_AETHER_DIRT.get()
         );

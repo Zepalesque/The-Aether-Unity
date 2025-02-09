@@ -4,13 +4,14 @@ import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.resources.AetherFeatureStates;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,8 +33,6 @@ import net.zepalesque.zenith.api.world.feature.gen.BlockWithPredicateFeature;
 import net.zepalesque.zenith.api.world.feature.gen.RuleBasedLakeFeature;
 import net.zepalesque.zenith.core.registry.ZenithFeatures;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -80,17 +79,17 @@ public class BaseFeatureBuilders {
                 ZenithFeatures.BLOCK_WITH_PREDICATE.get(), new BlockWithPredicateFeature.Config(state, predicate)));
     }
 
-    public static RuleBasedLakeFeature.Config lakeWithGrassBlock(Holder<Block> skip, Supplier<? extends Block> fluid, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
+    public static RuleBasedLakeFeature.Config lake(TagKey<Block> grass, Supplier<? extends Block> fluid, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
         double threshold;
         return new RuleBasedLakeFeature.Config(
                 prov(fluid), Optional.of(
                         new RuleBasedBlockStateProvider(BlockStateProvider.simple(AetherFeatureStates.AETHER_DIRT), Stream.concat(Stream.of(
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
-                                                BlockPredicate.matchesBlocks(skip.value()),
+                                                BlockPredicate.matchesTag(grass),
                                                 BlockPredicate.not(BlockPredicate.solid(OFFSET_ABOVE)),
                                                 BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()))
-                                        ), prov(skip::value)
+                                        ), BlockStateProvider.simple(Blocks.AIR)
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.anyOf(
@@ -117,10 +116,10 @@ public class BaseFeatureBuilders {
                                 ),
                                 new RuleBasedBlockStateProvider.Rule(
                                         BlockPredicate.allOf(
-                                                BlockPredicate.matchesBlocks(skip.value()),
+                                                BlockPredicate.matchesTag(grass),
                                                 BlockPredicate.matchesTag(OFFSET_ABOVE, BlockTags.AIR)
-                                        ), prov(skip::value)
+                                        ), BlockStateProvider.simple(Blocks.AIR)
                                 )
-                        ), Stream.of(others)).toList())), Optional.of(skip));
+                        ), Stream.of(others)).toList())), Optional.of(BuiltInRegistries.BLOCK.getOrCreateTag(grass)));
     }
 }

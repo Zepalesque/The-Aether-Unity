@@ -40,7 +40,13 @@ public class UnityBlockTagsData extends BlockTagsProvider {
         );
 
         this.tag(UnityTags.Blocks.AETHER_CARVER_REPLACEABLES).addTags(
-                AetherTags.Blocks.HOLYSTONE, AetherTags.Blocks.AETHER_DIRT
+                AetherTags.Blocks.HOLYSTONE,
+                AetherTags.Blocks.AETHER_DIRT
+        );
+
+        this.tag(UnityTags.Blocks.AETHER_LAKE_SKIP_PLACEMENT).add(
+                AetherBlocks.AETHER_GRASS_BLOCK.get(),
+                UnityBlocks.COARSE_AETHER_DIRT.get()
         );
 
         this.tag(AetherTags.Blocks.AETHER_DIRT).add(

@@ -1,30 +1,20 @@
 package net.zepalesque.unity.data.resource.registries;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.data.resources.AetherFeatureStates;
 import com.aetherteam.aether.data.resources.registries.AetherConfiguredFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.DensityFunction;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
@@ -33,8 +23,6 @@ import net.zepalesque.unity.data.UnityTags;
 import net.zepalesque.unity.data.resource.builders.UnityFeatureBuilders;
 import net.zepalesque.unity.extendablestate.UnityStateLists;
 import net.zepalesque.zenith.api.world.feature.gen.ExtendableStateListBlockFeature;
-import net.zepalesque.zenith.api.world.feature.gen.RuleBasedLakeFeature;
-import net.zepalesque.zenith.core.Zenith;
 import net.zepalesque.zenith.core.registry.ZenithFeatures;
 
 import java.util.List;
@@ -72,7 +60,7 @@ public class UnityFeatureConfig extends UnityFeatureBuilders {
         register(context, AetherConfiguredFeatures.GRASS_PATCH_CONFIGURATION, Feature.RANDOM_PATCH, patch(48, 7, 3, prov(UnityBlocks.SHORT_AETHER_GRASS), NOT_ON_COARSE_DIRT.get()));
         register(context, AetherConfiguredFeatures.TALL_GRASS_PATCH_CONFIGURATION, Feature.NO_OP, new NoneFeatureConfiguration());
 
-        register(context, AetherConfiguredFeatures.WATER_LAKE_CONFIGURATION, ZenithFeatures.RULE_BASED_LAKE.get(), lakeWithGrassBlock(AetherBlocks.AETHER_GRASS_BLOCK, () -> Blocks.WATER, noises));
+        register(context, AetherConfiguredFeatures.WATER_LAKE_CONFIGURATION, ZenithFeatures.RULE_BASED_LAKE.get(), lake(UnityTags.Blocks.AETHER_LAKE_SKIP_PLACEMENT, () -> Blocks.WATER, noises));
 
         register(context, GRASS_BONEMEAL, Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(prov(UnityBlocks.SHORT_AETHER_GRASS)));

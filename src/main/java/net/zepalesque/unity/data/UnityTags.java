@@ -24,6 +24,8 @@ public class UnityTags {
 
         public static final TagKey<Block> CONVERTABLE_TO_AETHER_MUD = tag("convertable_to_aether_mud");
 
+        public static final TagKey<Block> AETHER_LAKE_SKIP_PLACEMENT = tag("aether_carver_replaceables");
+
         public static TagKey<Block> tag(String name) {
             return TagKey.create(Registries.BLOCK, Unity.loc(name));
         }

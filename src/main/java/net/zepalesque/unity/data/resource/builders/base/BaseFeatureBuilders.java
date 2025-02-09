@@ -120,6 +120,6 @@ public class BaseFeatureBuilders {
                                                 BlockPredicate.matchesTag(OFFSET_ABOVE, BlockTags.AIR)
                                         ), BlockStateProvider.simple(Blocks.AIR)
                                 )
-                        ), Stream.of(others)).toList())), Optional.of(BuiltInRegistries.BLOCK.getOrCreateTag(grass)));
+                        ), Stream.of(others)).toList())));
     }
 }

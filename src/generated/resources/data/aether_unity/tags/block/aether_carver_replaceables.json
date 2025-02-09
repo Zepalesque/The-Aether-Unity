@@ -1,6 +1,8 @@
 {
   "values": [
     "#aether:holystone",
-    "#aether:aether_dirt"
+    "#aether:aether_dirt",
+    "aether:aether_grass_block",
+    "aether_unity:coarse_aether_dirt"
   ]
 }

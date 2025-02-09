@@ -17,8 +17,8 @@
             "type": "minecraft:all_of",
             "predicates": [
               {
-                "type": "minecraft:matching_blocks",
-                "blocks": "aether:aether_grass_block"
+                "type": "minecraft:matching_block_tag",
+                "tag": "aether_unity:aether_carver_replaceables"
               },
               {
                 "type": "minecraft:not",
@@ -48,11 +48,7 @@
           "then": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "aether:aether_grass_block",
-              "Properties": {
-                "double_drops": "true",
-                "snowy": "false"
-              }
+              "Name": "minecraft:air"
             }
           }
         },
@@ -61,13 +57,13 @@
             "type": "minecraft:any_of",
             "predicates": [
               {
-                "type": "minecraft:matching_blocks",
-                "blocks": "aether:aether_grass_block",
+                "type": "minecraft:matching_block_tag",
                 "offset": [
                   0,
                   1,
                   0
-                ]
+                ],
+                "tag": "aether:aether_dirt"
               },
               {
                 "type": "minecraft:matching_blocks",
@@ -159,8 +155,8 @@
             "type": "minecraft:all_of",
             "predicates": [
               {
-                "type": "minecraft:matching_blocks",
-                "blocks": "aether:aether_grass_block"
+                "type": "minecraft:matching_block_tag",
+                "tag": "aether_unity:aether_carver_replaceables"
               },
               {
                 "type": "minecraft:matching_block_tag",
@@ -176,11 +172,7 @@
           "then": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "aether:aether_grass_block",
-              "Properties": {
-                "double_drops": "true",
-                "snowy": "false"
-              }
+              "Name": "minecraft:air"
             }
           }
         }
@@ -194,6 +186,7 @@
           "level": "0"
         }
       }
-    }
+    },
+    "skip_state": "#aether_unity:aether_carver_replaceables"
   }
 }

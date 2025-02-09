@@ -18,7 +18,7 @@
             "predicates": [
               {
                 "type": "minecraft:matching_block_tag",
-                "tag": "aether_unity:aether_carver_replaceables"
+                "tag": "aether_unity:aether_lake_skip_replacement"
               },
               {
                 "type": "minecraft:not",
@@ -156,7 +156,7 @@
             "predicates": [
               {
                 "type": "minecraft:matching_block_tag",
-                "tag": "aether_unity:aether_carver_replaceables"
+                "tag": "aether_unity:aether_lake_skip_replacement"
               },
               {
                 "type": "minecraft:matching_block_tag",
@@ -187,6 +187,6 @@
         }
       }
     },
-    "skip_state": "#aether_unity:aether_carver_replaceables"
+    "skip_state": "#aether_unity:aether_lake_skip_replacement"
   }
 }

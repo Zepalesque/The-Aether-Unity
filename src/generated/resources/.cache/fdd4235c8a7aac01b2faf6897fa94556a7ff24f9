@@ -1,7 +1,8 @@
-// 1.21.1	2025-02-08T19:06:36.3784169	Tags for minecraft:block mod id aether_unity
+// 1.21.1	2025-02-08T19:14:54.9116219	Tags for minecraft:block mod id aether_unity
 c7963d222eafa5e91a026582fff0d956de2e84c4 data/aether/tags/block/aether_dirt.json
 9889625c46ec6ec64f7b7276d0374ea7c5834c44 data/aether/tags/block/treated_as_aether_block.json
-92c0c5061d899c63a289613c9475f3d373b624ba data/aether_unity/tags/block/aether_carver_replaceables.json
+a1face86e90d0679530d54d194ab9dfc9588c9ea data/aether_unity/tags/block/aether_carver_replaceables.json
+bed6a7a4b2a51b76513123557acaef512271ad7c data/aether_unity/tags/block/aether_lake_skip_replacement.json
 25c720d44176ecb14bd3b979a26cfa71b41341d8 data/aether_unity/tags/block/convertable_to_aether_mud.json
 8851958872827397acebbd63340062bf8dc9d44b data/aether_unity/tags/block/short_aether_grass_default_coloring.json
 f88e31ba010e8b41d4256635de26d1cf8a0aa221 data/aether_unity/tags/block/short_aether_grass_state_enchanting.json

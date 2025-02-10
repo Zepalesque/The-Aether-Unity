@@ -12,6 +12,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
+import net.zepalesque.zenith.api.recipe.builder.NoneRecipeBuilder;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -72,6 +73,11 @@ public abstract class UnityRecipeProvider extends AetherRecipeProvider {
 
     protected void stonecut(RecipeOutput output, RecipeCategory category, ItemLike item, ItemLike ingredient, int count) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), category, item, count).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, name(getConversionRecipeName(item, ingredient) + "_stonecutting"));
+    }
+
+
+    protected void none(RecipeOutput output, ResourceLocation id) {
+        NoneRecipeBuilder.of().save(output, id);
     }
 
 

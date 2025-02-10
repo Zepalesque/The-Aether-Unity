@@ -1,5 +1,6 @@
 package net.zepalesque.unity.data.gen;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.core.HolderLookup;
@@ -9,6 +10,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
@@ -92,6 +94,11 @@ public class UnityRecipeData extends UnityRecipeProvider {
         brick(output, RecipeCategory.BUILDING_BLOCKS, UnityBlocks.VALKYRIE_TILES, UnityBlocks.VALKYRIE_BRICKS);
 
         brick(output, RecipeCategory.BUILDING_BLOCKS, AetherBlocks.PILLAR_TOP, AetherBlocks.PILLAR);
+
+        none(output, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "angelic_stone_from_pillar_stonecutting"));
+        none(output, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "angelic_stone_from_pillar_top_stonecutting"));
+        none(output, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "pillar_from_angelic_stone_stonecutting"));
+        none(output, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "pillar_top_from_angelic_stone_stonecutting"));
 
     }
 

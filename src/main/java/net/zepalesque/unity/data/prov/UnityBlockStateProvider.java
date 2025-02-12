@@ -74,7 +74,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public void crossTintedDualGloverlay(Block block, String location, boolean useGlowForParticle) {
-        BlockModelBuilder cross = models().withExistingParent(this.name(block), Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_gloverlay_" + (useGlowForParticle ? "glow" : "overlay")))
+        BlockModelBuilder cross = models().withExistingParent(this.name(block), Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_dual_gloverlay/" + (useGlowForParticle ? "glow_particle" : "overlay_particle")))
                 .texture("cross", this.texture(this.name(block), location))
                 .texture("glow", this.texture(this.name(block) + "_glow", location)).renderType("cutout")
                 .texture("overlay", this.texture(this.name(block) + "_overlay", location)).renderType("cutout");

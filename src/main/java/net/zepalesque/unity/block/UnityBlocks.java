@@ -20,10 +20,12 @@ import net.zepalesque.unity.block.natural.AetherShortGrassBlock;
 import net.zepalesque.unity.block.natural.DoubleDropsCarpet;
 import net.zepalesque.unity.block.natural.DoubleDropsGrowthBlock;
 import net.zepalesque.unity.block.natural.DoubleDropsMud;
+import net.zepalesque.unity.block.natural.bush.CustomBoundsBushBlock;
 import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.unity.block.state.UnityBlockBuilders;
 import net.zepalesque.unity.data.resource.registries.UnityFeatureConfig;
 import net.zepalesque.unity.event.hook.BlockHooks;
+import net.zepalesque.zenith.api.block.CommonPlantBounds;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
 
 public class UnityBlocks extends UnityBlockBuilders {
@@ -35,6 +37,13 @@ public class UnityBlocks extends UnityBlockBuilders {
             () -> new AetherShortGrassBlock(
                     Properties.ofFullCopy(Blocks.SHORT_GRASS)
                             .offsetType(OffsetType.XZ)
+                            .hasPostProcess((state, level, pos) -> true)
+            ));
+
+    public static DeferredBlock<CustomBoundsBushBlock> SKYFERN = register("skyfern",
+            () -> new CustomBoundsBushBlock.Enchanted(
+                    CommonPlantBounds.BUSH,
+                    Properties.ofFullCopy(Blocks.FERN)
                             .hasPostProcess((state, level, pos) -> true)
             ));
 

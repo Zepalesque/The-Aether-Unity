@@ -22,7 +22,8 @@ public class UnityTabs {
         if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_NATURAL_BLOCKS)) {
 
             TabUtil.putAfter(event, AetherBlocks.AETHER_GRASS_BLOCK,
-                    UnityBlocks.SHORT_AETHER_GRASS
+                    UnityBlocks.SHORT_AETHER_GRASS,
+                    UnityBlocks.SKYFERN
             );
 
             TabUtil.putAfter(event, AetherBlocks.AETHER_DIRT,

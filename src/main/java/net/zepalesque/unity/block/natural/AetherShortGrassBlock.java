@@ -118,6 +118,14 @@ public class AetherShortGrassBlock extends AetherBushBlock {
 
 
     public interface TintOverride {
-        Optional<Integer> tint(BlockState state, @javax.annotation.Nullable BlockAndTintGetter level, @javax.annotation.Nullable BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties);
+
+        @Nullable
+        Integer tint(
+                BlockState state,
+                @Nullable BlockAndTintGetter level,
+                @Nullable BlockPos pos, int index,
+                Predicate<Integer> indexGoal,
+                boolean useBelowProperties
+        );
     }
 }

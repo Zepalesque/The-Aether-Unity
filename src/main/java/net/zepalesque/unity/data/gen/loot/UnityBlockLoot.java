@@ -32,6 +32,7 @@ public class UnityBlockLoot extends UnityBlockLootProvider {
     protected void generate() {
 
         this.add(UnityBlocks.SHORT_AETHER_GRASS.get(), shears());
+        this.add(UnityBlocks.SKYFERN.get(), shears());
 
         this.add(UnityBlocks.GOLDEN_OAK_LEAF_PILE.get(), shears());
         this.add(UnityBlocks.SKYROOT_LEAF_PILE.get(), shears());

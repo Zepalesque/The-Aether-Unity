@@ -15,7 +15,10 @@ public class UnityLanguageData extends UnityLanguageProvider {
     @Override
     protected void addTranslations() {
         addBlock(UnityBlocks.SHORT_AETHER_GRASS);
-        addLore(UnityBlocks.SHORT_AETHER_GRASS, "Blades of the Aether's grass. It feels slightly cool to the touch.");
+        addLore(UnityBlocks.SHORT_AETHER_GRASS, "Blades of the Aether's grass. They feel slightly cool to the touch.");
+
+        addBlock(UnityBlocks.SKYFERN);
+        addLore(UnityBlocks.SKYFERN, "The Aether's local fern plant. These have soft, silky leaves.");
 
         addBlock(UnityBlocks.GOLDEN_OAK_LEAF_PILE);
         addLore(UnityBlocks.GOLDEN_OAK_LEAF_PILE, "A pile of Golden Oak Leaves. These can be stacked on top of eachother to make various sizes!");
@@ -24,7 +27,7 @@ public class UnityLanguageData extends UnityLanguageProvider {
         addLore(UnityBlocks.SKYROOT_LEAF_PILE, "A pile of Skyroot Leaves. These can be stacked on top of eachother to make various sizes!");
 
         addBlock(UnityBlocks.AMBROSIUM_CAMPFIRE);
-        addLore(UnityBlocks.AMBROSIUM_CAMPFIRE, "A campfire made of Ambrosium. You can use this to cook meat, or as a signal or light source!");
+        addLore(UnityBlocks.AMBROSIUM_CAMPFIRE, "A campfire made of Ambrosium. You can use this to cook meat, as a signal, or as a light source!");
 
         addBlock(UnityBlocks.FLUTEMOSS_BLOCK);
         addLore(UnityBlocks.FLUTEMOSS_BLOCK, "The Aether's native moss species. This can be grown with Bone Meal!");

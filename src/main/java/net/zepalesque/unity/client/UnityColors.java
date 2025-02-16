@@ -23,13 +23,18 @@ public class UnityColors {
 
     public static final int AETHER_GRASS_COLOR = 0xADF9C4;
 
-    public static ColorResolver AETHER_GRASS = (biome, x, z) -> UnityBiomeTints.AETHER_GRASS.get().getColor(biome);
+    public static ColorResolver GRASS_COLORS = (biome, x, z) -> UnityBiomeTints.AETHER_GRASS.get().getColor(biome);
 
     public static void blockColors(RegisterColorHandlersEvent.Block event) {
         Unity.LOGGER.debug("Beginning block color registration for the Aether: Unity");
 
-        event.register((state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 1, false), AetherBlocks.AETHER_GRASS_BLOCK.get());
-        event.register((state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 0, true), UnityBlocks.SHORT_AETHER_GRASS.get());
+        event.register((state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 1, false),
+                AetherBlocks.AETHER_GRASS_BLOCK.get()
+        );
+        event.register((state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 0, true),
+                UnityBlocks.SHORT_AETHER_GRASS.get(),
+                UnityBlocks.SKYFERN.get()
+        );
         event.register((state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 1, true),
                 AetherBlocks.WHITE_FLOWER.get(),
                 AetherBlocks.POTTED_WHITE_FLOWER.get(),
@@ -40,17 +45,19 @@ public class UnityColors {
 
     public static void itemColors(RegisterColorHandlersEvent.Item event) {
         Unity.LOGGER.debug("Beginning item color registration for the Aether: Unity");
-        event.register((stack, tintIndex) -> tintIndex == 1 ? AETHER_GRASS_COLOR : 0xFFFFFF,
+        event.register((stack, tintIndex) -> tintIndex == 1 ? AETHER_GRASS_COLOR | 0xFF000000 : 0xFFFFFFFF,
                 AetherBlocks.AETHER_GRASS_BLOCK.get(),
                 AetherBlocks.WHITE_FLOWER.get(),
-                AetherBlocks.PURPLE_FLOWER.get()        );
-        event.register((stack, tintIndex) -> tintIndex == 0 ? AETHER_GRASS_COLOR : 0xFFFFFF,
-                UnityBlocks.SHORT_AETHER_GRASS.get(
-        ));
+                AetherBlocks.PURPLE_FLOWER.get()
+        );
+        event.register((stack, tintIndex) -> tintIndex == 0 ? AETHER_GRASS_COLOR | 0xFF000000 : 0xFFFFFFFF,
+                UnityBlocks.SHORT_AETHER_GRASS.get(),
+                UnityBlocks.SKYFERN.get()
+        );
     }
 
     public static void resolvers(RegisterColorHandlersEvent.ColorResolvers event) {
-        event.register(AETHER_GRASS);
+        event.register(GRASS_COLORS);
     }
 
     private static int getAverageColor(BlockAndTintGetter level, BlockPos blockPos, ColorResolver colorResolver) {
@@ -69,11 +76,11 @@ public class UnityColors {
             if (level != null && pos != null) {
 
                 for (AetherShortGrassBlock.TintOverride override : AetherShortGrassBlock.COLOR_OVERRIDES) {
-                    Optional<Integer> optional = override.tint(state, level, pos, index, indexGoal, useBelowProperties);
-                    if (optional.isPresent()) return optional.get();
+                    @Nullable Integer i = override.tint(state, level, pos, index, indexGoal, useBelowProperties);
+                    if (i != null) return i;
                 }
 
-                return getAverageColor(level, pos, AETHER_GRASS);
+                return getAverageColor(level, pos, GRASS_COLORS);
             }
             return AETHER_GRASS_COLOR;
         }
@@ -84,19 +91,12 @@ public class UnityColors {
     /**
      * See {@link AetherShortGrassBlock#COLOR_OVERRIDES} and {@link UnityColors#getColor}
      */
-    public static Optional<Integer> unityColors(BlockState state, BlockAndTintGetter level, BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties) {
+    public static Integer unityColors(BlockState state, BlockAndTintGetter level, BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties) {
         if (state.hasProperty(UnityStates.ENCHANTED) && state.getValue(UnityStates.ENCHANTED)) {
-            return encapsulate(0xFFFFFF);
+            return 0xFFFFFF;
         } else if (level.getBlockState(pos.below()).is(UnityTags.Blocks.SHORT_AETHER_GRASS_DEFAULT_COLORING)) {
-            return encapsulate(AETHER_GRASS_COLOR);
+            return AETHER_GRASS_COLOR;
         }
-        return Optional.empty();
+        return null;
     }
-
-    // Avoid constant Optional instantiation
-    private static final Map<Integer, Optional<Integer>> CACHED_COLORS = new HashMap<>();
-    public static Optional<Integer> encapsulate(int color) {
-        return CACHED_COLORS.computeIfAbsent(color, Optional::of);
-    }
-
 }

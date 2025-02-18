@@ -97,8 +97,18 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public void crossEnchantable(Block block, String location) {
-        BlockModelBuilder cross = models().cross(this.name(block), this.texture(this.name(block), location));
-        BlockModelBuilder ench = models().cross("enchanted_" + this.name(block), this.texture("enchanted_" + this.name(block), location)).renderType("cutout");
+        BlockModelBuilder cross = models().singleTexture(
+                this.name(block),
+                mcLoc("block/tinted_cross"),
+                "cross",
+                this.texture(this.name(block), location)
+        ).renderType("cutout");
+
+        BlockModelBuilder ench = models().cross(
+                "enchanted_" + this.name(block),
+                this.texture("enchanted_" + this.name(block), location)
+        ).renderType("cutout");
+
         this.getVariantBuilder(block).forAllStates((state) ->  ConfiguredModel.builder().modelFile(state.getValue(UnityStates.ENCHANTED) ? ench : cross).build());
     }
 

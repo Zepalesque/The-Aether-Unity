@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "enchanted=false": {
+      "model": "aether_unity:block/skyfern"
+    },
+    "enchanted=true": {
+      "model": "aether_unity:block/enchanted_skyfern"
+    }
+  }
+}

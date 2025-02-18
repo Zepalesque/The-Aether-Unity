@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-01T12:10:19.5850643	Loot Tables
+// 1.21.1	2025-02-16T18:39:29.6930335	Loot Tables
 436ad25a37a9ad1bcface3b73ca83abed532f1d3 data/aether_unity/loot_table/blocks/aether_mud.json
 8638ecd634292f5e2b09523be4f611393e4e7549 data/aether_unity/loot_table/blocks/aether_mud_bricks.json
 2e2b6be895fc77cabc86facfb521bd69819be727 data/aether_unity/loot_table/blocks/aether_mud_brick_slab.json
@@ -11,6 +11,7 @@ a1feecd866b50b656d62e05c27da588f2212fb5b data/aether_unity/loot_table/blocks/coa
 a13e1d96b1889b60c90618d19c1393a5f5b145fe data/aether_unity/loot_table/blocks/golden_oak_leaf_pile.json
 10b3fa52a4e0bc7f930c503aeca59a85ac927bbf data/aether_unity/loot_table/blocks/packed_aether_mud.json
 fd0a6de742f795043430e386b82471d9de48a39e data/aether_unity/loot_table/blocks/short_aether_grass.json
+15d920ac0f6f899444fd7394c09d4fc24dee3d77 data/aether_unity/loot_table/blocks/skyfern.json
 04fb1d6821aa6f81d8bdba1a8c207c95d28c63d5 data/aether_unity/loot_table/blocks/skyroot_leaf_pile.json
 72276af6e1955c3702586803b316c3da7d0873f7 data/aether_unity/loot_table/blocks/valkyrie_bricks.json
 27f29bfbc74ae240488e1f33f4f66f3875ce2a33 data/aether_unity/loot_table/blocks/valkyrie_brick_slab.json

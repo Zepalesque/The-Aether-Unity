@@ -10,8 +10,6 @@ public class UnityItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Unity.MODID);
 
-
     public static final DeferredItem<Item> VALKYRIE_CLAY_BALL = ITEMS.registerSimpleItem("valkyrie_clay_ball");
     public static final DeferredItem<Item> VALKYRIE_BRICK = ITEMS.registerSimpleItem("valkyrie_brick");
-
 }

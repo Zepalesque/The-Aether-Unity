@@ -11,42 +11,33 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 public final class UnityMixinPlugin implements IMixinConfigPlugin {
-
-    Map<String, Supplier<Boolean>> OVERRIDES = ImmutableMap.<String, Supplier<Boolean>>builder()
-  .build();
-
+    
+    final Map<String, Supplier<Boolean>> OVERRIDES = ImmutableMap.<String, Supplier<Boolean>>builder().build();
+    
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         return OVERRIDES.containsKey(mixinClassName) ? OVERRIDES.get(mixinClassName).get() : true;
     }
-
+    
     @Override
-    public void onLoad(String mixinPackage) {
-
-    }
-
+    public void onLoad(String mixinPackage) {}
+    
     @Override
     public String getRefMapperConfig() {
         return null;
     }
-
+    
     @Override
-    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
-
-    }
-
+    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {}
+    
     @Override
     public List<String> getMixins() {
         return null;
     }
-
+    
     @Override
-    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
-    }
-
+    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {}
+    
     @Override
-    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
-    }
+    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {}
 }

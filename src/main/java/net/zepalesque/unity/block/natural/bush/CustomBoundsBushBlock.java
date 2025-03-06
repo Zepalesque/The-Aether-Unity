@@ -51,11 +51,9 @@ public class CustomBoundsBushBlock extends AetherBushBlock {
 
         public BlockState setValues(Level level, BlockPos pos, BlockState state) {
             BlockPos below = pos.below();
-            if (level.getBlockState(below).is(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get())) {
+            if (level.getBlockState(below).is(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get()))
                 return state.setValue(UnityStates.ENCHANTED, true);
-            }
-
-            return state;
+            else return state;
         }
 
         @Nullable
@@ -69,9 +67,8 @@ public class CustomBoundsBushBlock extends AetherBushBlock {
         public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
             BlockState b = super.updateShape(state, facing, facingState, level, currentPos, facingPos);
             if (b.hasProperty(UnityStates.ENCHANTED) && facing == Direction.DOWN) {
-                if (level.getBlockState(facingPos).is(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING)) {
+                if (level.getBlockState(facingPos).is(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING))
                     return b.setValue(UnityStates.ENCHANTED, true);
-                }
                 return b.setValue(UnityStates.ENCHANTED, false);
             }
             return b;

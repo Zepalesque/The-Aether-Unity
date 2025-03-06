@@ -14,16 +14,13 @@ import net.zepalesque.unity.data.UnityTags;
 import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public class UnityColors {
 
     public static final int AETHER_GRASS_COLOR = 0xADF9C4;
 
-    public static ColorResolver GRASS_COLORS = (biome, x, z) -> UnityBiomeTints.AETHER_GRASS.get().getColor(biome);
+    public static final ColorResolver GRASS_COLORS = (biome, x, z) -> UnityBiomeTints.AETHER_GRASS.get().getColor(biome);
 
     public static void blockColors(RegisterColorHandlersEvent.Block event) {
         Unity.LOGGER.debug("Beginning block color registration for the Aether: Unity");
@@ -61,12 +58,10 @@ public class UnityColors {
     }
 
     private static int getAverageColor(BlockAndTintGetter level, BlockPos blockPos, ColorResolver colorResolver) {
-        if (level != null && blockPos != null) {
-            try {
-                return level.getBlockTint(blockPos, colorResolver);
-            } catch (Exception e) {
-                Unity.LOGGER.error("Failed to get Aether Grass color, this is not intended! Ignoring exception and using default color", e);
-            }
+        if (level != null && blockPos != null) try {
+            return level.getBlockTint(blockPos, colorResolver);
+        } catch (Exception e) {
+            Unity.LOGGER.error("Failed to get Aether Grass color, this is not intended! Ignoring exception and using default color", e);
         }
         return AETHER_GRASS_COLOR;
     }
@@ -92,11 +87,10 @@ public class UnityColors {
      * See {@link AetherShortGrassBlock#COLOR_OVERRIDES} and {@link UnityColors#getColor}
      */
     public static Integer unityColors(BlockState state, BlockAndTintGetter level, BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties) {
-        if (state.hasProperty(UnityStates.ENCHANTED) && state.getValue(UnityStates.ENCHANTED)) {
+        if (state.hasProperty(UnityStates.ENCHANTED) && state.getValue(UnityStates.ENCHANTED))
             return 0xFFFFFF;
-        } else if (level.getBlockState(pos.below()).is(UnityTags.Blocks.SHORT_AETHER_GRASS_DEFAULT_COLORING)) {
+        else if (level.getBlockState(pos.below()).is(UnityTags.Blocks.SHORT_AETHER_GRASS_DEFAULT_COLORING))
             return AETHER_GRASS_COLOR;
-        }
         return null;
     }
 }

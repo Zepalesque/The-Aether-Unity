@@ -19,7 +19,9 @@ public class UnityPlacements extends UnityPlacementBuilders {
         NoiseThresholdCountPlacement threshold = NoiseThresholdCountPlacement.of(-0.8D, 5, 10);
 
         // Overrides
-        register(context, AetherPlacedFeatures.AETHER_GRASS_BONEMEAL, configs.getOrThrow(UnityFeatureConfig.GRASS_BONEMEAL), PlacementUtils.isEmpty());
+        register(context, AetherPlacedFeatures.AETHER_GRASS_BONEMEAL,
+            configs.getOrThrow(UnityFeatureConfig.GRASS_BONEMEAL),
+            PlacementUtils.isEmpty());
 
     }
 

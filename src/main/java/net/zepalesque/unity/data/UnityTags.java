@@ -12,9 +12,9 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.zepalesque.unity.Unity;
 
+@SuppressWarnings("unused")
 public class UnityTags {
-
-
+    
     public static class Blocks {
         // Blocks that should make Short Aether Grass use its enchanted state when placed on top of
         public static final TagKey<Block> SHORT_AETHER_GRASS_STATE_ENCHANTING = tag("short_aether_grass_state_enchanting");

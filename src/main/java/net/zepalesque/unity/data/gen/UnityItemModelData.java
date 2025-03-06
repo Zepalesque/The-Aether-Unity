@@ -1,7 +1,6 @@
 package net.zepalesque.unity.data.gen;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.util.Unit;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;

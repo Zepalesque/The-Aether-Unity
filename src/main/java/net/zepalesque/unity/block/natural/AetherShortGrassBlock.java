@@ -27,7 +27,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public class AetherShortGrassBlock extends AetherBushBlock {
@@ -43,7 +42,7 @@ public class AetherShortGrassBlock extends AetherBushBlock {
             Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D),
             Block.box(2.0D, 0.0D, 2.0D, 14.0D, 5.0D, 14.0D)
     );
-    protected static VoxelShape COLLISION_SHAPE = Shapes.empty();
+    protected static final VoxelShape COLLISION_SHAPE = Shapes.empty();
 
     public AetherShortGrassBlock(Properties properties) {
         super(properties);
@@ -78,7 +77,7 @@ public class AetherShortGrassBlock extends AetherBushBlock {
         return setValues(context.getLevel(), context.getClickedPos(), super.getStateForPlacement(context));
     }
 
-
+    @SuppressWarnings("deprecation")
     public BlockState setValues(Level level, BlockPos pos, BlockState state) {
         if (state != null) {
             long r = Mth.getSeed(pos);
@@ -87,17 +86,17 @@ public class AetherShortGrassBlock extends AetherBushBlock {
             GrassSize size = GrassSize.values()[i];
             BlockState b = state.setValue(UnityStates.GRASS_SIZE, size);
             BlockPos below = pos.below();
-            if (level.getBlockState(below).is(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING)) {
+            if (level.getBlockState(below).is(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING))
                 return b.setValue(UnityStates.ENCHANTED, true);
-            }
             return b;
         }
-        return state;
+        return null;
     }
 
 
     @Override
     @NotNull
+    @SuppressWarnings("deprecation")
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
         BlockState b = super.updateShape(state, facing, facingState, level, currentPos, facingPos);
         if (b.hasProperty(UnityStates.GRASS_SIZE)) {
@@ -108,9 +107,8 @@ public class AetherShortGrassBlock extends AetherBushBlock {
             b = b.setValue(UnityStates.GRASS_SIZE, size);
         }
         if (b.hasProperty(UnityStates.ENCHANTED) && facing == Direction.DOWN) {
-            if (level.getBlockState(facingPos).is(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING)) {
+            if (level.getBlockState(facingPos).is(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING))
                 return b.setValue(UnityStates.ENCHANTED, true);
-            }
             return b.setValue(UnityStates.ENCHANTED, false);
         }
         return b;

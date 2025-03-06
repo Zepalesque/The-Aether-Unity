@@ -14,7 +14,8 @@ public abstract class UnityDataMapProvider extends DataMapProvider {
     protected UnityDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
     }
-
+    
+    @SuppressWarnings("deprecation")
     public void addCompost(DataMapProvider.Builder<Compostable, Item> map, ItemLike item, float chance) {
         map.add(item.asItem().builtInRegistryHolder(), new Compostable(chance), false);
     }

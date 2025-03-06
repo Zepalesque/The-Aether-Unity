@@ -13,7 +13,6 @@ import net.minecraft.util.InclusiveRange;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.data.gen.UnityBlockStateData;
 import net.zepalesque.unity.data.gen.UnityItemModelData;
 import net.zepalesque.unity.data.gen.UnityLanguageData;
@@ -43,7 +42,7 @@ public class UnityData {
         lookupProvider = patch.getRegistryProvider();
 
         // Server Data
-        DatapackBuiltinEntriesProvider registrySets = new UnityRegistrySets(packOutput, lookupProvider, Unity.MODID);
+        DatapackBuiltinEntriesProvider registrySets = new UnityRegistrySets(packOutput, lookupProvider);
         generator.addProvider(event.includeServer(), registrySets);
         lookupProvider = registrySets.getRegistryProvider();
         generator.addProvider(event.includeServer(), new UnityRecipeData(packOutput, lookupProvider));
@@ -53,12 +52,17 @@ public class UnityData {
         // Tags
         UnityBlockTagsData blockTags = new UnityBlockTagsData(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new UnityItemTagsData(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper));
+        generator.addProvider(event.includeServer(),
+            new UnityItemTagsData(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper)
+        );
 
         // pack.mcmeta
-        generator.addProvider(true, new PackMetadataGenerator(packOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(
+        generator.addProvider(true, new PackMetadataGenerator(packOutput)
+            .add(PackMetadataSection.TYPE, new PackMetadataSection(
                 Component.translatable("pack.aether_unity.mod.description"),
                 DetectedVersion.BUILT_IN.getPackVersion(PackType.SERVER_DATA),
-                Optional.of(new InclusiveRange<>(0, Integer.MAX_VALUE)))));
+                Optional.of(new InclusiveRange<>(0, Integer.MAX_VALUE)))
+            )
+        );
     }
 }

@@ -43,8 +43,7 @@ public class BlockListener {
         BlockState oldState = event.getState();
         ItemAbility toolAction = event.getItemAbility();
         BlockState newState = BlockHooks.ToolConversions.setupToolActions(levelAccessor, pos, oldState, toolAction);
-        if (newState != oldState && !event.isSimulated() && !event.isCanceled()) {
+        if (newState != oldState && !event.isSimulated() && !event.isCanceled())
             event.setFinalState(newState);
-        }
     }
 }

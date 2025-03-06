@@ -3,7 +3,6 @@ package net.zepalesque.unity.item;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.aether.item.AetherItems;
-import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -16,9 +15,9 @@ import net.zepalesque.zenith.util.item.TabUtil;
 @EventBusSubscriber(modid = Unity.MODID, bus = Bus.MOD)
 public class UnityTabs {
     
+    @SuppressWarnings("SingleStatementInBlock")
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
-        CreativeModeTab tab = event.getTab();
         if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_NATURAL_BLOCKS)) {
 
             TabUtil.putAfter(event, AetherBlocks.AETHER_GRASS_BLOCK,

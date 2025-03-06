@@ -23,6 +23,7 @@ import net.zepalesque.unity.config.UnityConfig;
 import net.zepalesque.unity.config.UnityConfigHandler;
 import net.zepalesque.unity.data.UnityData;
 import net.zepalesque.unity.extendablestate.UnityStateLists;
+import net.zepalesque.unity.item.UnityDispenserBehaviors;
 import net.zepalesque.unity.item.UnityItems;
 import net.zepalesque.unity.tile.UnityTiles;
 import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
@@ -30,7 +31,7 @@ import net.zepalesque.zenith.api.packconfig.PackConfig;
 import org.slf4j.Logger;
 
 @Mod(Unity.MODID)
-public class Unity {
+public final class Unity {
     public static final String MODID = "aether_unity";
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -58,9 +59,7 @@ public class Unity {
                 UnityStateLists.STATE_LISTS
         };
 
-        for (DeferredRegister<?> register : registers) {
-            register.register(bus);
-        }
+        for (DeferredRegister<?> register : registers) register.register(bus);
 
         UnityConfigHandler.setup(mod, bus);
 
@@ -73,6 +72,7 @@ public class Unity {
             UnityBlocks.registerToolConversions();
             UnityBlocks.registerFlammability();
             UnityBlocks.replaceBlockSFX();
+            UnityDispenserBehaviors.bootstrap();
         });
     }
 
@@ -83,13 +83,14 @@ public class Unity {
     }
 
     public void registerPackets(RegisterPayloadHandlersEvent event) {
+        @SuppressWarnings("unused")
         PayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
     }
 
     private void registerDataMaps(RegisterDataMapTypesEvent event) {
     }
 
-    public  void packSetup(AddPackFindersEvent event) {
+    public void packSetup(AddPackFindersEvent event) {
         PACK_CONFIG.setup(event);
     }
 

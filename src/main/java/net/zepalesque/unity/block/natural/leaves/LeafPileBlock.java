@@ -41,9 +41,7 @@ public class LeafPileBlock extends Block {
 
     @Override
     protected boolean isPathfindable(BlockState state, PathComputationType type) {
-        if (type == PathComputationType.LAND) {
-            return state.getValue(LAYERS) < HEIGHT_IMPASSABLE;
-        }
+        if (type == PathComputationType.LAND) return state.getValue(LAYERS) < HEIGHT_IMPASSABLE;
         return false;
     }
 
@@ -81,13 +79,10 @@ public class LeafPileBlock extends Block {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState blockstate = level.getBlockState(pos.below());
-        if (blockstate.is(BlockTags.SNOW_LAYER_CANNOT_SURVIVE_ON)) {
-            return false;
-        } else if (blockstate.is(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON)) {
-            return true;
-        } else {
+        if (blockstate.is(BlockTags.SNOW_LAYER_CANNOT_SURVIVE_ON)) return false;
+        else if (blockstate.is(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON)) return true;
+        else
             return Block.isFaceFull(blockstate.getCollisionShape(level, pos.below()), Direction.UP) || blockstate.is(this) && blockstate.getValue(LAYERS) == MAX_HEIGHT;
-        }
     }
 
     @Override
@@ -98,15 +93,10 @@ public class LeafPileBlock extends Block {
     @Override
     public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
         int i = state.getValue(LAYERS);
-        if (context.getItemInHand().is(this.asItem()) && i < MAX_HEIGHT) {
-            if (context.replacingClickedOnBlock()) {
-                return context.getClickedFace() == Direction.UP;
-            } else {
-                return true;
-            }
-        } else {
-            return i == 1;
-        }
+        if (context.getItemInHand().is(this.asItem()) && i < MAX_HEIGHT)
+            if (context.replacingClickedOnBlock()) return context.getClickedFace() == Direction.UP;
+            else return true;
+        else return i == 1;
     }
 
     @Nullable
@@ -116,9 +106,7 @@ public class LeafPileBlock extends Block {
         if (blockstate.is(this)) {
             int i = blockstate.getValue(LAYERS);
             return blockstate.setValue(LAYERS, Math.min(MAX_HEIGHT, i + 1));
-        } else {
-            return super.getStateForPlacement(context);
-        }
+        } else return super.getStateForPlacement(context);
     }
 
     @Override

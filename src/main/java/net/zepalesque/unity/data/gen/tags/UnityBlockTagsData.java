@@ -28,9 +28,8 @@ public class UnityBlockTagsData extends BlockTagsProvider {
     protected void addTags(@NotNull HolderLookup.Provider provider) {
         // Adds every single Unity block as a block that should be treaded as an Aether Block and get the tool debuff
         IntrinsicTagAppender<Block> tag = this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK);
-        for (DeferredHolder<Block, ? extends Block> block : UnityBlocks.BLOCKS.getEntries()) {
+        for (DeferredHolder<Block, ? extends Block> block : UnityBlocks.BLOCKS.getEntries())
             tag.add(block.get());
-        }
 
         this.tag(UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING).add(
                 AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get()

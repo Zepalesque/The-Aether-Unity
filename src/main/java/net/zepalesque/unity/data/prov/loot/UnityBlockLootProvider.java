@@ -33,11 +33,9 @@ public abstract class UnityBlockLootProvider extends AetherBlockLootSubProvider 
     // Cool double drops stuff hopefully
     @Override
     protected void add(Block block, LootTable.Builder builder) {
-        if (block.defaultBlockState().hasProperty(AetherBlockStateProperties.DOUBLE_DROPS)) {
+        if (block.defaultBlockState().hasProperty(AetherBlockStateProperties.DOUBLE_DROPS))
             super.add(block, builder.apply(DoubleDrops.builder()));
-        } else {
-            super.add(block, builder);
-        }
+        else super.add(block, builder);
     }
 
     public UnityBlockLootProvider(Set<Item> items, FeatureFlagSet flags, HolderLookup.Provider registries) {
@@ -76,7 +74,7 @@ public abstract class UnityBlockLootProvider extends AetherBlockLootSubProvider 
     // Drops another without shears
     public Function<Block, LootTable.Builder> shearsOr(ItemLike drop, float chance, float min, float max) {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return (block) -> createSilkTouchOrShearsDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(drop).when(LootItemRandomChanceCondition.randomChance(chance)).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
+        return block -> createSilkTouchOrShearsDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(drop).when(LootItemRandomChanceCondition.randomChance(chance)).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
     }
 
     public Function<Block, LootTable.Builder> shearsOr(ItemLike drop, float chance) {

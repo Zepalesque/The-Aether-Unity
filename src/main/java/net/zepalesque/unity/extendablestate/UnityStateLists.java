@@ -14,9 +14,10 @@ public class UnityStateLists {
 
     public static final DeferredRegister<ExtendableStateList> STATE_LISTS = DeferredRegister.create(Zenith.Keys.EXTENDABLE_STATE_LIST, Unity.MODID);
 
-    public static final DeferredHolder<ExtendableStateList, ExtendableStateList> FLUTEMOSS = STATE_LISTS.register("flutemoss",
+    public static final DeferredHolder<ExtendableStateList, ExtendableStateList> FLUTEMOSS =
+        STATE_LISTS.register("flutemoss",
             () -> new ExtendableStateList(250, 150, SimpleWeightedRandomList.<BlockState>builder()
-                    .add(BaseFeatureBuilders.drops(UnityBlocks.SHORT_AETHER_GRASS), 150)
-                    .add(BaseFeatureBuilders.drops(UnityBlocks.FLUTEMOSS_CARPET), 75)
-                    .build()));
+                .add(BaseFeatureBuilders.drops(UnityBlocks.SHORT_AETHER_GRASS), 150)
+                .add(BaseFeatureBuilders.drops(UnityBlocks.FLUTEMOSS_CARPET), 75)
+                .build()));
 }

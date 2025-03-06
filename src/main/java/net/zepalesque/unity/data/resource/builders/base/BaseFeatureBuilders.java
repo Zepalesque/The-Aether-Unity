@@ -6,7 +6,6 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.resources.AetherFeatureStates;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
@@ -37,6 +36,7 @@ import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+@SuppressWarnings("unused")
 public class BaseFeatureBuilders {
 
     // TODO: Replace all instances with FeatureUtils#register (if that will work)
@@ -82,44 +82,46 @@ public class BaseFeatureBuilders {
     public static RuleBasedLakeFeature.Config lake(TagKey<Block> grass, Supplier<? extends Block> fluid, HolderGetter<NormalNoise.NoiseParameters> params, RuleBasedBlockStateProvider.Rule... others) {
         double threshold;
         return new RuleBasedLakeFeature.Config(
-                prov(fluid), Optional.of(
-                        new RuleBasedBlockStateProvider(BlockStateProvider.simple(AetherFeatureStates.AETHER_DIRT), Stream.concat(Stream.of(
-                                new RuleBasedBlockStateProvider.Rule(
-                                        BlockPredicate.allOf(
-                                                BlockPredicate.matchesTag(grass),
-                                                BlockPredicate.not(BlockPredicate.solid(OFFSET_ABOVE)),
-                                                BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()))
-                                        ), BlockStateProvider.simple(Blocks.AIR)
-                                ),
-                                new RuleBasedBlockStateProvider.Rule(
-                                        BlockPredicate.anyOf(
-                                                BlockPredicate.matchesTag(OFFSET_ABOVE, AetherTags.Blocks.AETHER_DIRT),
-                                                BlockPredicate.matchesBlocks(OFFSET_ABOVE, AetherBlocks.AETHER_DIRT.get())
-                                        ), prov(AetherBlocks.AETHER_DIRT)
-                                ),
+            prov(fluid), Optional.of(new RuleBasedBlockStateProvider(
+                BlockStateProvider.simple(AetherFeatureStates.AETHER_DIRT), Stream.concat(Stream.of(
+                    new RuleBasedBlockStateProvider.Rule(
+                        BlockPredicate.allOf(
+                            BlockPredicate.matchesTag(grass),
+                            BlockPredicate.not(BlockPredicate.solid(OFFSET_ABOVE)),
+                            BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()))
+                        ), BlockStateProvider.simple(Blocks.AIR)
+                    ),
+                    
+                    new RuleBasedBlockStateProvider.Rule(
+                        BlockPredicate.anyOf(
+                            BlockPredicate.matchesTag(OFFSET_ABOVE, AetherTags.Blocks.AETHER_DIRT),
+                            BlockPredicate.matchesBlocks(OFFSET_ABOVE, AetherBlocks.AETHER_DIRT.get())
+                        ), prov(AetherBlocks.AETHER_DIRT)
+                    ),
 
-                                new RuleBasedBlockStateProvider.Rule(
-                                        BlockPredicate.allOf(
-                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, -0.3, threshold = 0.1),
-                                                BlockPredicate.matchesBlocks(OFFSET_ABOVE, Blocks.WATER)
-                                                ),
-                                        prov(UnityBlocks.AETHER_MUD)
-                                ),
+                    new RuleBasedBlockStateProvider.Rule(
+                        BlockPredicate.allOf(
+                            new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, -0.3, threshold = 0.1),
+                            BlockPredicate.matchesBlocks(OFFSET_ABOVE, Blocks.WATER)
+                        ),
+                        prov(UnityBlocks.AETHER_MUD)
+                    ),
 
-                                new RuleBasedBlockStateProvider.Rule(
-                                        BlockPredicate.allOf(
-                                                // Use same seed, mud will surround clay
-                                                BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()),
-                                                new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, threshold, Double.MAX_VALUE)
-                                        ),
-                                        prov(UnityBlocks.VALKYRIE_CLAY)
-                                ),
-                                new RuleBasedBlockStateProvider.Rule(
-                                        BlockPredicate.allOf(
-                                                BlockPredicate.matchesTag(grass),
-                                                BlockPredicate.matchesTag(OFFSET_ABOVE, BlockTags.AIR)
-                                        ), BlockStateProvider.simple(Blocks.AIR)
-                                )
-                        ), Stream.of(others)).toList())));
+                    new RuleBasedBlockStateProvider.Rule(
+                        BlockPredicate.allOf(
+                            // Use same seed, mud will surround clay
+                            BlockPredicate.matchesBlocks(OFFSET_ABOVE, fluid.get()),
+                            new NoisePredicate(params.getOrThrow(Noises.SWAMP), 2743L, threshold, Double.MAX_VALUE)
+                        ),
+                        prov(UnityBlocks.VALKYRIE_CLAY)
+                    ),
+                    
+                    new RuleBasedBlockStateProvider.Rule(
+                        BlockPredicate.allOf(
+                            BlockPredicate.matchesTag(grass),
+                            BlockPredicate.matchesTag(OFFSET_ABOVE, BlockTags.AIR)
+                        ), BlockStateProvider.simple(Blocks.AIR)
+                    )
+                ), Stream.of(others)).toList())));
     }
 }

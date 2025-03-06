@@ -32,41 +32,41 @@ public class UnityBlocks extends UnityBlockBuilders {
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Unity.MODID);
 
-    public static DeferredBlock<AetherShortGrassBlock> SHORT_AETHER_GRASS = register("short_aether_grass",
+    public static final DeferredBlock<AetherShortGrassBlock> SHORT_AETHER_GRASS = register("short_aether_grass",
             () -> new AetherShortGrassBlock(
                     Properties.ofFullCopy(Blocks.SHORT_GRASS)
                             .offsetType(OffsetType.XZ)
                             .hasPostProcess((state, level, pos) -> true)
             ));
 
-    public static DeferredBlock<CustomBoundsBushBlock> SKYFERN = register("skyfern",
+    public static final DeferredBlock<CustomBoundsBushBlock> SKYFERN = register("skyfern",
             () -> new CustomBoundsBushBlock.Enchanted(
                     CommonPlantBounds.BUSH,
                     Properties.ofFullCopy(Blocks.FERN)
                             .hasPostProcess((state, level, pos) -> true)
             ));
 
-    public static DeferredBlock<LeafPileBlock> SKYROOT_LEAF_PILE = register("skyroot_leaf_pile",
+    public static final DeferredBlock<LeafPileBlock> SKYROOT_LEAF_PILE = register("skyroot_leaf_pile",
             () -> new LeafPileBlock(AetherBlocks.SKYROOT_LEAVES));
 
-    public static DeferredBlock<LeafPileBlock> GOLDEN_OAK_LEAF_PILE = register("golden_oak_leaf_pile",
+    public static final DeferredBlock<LeafPileBlock> GOLDEN_OAK_LEAF_PILE = register("golden_oak_leaf_pile",
             () -> new LeafPileBlock(AetherBlocks.GOLDEN_OAK_LEAVES));
 
-    public static DeferredBlock<CampfireBlock> AMBROSIUM_CAMPFIRE = register("ambrosium_campfire",
+    public static final DeferredBlock<CampfireBlock> AMBROSIUM_CAMPFIRE = register("ambrosium_campfire",
             () -> new CampfireBlock(false, 1, Properties.ofFullCopy(Blocks.CAMPFIRE)));
 
-    public static DeferredBlock<DoubleDropsGrowthBlock> FLUTEMOSS_BLOCK = register("flutemoss_block",
+    public static final DeferredBlock<DoubleDropsGrowthBlock> FLUTEMOSS_BLOCK = register("flutemoss_block",
             () -> new DoubleDropsGrowthBlock(Properties.ofFullCopy(Blocks.MOSS_BLOCK).mapColor(MapColor.COLOR_LIGHT_GREEN), UnityFeatureConfig.FLUTEMOSS_BONEMEAL));
-    public static DeferredBlock<DoubleDropsCarpet> FLUTEMOSS_CARPET = register("flutemoss_carpet",
+    public static final DeferredBlock<DoubleDropsCarpet> FLUTEMOSS_CARPET = register("flutemoss_carpet",
             () -> new DoubleDropsCarpet(Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.COLOR_LIGHT_GREEN)));
 
-    public static DeferredBlock<DoubleDropsMud> AETHER_MUD = register("aether_mud",
+    public static final DeferredBlock<DoubleDropsMud> AETHER_MUD = register("aether_mud",
             () -> new DoubleDropsMud(Properties.ofFullCopy(Blocks.MUD).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)));
 
-    public static DeferredBlock<AetherDoubleDropBlock> PACKED_AETHER_MUD = register("packed_aether_mud",
+    public static final DeferredBlock<AetherDoubleDropBlock> PACKED_AETHER_MUD = register("packed_aether_mud",
             () -> new AetherDoubleDropBlock(Properties.ofFullCopy(Blocks.PACKED_MUD).mapColor(MapColor.TERRACOTTA_CYAN)));
 
-    public static DeferredBlock<Block> AETHER_MUD_BRICKS = register("aether_mud_bricks",
+    public static final DeferredBlock<Block> AETHER_MUD_BRICKS = register("aether_mud_bricks",
             () -> new Block(Properties.ofFullCopy(Blocks.MUD_BRICKS).mapColor(MapColor.TERRACOTTA_CYAN)));
     public static final DeferredBlock<WallBlock> AETHER_MUD_BRICK_WALL = register("aether_mud_brick_wall", () -> new WallBlock(Block.Properties.ofFullCopy(AETHER_MUD_BRICKS.get()).forceSolidOn()));
     public static final DeferredBlock<StairBlock> AETHER_MUD_BRICK_STAIRS = register("aether_mud_brick_stairs",
@@ -74,17 +74,17 @@ public class UnityBlocks extends UnityBlockBuilders {
     public static final DeferredBlock<SlabBlock> AETHER_MUD_BRICK_SLAB = register("aether_mud_brick_slab",
             () -> new SlabBlock(Block.Properties.ofFullCopy(AETHER_MUD_BRICKS.get()).strength(0.5F, 6.0F)));
 
-    public static DeferredBlock<AetherDoubleDropBlock> COARSE_AETHER_DIRT = register("coarse_aether_dirt",
+    public static final DeferredBlock<AetherDoubleDropBlock> COARSE_AETHER_DIRT = register("coarse_aether_dirt",
             () -> new AetherDoubleDropBlock(Properties.ofFullCopy(AetherBlocks.AETHER_DIRT.get())));
 
     // TODO: inline, just here to modify easier
     private static final SoundType CLAY_BRICKS = SoundType.TUFF_BRICKS;
 
-    public static DeferredBlock<AetherDoubleDropBlock> VALKYRIE_CLAY = register("valkyrie_clay",
+    public static final DeferredBlock<AetherDoubleDropBlock> VALKYRIE_CLAY = register("valkyrie_clay",
             () -> new AetherDoubleDropBlock(Properties.ofFullCopy(Blocks.CLAY).mapColor(MapColor.QUARTZ)));
 
     // this is why i added blocksets to redux oh my goddddddddddddddddddddddddddddddddddddd
-    public static DeferredBlock<Block> VALKYRIE_BRICKS = register("valkyrie_bricks",
+    public static final DeferredBlock<Block> VALKYRIE_BRICKS = register("valkyrie_bricks",
             () -> new Block(Properties.ofFullCopy(Blocks.BRICKS).sound(CLAY_BRICKS).mapColor(MapColor.TERRACOTTA_CYAN)));
     public static final DeferredBlock<WallBlock> VALKYRIE_BRICK_WALL = register("valkyrie_brick_wall", () -> new WallBlock(Block.Properties.ofFullCopy(VALKYRIE_BRICKS.get()).forceSolidOn()));
     public static final DeferredBlock<StairBlock> VALKYRIE_BRICK_STAIRS = register("valkyrie_brick_stairs",
@@ -93,20 +93,14 @@ public class UnityBlocks extends UnityBlockBuilders {
             () -> new SlabBlock(Block.Properties.ofFullCopy(VALKYRIE_BRICKS.get()).strength(0.5F, 6.0F)));
 
 
-    public static DeferredBlock<Block> VALKYRIE_TILES = register("valkyrie_tiles",
+    public static final DeferredBlock<Block> VALKYRIE_TILES = register("valkyrie_tiles",
             () -> new Block(Properties.ofFullCopy(VALKYRIE_BRICKS.get()).mapColor(MapColor.TERRACOTTA_CYAN)));
     public static final DeferredBlock<WallBlock> VALKYRIE_TILE_WALL = register("valkyrie_tile_wall", () -> new WallBlock(Block.Properties.ofFullCopy(VALKYRIE_TILES.get()).forceSolidOn()));
     public static final DeferredBlock<StairBlock> VALKYRIE_TILE_STAIRS = register("valkyrie_tile_stairs",
             () -> new StairBlock(VALKYRIE_TILES.get().defaultBlockState(), Block.Properties.ofFullCopy(VALKYRIE_TILES.get())));
     public static final DeferredBlock<SlabBlock> VALKYRIE_TILE_SLAB = register("valkyrie_tile_slab",
             () -> new SlabBlock(Block.Properties.ofFullCopy(VALKYRIE_TILES.get()).strength(0.5F, 6.0F)));
-
-
-
-
-
-
-
+    
     public static void registerFlammability() {
         FireAccessor accessor = (FireAccessor) Blocks.FIRE;
     }

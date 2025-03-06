@@ -40,28 +40,44 @@ public class UnityFeatureConfig extends UnityFeatureBuilders {
         HolderGetter<ConfiguredFeature<?, ?>> configs = context.lookup(Registries.CONFIGURED_FEATURE);
         HolderGetter<NormalNoise.NoiseParameters> noises = context.lookup(Registries.NOISE);
 
-        register(context, FLUTEMOSS_VEGETATION, ZenithFeatures.EXTENDABLE_STATE_LIST_BLOCK.get(), new ExtendableStateListBlockFeature.Config(UnityStateLists.FLUTEMOSS.get(), Optional.empty()));
-
+        register(context, FLUTEMOSS_VEGETATION, ZenithFeatures.EXTENDABLE_STATE_LIST_BLOCK.get(),
+            new ExtendableStateListBlockFeature.Config(
+                UnityStateLists.FLUTEMOSS.get(), Optional.empty()
+            ));
+       
         register(context, FLUTEMOSS_BONEMEAL, Feature.VEGETATION_PATCH,
-                new VegetationPatchConfiguration(UnityTags.Blocks.AETHER_CARVER_REPLACEABLES,
-                        prov(UnityBlocks.FLUTEMOSS_BLOCK),
-                        Holder.direct(new PlacedFeature(configs.getOrThrow(FLUTEMOSS_VEGETATION),
-                                List.of())),
-                        CaveSurface.FLOOR,
-                        ConstantInt.of(1),
-                        0.0F,
-                        2,
-                        0.8F,
-                        UniformInt.of(1, 2),
-                        0.75F));
+            new VegetationPatchConfiguration(UnityTags.Blocks.AETHER_CARVER_REPLACEABLES,
+                prov(UnityBlocks.FLUTEMOSS_BLOCK),
+                Holder.direct(new PlacedFeature(configs.getOrThrow(FLUTEMOSS_VEGETATION),
+                    List.of())),
+                CaveSurface.FLOOR,
+                ConstantInt.of(1),
+                0.0F,
+                2,
+                0.8F,
+                UniformInt.of(1, 2),
+                0.75F)
+        );
 
         // Overrides
-        register(context, AetherConfiguredFeatures.GRASS_PATCH_CONFIGURATION, Feature.RANDOM_PATCH, patch(48, 7, 3, prov(UnityBlocks.SHORT_AETHER_GRASS), NOT_ON_COARSE_DIRT.get()));
-        register(context, AetherConfiguredFeatures.TALL_GRASS_PATCH_CONFIGURATION, Feature.NO_OP, new NoneFeatureConfiguration());
+        
+        register(context, AetherConfiguredFeatures.GRASS_PATCH_CONFIGURATION, Feature.RANDOM_PATCH,
+            patch(48, 7, 3,
+                prov(UnityBlocks.SHORT_AETHER_GRASS),
+                NOT_ON_COARSE_DIRT.get())
+        );
+        
+        register(context, AetherConfiguredFeatures.TALL_GRASS_PATCH_CONFIGURATION, Feature.NO_OP,
+            NoneFeatureConfiguration.INSTANCE
+        );
 
-        register(context, AetherConfiguredFeatures.WATER_LAKE_CONFIGURATION, ZenithFeatures.RULE_BASED_LAKE.get(), lake(UnityTags.Blocks.AETHER_LAKE_SKIP_REPLACEMENT, () -> Blocks.WATER, noises));
+        register(context, AetherConfiguredFeatures.WATER_LAKE_CONFIGURATION,
+            ZenithFeatures.RULE_BASED_LAKE.get(),
+            lake(UnityTags.Blocks.AETHER_LAKE_SKIP_REPLACEMENT, () -> Blocks.WATER, noises)
+        );
 
         register(context, GRASS_BONEMEAL, Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(prov(UnityBlocks.SHORT_AETHER_GRASS)));
+            new SimpleBlockConfiguration(prov(UnityBlocks.SHORT_AETHER_GRASS))
+        );
     }
 }

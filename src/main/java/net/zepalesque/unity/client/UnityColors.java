@@ -1,6 +1,8 @@
 package net.zepalesque.unity.client;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.ColorResolver;
@@ -21,18 +23,25 @@ public class UnityColors {
     public static final int AETHER_GRASS_COLOR = 0xADF9C4;
 
     public static final ColorResolver GRASS_COLORS = (biome, x, z) -> UnityBiomeTints.AETHER_GRASS.get().getColor(biome);
-
+    
+    
+    public static final BlockColor OVERLAY_BASE = (state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 1, false);
+    public static final BlockColor FULL_INHERITING = (state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 0, true);
+    public static final BlockColor OVERLAY_INHERITING = (state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 1, true);
+    
+    public static final ItemColor ITEM_OVERLAY_AETHER = (stack, tintIndex) -> tintIndex == 1 ? AETHER_GRASS_COLOR | 0xFF000000 : 0xFFFFFFFF;
+    public static final ItemColor ITEM_FULL_AETHER = (stack, tintIndex) -> tintIndex == 0 ? AETHER_GRASS_COLOR | 0xFF000000 : 0xFFFFFFFF;
+    
     public static void blockColors(RegisterColorHandlersEvent.Block event) {
         Unity.LOGGER.debug("Beginning block color registration for the Aether: Unity");
 
-        event.register((state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 1, false),
-                AetherBlocks.AETHER_GRASS_BLOCK.get()
+        event.register(OVERLAY_BASE, AetherBlocks.AETHER_GRASS_BLOCK.get()
         );
-        event.register((state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 0, true),
+        event.register(FULL_INHERITING,
                 UnityBlocks.SHORT_AETHER_GRASS.get(),
                 UnityBlocks.SKYFERN.get()
         );
-        event.register((state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 1, true),
+        event.register(OVERLAY_INHERITING,
                 AetherBlocks.WHITE_FLOWER.get(),
                 AetherBlocks.POTTED_WHITE_FLOWER.get(),
                 AetherBlocks.PURPLE_FLOWER.get(),
@@ -42,12 +51,12 @@ public class UnityColors {
 
     public static void itemColors(RegisterColorHandlersEvent.Item event) {
         Unity.LOGGER.debug("Beginning item color registration for the Aether: Unity");
-        event.register((stack, tintIndex) -> tintIndex == 1 ? AETHER_GRASS_COLOR | 0xFF000000 : 0xFFFFFFFF,
+        event.register(ITEM_OVERLAY_AETHER,
                 AetherBlocks.AETHER_GRASS_BLOCK.get(),
                 AetherBlocks.WHITE_FLOWER.get(),
                 AetherBlocks.PURPLE_FLOWER.get()
         );
-        event.register((stack, tintIndex) -> tintIndex == 0 ? AETHER_GRASS_COLOR | 0xFF000000 : 0xFFFFFFFF,
+        event.register(ITEM_FULL_AETHER,
                 UnityBlocks.SHORT_AETHER_GRASS.get(),
                 UnityBlocks.SKYFERN.get()
         );

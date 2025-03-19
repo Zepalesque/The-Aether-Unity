@@ -16,6 +16,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.data.gen.UnityBlockStateData;
 import net.zepalesque.unity.data.gen.UnityItemModelData;
+import net.zepalesque.unity.data.gen.UnityLangOverridesData;
 import net.zepalesque.unity.data.gen.UnityLanguageData;
 import net.zepalesque.unity.data.gen.UnityLootData;
 import net.zepalesque.unity.data.gen.UnityMapData;
@@ -68,5 +69,6 @@ public class UnityData extends UnityDataBuilders {
         );
         
         createPack(event, PackType.CLIENT_RESOURCES, output, (out, modid) -> new UnityBlockStateData.Grass(out, modid, existing), "tintable_grass", Unity.MODID);
+        createPack(event, PackType.CLIENT_RESOURCES, output, UnityLangOverridesData::new, "lang_overrides", Unity.MODID);
     }
 }

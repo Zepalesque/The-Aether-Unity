@@ -2,18 +2,18 @@
   "variants": {
     "double_drops=false,snowy=false": [
       {
-        "model": "aether_unity:block/aether_grass_block"
+        "model": "aether:block/aether_grass_block"
       },
       {
-        "model": "aether_unity:block/aether_grass_block",
+        "model": "aether:block/aether_grass_block",
         "y": 90
       },
       {
-        "model": "aether_unity:block/aether_grass_block",
+        "model": "aether:block/aether_grass_block",
         "y": 180
       },
       {
-        "model": "aether_unity:block/aether_grass_block",
+        "model": "aether:block/aether_grass_block",
         "y": 270
       }
     ],
@@ -36,18 +36,18 @@
     ],
     "double_drops=true,snowy=false": [
       {
-        "model": "aether_unity:block/aether_grass_block"
+        "model": "aether:block/aether_grass_block"
       },
       {
-        "model": "aether_unity:block/aether_grass_block",
+        "model": "aether:block/aether_grass_block",
         "y": 90
       },
       {
-        "model": "aether_unity:block/aether_grass_block",
+        "model": "aether:block/aether_grass_block",
         "y": 180
       },
       {
-        "model": "aether_unity:block/aether_grass_block",
+        "model": "aether:block/aether_grass_block",
         "y": 270
       }
     ],

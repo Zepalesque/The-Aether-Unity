@@ -100,7 +100,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
 
     // Cross blocks
     public void crossGlowOverlay(Block block, String location) {
-        BlockModelBuilder cross = models().withExistingParent(this.name(block),
+        BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_glowing_overlay"))
             .texture("cross", this.texture(this.name(block), location))
             .texture("overlay", this.texture(this.name(block) + "_glow", location)).renderType("cutout");
@@ -108,7 +108,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public void crossTintedGlow(Block block, String location) {
-        BlockModelBuilder cross = models().withExistingParent(this.name(block),
+        BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_glow"))
             .texture("cross", this.texture(this.name(block), location))
             .texture("overlay", this.texture(this.name(block) + "_glow", location)).renderType("cutout");
@@ -116,7 +116,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public void crossTintedDualGloverlay(Block block, String location, boolean useGlowForParticle) {
-        BlockModelBuilder cross = models().withExistingParent(this.name(block),
+        BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_dual_gloverlay/"
                     + (useGlowForParticle ? "glow_particle" : "overlay_particle")))
             .texture("cross", this.texture(this.name(block), location))
@@ -126,7 +126,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
 
     }
     public void crossTintedOverlay(Block block, String location) {
-        BlockModelBuilder cross = models().withExistingParent(this.name(block),
+        BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_overlay"))
             .texture("cross", this.texture(this.name(block), location))
             .texture("overlay", this.texture(this.name(block) + "_overlay", location)).renderType("cutout");
@@ -134,12 +134,12 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public void crossEnchantableOverlay(Block block, String location) {
-        BlockModelBuilder cross = models().withExistingParent(this.name(block),
+        BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_overlay"))
             .texture("cross", this.texture(this.name(block), location))
             .texture("overlay", this.texture(this.name(block) + "_overlay", location)).renderType("cutout");
         BlockModelBuilder ench = models().cross(
-            "enchanted_" + this.name(block), this.texture("enchanted_" + this.name(block), location)
+            this.nameID(block, "%s:enchanted_%s"), this.texture("enchanted_" + this.name(block), location)
         ).renderType("cutout");
         this.getVariantBuilder(block).forAllStates(state ->
             ConfiguredModel.builder().modelFile(state.getValue(UnityStates.ENCHANTED) ? ench : cross).build());
@@ -147,7 +147,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
 
     public void crossEnchantable(Block block, String location) {
         BlockModelBuilder cross = models().singleTexture(
-            this.name(block), mcLoc("block/tinted_cross"), "cross",
+            this.nameID(block), mcLoc("block/tinted_cross"), "cross",
             this.texture(this.name(block), location)
         ).renderType("cutout");
 
@@ -166,7 +166,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public void potPrefix(Block block, Block flower, String location, String prefix) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), mcLoc("block/flower_pot_cross"))
+        ModelFile pot = this.models().withExistingParent(this.nameID(block), mcLoc("block/flower_pot_cross"))
             .texture("plant", this.modLoc(
                 "block/" + location + prefix
                     + this.name(flower))
@@ -175,7 +175,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public void tintedPotDualGloverlay(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block),
+        ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_dual_gloverlay"))
             .texture("plant", this.modLoc("block/" + location + this.name(flower)))
             .texture("glow", this.modLoc("block/" + location + this.name(flower) + "_glow"))
@@ -184,7 +184,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
     public void tintedPotGlowOverlay(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block),
+        ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_glowing_overlay"))
             .texture("plant", this.modLoc("block/" + location + this.name(flower)))
             .texture("overlay", this.modLoc("block/" + location + this.name(flower) + "_glow"))
@@ -192,7 +192,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
     public void tintedPotGlowOverlayAlt(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block),
+        ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_glowing_overlay"))
             .texture("plant", this.modLoc("block/" + location + "potted_" + this.name(flower)))
             .texture("overlay", this.modLoc("block/" + location + "potted_" + this.name(flower) + "_glow"))
@@ -200,7 +200,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
     public void tintedPotOverlay(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block),
+        ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_overlay"))
             .texture("plant", this.modLoc("block/" + location + this.name(flower)))
             .texture("overlay", this.modLoc("block/" + location + this.name(flower) + "_overlay"))
@@ -208,14 +208,14 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
     public void tintedPot(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block),
+        ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted"))
             .texture("plant", this.modLoc("block/" + location + this.name(flower)))
             .renderType("cutout");
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
     public void tintedPotOverlayAlt(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block),
+        ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_overlay"))
             .texture("plant", this.modLoc("block/" + location + "potted_" + this.name(flower)))
             .texture("overlay", this.modLoc("block/" + location + "potted_" + this.name(flower) + "_overlay"))
@@ -226,7 +226,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     // Cubes
 
     public void cubeAllGlow(Block block, String location) {
-        BlockModelBuilder cross = models().withExistingParent(this.name(block),
+        BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/cube/cube_all_glow"))
             .texture("all", this.texture(this.name(block), location))
             .texture("glow", this.texture(this.name(block) + "_glow", location))
@@ -241,10 +241,10 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
             ConfiguredModel.builder().modelFile(
                 state.getValue(LeafPileBlock.LAYERS) == 16
                     ? this.models().cubeAll(
-                        this.name(block) + "_full", this.texture(baseBlock, location))
+                        this.nameID(block) + "_full", this.texture(baseBlock, location))
                     .renderType("cutout")
                     : this.models().singleTexture(
-                        this.name(block) + "_size_" + state.getValue(LeafPileBlock.LAYERS),
+                        this.nameID(block) + "_size_" + state.getValue(LeafPileBlock.LAYERS),
                         this.modLoc("block/template/layer/layer_size" + state.getValue(LeafPileBlock.LAYERS)),
                         "block", this.texture(baseBlock, location))
                     .renderType("cutout")
@@ -253,7 +253,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
 
     public void campfire(Block block, String location) {
         this.getVariantBuilder(block).forAllStatesExcept(state -> {
-            BlockModelBuilder on = this.models().withExistingParent(this.name(block),
+            BlockModelBuilder on = this.models().withExistingParent(this.nameID(block),
                     Unity.loc("block/template/campfire"))
                 .texture("log", this.modLoc("block/" + location + this.name(block) + "_log"))
                 .texture("fire", this.modLoc("block/" + location + this.name(block) + "_fire"))
@@ -261,7 +261,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                 .renderType("cutout");
             
             BlockModelBuilder off = this.models().singleTexture(
-                this.name(block) + "_off", Unity.loc("block/template/campfire_off"),
+                this.nameID(block) + "_off", Unity.loc("block/template/campfire_off"),
                 "log", this.modLoc("block/" + location + this.name(block) + "_log")
             ) .renderType("cutout");
 
@@ -274,7 +274,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public void carpet(Block block, Block baseBlock, String location) {
-        this.simpleBlock(block, this.models().singleTexture(this.name(block),
+        this.simpleBlock(block, this.models().singleTexture(this.nameID(block),
             mcLoc("block/carpet"), "wool", this.texture(this.name(baseBlock), location))
         );
     }
@@ -295,6 +295,16 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     
     public ResourceLocation texture(Block block, String location, String suffix) {
         return BuiltInRegistries.BLOCK.getKey(block).withPath("block/" + location + name(block) + suffix);
+    }
+    
+    public String nameID(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block).toString();
+    }
+    
+    // in format of example: "enchanted_%s", allows modified model names
+    public String nameID(Block block, String format) {
+        ResourceLocation rl = BuiltInRegistries.BLOCK.getKey(block);
+        return rl.getPath() + ":" + String.format(format, rl.getNamespace());
     }
 
 }

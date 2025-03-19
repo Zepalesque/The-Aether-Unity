@@ -71,4 +71,14 @@ public abstract class UnityLanguageProvider extends AetherLanguageProvider {
             BOAT = "Boats can be used to easily traverse large bodies of water!",
             CHEST_BOAT = "Helpful for transporting more items over long stretches of water.";
     }
+    
+    public static class UnityLanguagePackGen extends UnityLanguageProvider {
+        
+        public UnityLanguagePackGen(PackOutput output, String id) {
+            super(output, id);
+        }
+        
+        @Override
+        protected void addTranslations() {}
+    }
 }

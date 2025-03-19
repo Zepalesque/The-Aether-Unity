@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "aether_unity:block/potted_white_flower"
+      "model": "aether:block/potted_white_flower"
     }
   }
 }

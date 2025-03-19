@@ -7,6 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.SpreadingSnowyDirtBlock;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -43,6 +44,44 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                             + state.getValue(UnityStates.GRASS_SIZE).getSerializedName() + "_grass"))
                     .renderType("cutout")
                 ).build();
+        });
+    }
+    
+    public void tintableGrassBlock(Block block, Block dirt, String location, String dirtLocation) {
+        tintableGrassBlock(block, dirt, location, dirtLocation, (snow, bottom, top) -> models().cubeBottomTop(name(block) + "_snow", snow, bottom, top));
+    }
+    
+    public void tintableGrassBlockOverride(Block block, Block dirt, String location, String dirtLocation) {
+        tintableGrassBlock(block, dirt, location, dirtLocation, (snow, bottom, top) -> models().getExistingFile(texture(block, "", "_snow")));
+    }
+    
+    public void tintableGrassBlock(Block block, Block dirt, String location, String dirtLocation, SnowGrassModelMaker snowModel) {
+        ResourceLocation bottom = texture(dirt, dirtLocation);
+        ResourceLocation top = texture(block, location, "_side");
+        ResourceLocation overlay = texture(block, location, "_side_overlay");
+        ResourceLocation side = texture(block, location, "_top");
+        ResourceLocation snow = texture(block, location, "_side_snow");
+        tintableGrassBlock(block, bottom, top, overlay, side, snow, snowModel.create(snow, bottom, top));
+    }
+    
+    @FunctionalInterface
+    public interface SnowGrassModelMaker {
+        ModelFile create(ResourceLocation snow, ResourceLocation bottom, ResourceLocation top);
+    }
+    
+    public void tintableGrassBlock(Block block, ResourceLocation bottom,
+                                   ResourceLocation top,
+                                   ResourceLocation overlay,
+                                   ResourceLocation side,
+                                   ResourceLocation snow, ModelFile snowModel) {
+        
+        ModelFile model = models().withExistingParent(name(block), Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/tinted_grass_block"))
+            .texture("overlay", overlay)
+            .texture("side", side)
+            .texture("top", top);
+        this.getVariantBuilder(block).forAllStates(state -> {
+            boolean isSnowy = state.getValue(SpreadingSnowyDirtBlock.SNOWY);
+            return ConfiguredModel.allYRotations(isSnowy ? snowModel : model, 0, false);
         });
     }
 
@@ -246,6 +285,10 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
 
     public ResourceLocation texture(Block block, String location) {
         return BuiltInRegistries.BLOCK.getKey(block).withPath("block/" + location + name(block));
+    }
+    
+    public ResourceLocation texture(Block block, String location, String suffix) {
+        return BuiltInRegistries.BLOCK.getKey(block).withPath("block/" + location + name(block) + suffix);
     }
 
 }

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class UnityRegistrySets extends DatapackBuiltinEntriesProvider {
+public class    UnityRegistrySets extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, UnityFeatureConfig::bootstrap)
             .add(Registries.PLACED_FEATURE, UnityPlacements::bootstrap);

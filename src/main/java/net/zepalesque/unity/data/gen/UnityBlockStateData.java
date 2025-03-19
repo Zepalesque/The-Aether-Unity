@@ -38,4 +38,20 @@ public class UnityBlockStateData extends UnityBlockStateProvider {
         this.stairs(UnityBlocks.VALKYRIE_TILE_STAIRS.get(), UnityBlocks.VALKYRIE_TILES.get(), "construction/");
         this.slab(UnityBlocks.VALKYRIE_TILE_SLAB.get(), UnityBlocks.VALKYRIE_TILES.get(), "construction/");
     }
+    
+    public static class Grass extends UnityBlockStateProvider {
+        
+        public Grass(PackOutput output, String id, ExistingFileHelper helper) {
+            super(output, id, helper);
+        }
+        
+        @Override
+        protected void registerStatesAndModels() {
+            this.tintableGrassBlockOverride(AetherBlocks.AETHER_GRASS_BLOCK.get(), AetherBlocks.AETHER_DIRT.get(), "natural/", "natural/");
+            this.crossTintedOverlay(AetherBlocks.WHITE_FLOWER.get(), "natural/");
+            this.tintedPotOverlay(AetherBlocks.POTTED_WHITE_FLOWER.get(), AetherBlocks.WHITE_FLOWER.get(), "natural/");
+            this.crossTintedOverlay(AetherBlocks.PURPLE_FLOWER.get(), "natural/");
+            this.tintedPotOverlay(AetherBlocks.POTTED_PURPLE_FLOWER.get(), AetherBlocks.PURPLE_FLOWER.get(), "natural/");
+        }
+    }
 }

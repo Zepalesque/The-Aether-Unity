@@ -88,7 +88,7 @@ public abstract class UnityRecipeProvider extends AetherRecipeProvider {
     }
     
     protected void none(RecipeOutput output, ResourceLocation id) {
-        NoneRecipeBuilder.of().save(output, id);
+        NoneRecipeBuilder.INSTANCE.save(output, id);
     }
     
     @Override

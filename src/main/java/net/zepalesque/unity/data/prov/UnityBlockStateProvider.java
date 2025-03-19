@@ -48,7 +48,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     }
     
     public void tintableGrassBlock(Block block, Block dirt, String location, String dirtLocation) {
-        tintableGrassBlock(block, dirt, location, dirtLocation, (snow, bottom, top) -> models().cubeBottomTop(name(block) + "_snow", snow, bottom, top));
+        tintableGrassBlock(block, dirt, location, dirtLocation, (snow, bottom, top) -> models().cubeBottomTop(texture(block).getNamespace() + ":" + name(block) + "_snow", snow, bottom, top));
     }
     
     public void tintableGrassBlockOverride(Block block, Block dirt, String location, String dirtLocation) {
@@ -75,7 +75,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                                    ResourceLocation side,
                                    ModelFile snowModel) {
         
-        ModelFile model = models().withExistingParent(name(block), Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/tinted_grass_block"))
+        ModelFile model = models().withExistingParent(texture(block).getNamespace() + ":" + name(block), Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/tinted_grass_block"))
             .texture("overlay", overlay)
             .texture("side", side)
             .texture("top", top)
@@ -283,6 +283,10 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void mossSet(Block moss, Block carpet, String location) {
         this.block(moss, location);
         this.carpet(carpet, moss, location);
+    }
+    
+    public ResourceLocation texture(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block).withPath("block/" + name(block));
     }
 
     public ResourceLocation texture(Block block, String location) {

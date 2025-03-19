@@ -61,7 +61,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
         ResourceLocation overlay = texture(block, location, "_side_overlay");
         ResourceLocation side = texture(block, location, "_top");
         ResourceLocation snow = texture(block, location, "_side_snow");
-        tintableGrassBlock(block, bottom, top, overlay, side, snow, snowModel.create(snow, bottom, top));
+        tintableGrassBlock(block, bottom, top, overlay, side, snowModel.create(snow, bottom, top));
     }
     
     @FunctionalInterface
@@ -73,12 +73,14 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                                    ResourceLocation top,
                                    ResourceLocation overlay,
                                    ResourceLocation side,
-                                   ResourceLocation snow, ModelFile snowModel) {
+                                   ModelFile snowModel) {
         
         ModelFile model = models().withExistingParent(name(block), Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/tinted_grass_block"))
             .texture("overlay", overlay)
             .texture("side", side)
-            .texture("top", top);
+            .texture("top", top)
+            .texture("bottom", bottom)
+            .texture("particle", bottom);
         this.getVariantBuilder(block).forAllStates(state -> {
             boolean isSnowy = state.getValue(SpreadingSnowyDirtBlock.SNOWY);
             return ConfiguredModel.allYRotations(isSnowy ? snowModel : model, 0, false);

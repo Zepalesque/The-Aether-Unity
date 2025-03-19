@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "aether_unity.refmap.json",
   "mixins": [
+    "common.datagen.LangProvAccessor"
   ],
   "client": [
     "client.color.AetherColorResolversMixin"

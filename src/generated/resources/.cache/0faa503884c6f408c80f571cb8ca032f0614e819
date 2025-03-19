@@ -1,4 +1,4 @@
-// 1.21.1	2025-02-18T17:07:27.5259805	Block States: aether_unity
+// 1.21.1	2025-03-19T18:11:54.4026554	Block States: aether_unity
 133489778ce50978d7fbd2590c21abbdf05a022e assets/aether_unity/blockstates/aether_mud.json
 48538f93b8dfba4395c2eae484b89846b8e2ae28 assets/aether_unity/blockstates/aether_mud_bricks.json
 a1ed75c60de8b85837fd4dd5ec8e42ed40e5fd37 assets/aether_unity/blockstates/aether_mud_brick_slab.json
@@ -33,7 +33,7 @@ aca328c1872547536027b8eb97c735aae0352315 assets/aether_unity/models/block/aether
 73f76ccfab5d340041edd268266d61399e46ca81 assets/aether_unity/models/block/aether_mud_brick_wall_side.json
 4bb383654dfd1b46e1560f6d9269adf0fe98ea10 assets/aether_unity/models/block/aether_mud_brick_wall_side_tall.json
 f18b47792ac9399cd6501b8bf454daba8e4c70cc assets/aether_unity/models/block/ambrosium_campfire.json
-3c0cfe345c048c45879b0b63b2de13431b0e7e5d assets/aether_unity/models/block/ambrosium_campfire_off.json
+3ff986320169da428f052d4ed394b519a8d1968c assets/aether_unity/models/block/ambrosium_campfire_off.json
 47559ff06f33f3d568b17b247637305608934496 assets/aether_unity/models/block/coarse_aether_dirt.json
 a6bd08a7fdeb66a684958e89f5974572ab33398c assets/aether_unity/models/block/enchanted_skyfern.json
 98bad45fb6904ffbbfe280d9e16d7bbdb5bd226b assets/aether_unity/models/block/flutemoss_block.json

@@ -304,7 +304,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     // in format of example: "enchanted_%s", allows modified model names
     public String nameID(Block block, String format) {
         ResourceLocation rl = BuiltInRegistries.BLOCK.getKey(block);
-        return rl.getPath() + ":" + String.format(format, rl.getNamespace());
+        return rl.getNamespace() + ":" + String.format(format, rl.getPath());
     }
 
 }

@@ -20,7 +20,7 @@ import java.util.function.Predicate;
 
 public class UnityColors {
 
-    public static final int AETHER_GRASS_COLOR = 0xADF9C4;
+    public static final int AETHER_GRASS_COLOR = 0xFFADF9C4;
 
     public static final ColorResolver GRASS_COLORS = (biome, x, z) -> UnityBiomeTints.AETHER_GRASS.get().getColor(biome);
     
@@ -29,8 +29,8 @@ public class UnityColors {
     public static final BlockColor FULL_INHERITING = (state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 0, true);
     public static final BlockColor OVERLAY_INHERITING = (state, level, pos, index) -> getColor(state, level, pos, index, i -> i == 1, true);
     
-    public static final ItemColor ITEM_OVERLAY_AETHER = (stack, tintIndex) -> tintIndex == 1 ? AETHER_GRASS_COLOR | 0xFF000000 : 0xFFFFFFFF;
-    public static final ItemColor ITEM_FULL_AETHER = (stack, tintIndex) -> tintIndex == 0 ? AETHER_GRASS_COLOR | 0xFF000000 : 0xFFFFFFFF;
+    public static final ItemColor ITEM_OVERLAY_AETHER = (stack, tintIndex) -> tintIndex == 1 ? AETHER_GRASS_COLOR : 0xFFFFFFFF;
+    public static final ItemColor ITEM_FULL_AETHER = (stack, tintIndex) -> tintIndex == 0 ? AETHER_GRASS_COLOR : 0xFFFFFFFF;
     
     public static void blockColors(RegisterColorHandlersEvent.Block event) {
         Unity.LOGGER.debug("Beginning block color registration for the Aether: Unity");
@@ -88,7 +88,7 @@ public class UnityColors {
             }
             return AETHER_GRASS_COLOR;
         }
-        return 0xFFFFFF;
+        return 0xFFFFFFFF;
     }
 
 

@@ -57,9 +57,9 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     
     public void tintableGrassBlock(Block block, Block dirt, String location, String dirtLocation, SnowGrassModelMaker snowModel) {
         ResourceLocation bottom = texture(dirt, dirtLocation);
-        ResourceLocation top = texture(block, location, "_side");
+        ResourceLocation top = texture(block, location, "_top");
         ResourceLocation overlay = texture(block, location, "_side_overlay");
-        ResourceLocation side = texture(block, location, "_top");
+        ResourceLocation side = texture(block, location, "_side");
         ResourceLocation snow = texture(block, location, "_side_snow");
         tintableGrassBlock(block, bottom, top, overlay, side, snowModel.create(snow, bottom, top));
     }
@@ -102,16 +102,16 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void crossGlowOverlay(Block block, String location) {
         BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_glowing_overlay"))
-            .texture("cross", this.texture(this.name(block), location))
-            .texture("overlay", this.texture(this.name(block) + "_glow", location)).renderType("cutout");
+            .texture("cross", this.texture(block, location))
+            .texture("overlay", this.texture(block, location, "_glow")).renderType("cutout");
         this.crossBlock(block, cross);
     }
 
     public void crossTintedGlow(Block block, String location) {
         BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_glow"))
-            .texture("cross", this.texture(this.name(block), location))
-            .texture("overlay", this.texture(this.name(block) + "_glow", location)).renderType("cutout");
+            .texture("cross", this.texture(block, location))
+            .texture("overlay", this.texture(block, location, "_glow")).renderType("cutout");
         this.crossBlock(block, cross);
     }
 
@@ -119,25 +119,25 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
         BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_dual_gloverlay/"
                     + (useGlowForParticle ? "glow_particle" : "overlay_particle")))
-            .texture("cross", this.texture(this.name(block), location))
-            .texture("glow", this.texture(this.name(block) + "_glow", location)).renderType("cutout")
-            .texture("overlay", this.texture(this.name(block) + "_overlay", location)).renderType("cutout");
+            .texture("cross", this.texture(block, location))
+                .texture("glow", this.texture(block, location, "_glow")).renderType("cutout")
+            .texture("overlay", this.texture(block, location, "_overlay")).renderType("cutout");
         this.crossBlock(block, cross);
 
     }
     public void crossTintedOverlay(Block block, String location) {
         BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_overlay"))
-            .texture("cross", this.texture(this.name(block), location))
-            .texture("overlay", this.texture(this.name(block) + "_overlay", location)).renderType("cutout");
+            .texture("cross", this.texture(block, location))
+            .texture("overlay", this.texture(block, location, "_overlay")).renderType("cutout");
         this.crossBlock(block, cross);
     }
 
     public void crossEnchantableOverlay(Block block, String location) {
         BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/cross/cross_tinted_overlay"))
-            .texture("cross", this.texture(this.name(block), location))
-            .texture("overlay", this.texture(this.name(block) + "_overlay", location)).renderType("cutout");
+            .texture("cross", this.texture(block, location))
+            .texture("overlay", this.texture(block, location, "_overlay")).renderType("cutout");
         BlockModelBuilder ench = models().cross(
             this.nameID(block, "enchanted_%s"), this.texture("enchanted_" + this.name(block), location)
         ).renderType("cutout");
@@ -148,7 +148,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void crossEnchantable(Block block, String location) {
         BlockModelBuilder cross = models().singleTexture(
             this.nameID(block), mcLoc("block/tinted_cross"), "cross",
-            this.texture(this.name(block), location)
+            this.texture(block, location)
         ).renderType("cutout");
 
         BlockModelBuilder ench = models().cross(
@@ -228,8 +228,8 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void cubeAllGlow(Block block, String location) {
         BlockModelBuilder cross = models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/cube/cube_all_glow"))
-            .texture("all", this.texture(this.name(block), location))
-            .texture("glow", this.texture(this.name(block) + "_glow", location))
+            .texture("all", this.texture(block, location))
+            .texture("glow", this.texture(block, location, "_glow"))
             .renderType("cutout");
         this.simpleBlock(block, cross);
     }

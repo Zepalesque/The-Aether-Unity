@@ -31,7 +31,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
             if (enchanted) return ConfiguredModel.builder()
                 .modelFile(models()
                     .cross(state.getValue(UnityStates.GRASS_SIZE).getSerializedName() + "_enchanted_grass",
-                        modLoc("block/natural/enchanted_"
+                        Unity.loc("block/natural/enchanted_"
                             + state.getValue(UnityStates.GRASS_SIZE).getSerializedName() + "_grass"))
                     .renderType("cutout")
                 ).build();
@@ -40,7 +40,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                 .modelFile(models()
                     .singleTexture(state.getValue(UnityStates.GRASS_SIZE).getSerializedName() + "_aether_grass",
                         mcLoc("block/tinted_cross"), "cross",
-                        modLoc("block/natural/aether_"
+                        Unity.loc("block/natural/aether_"
                             + state.getValue(UnityStates.GRASS_SIZE).getSerializedName() + "_grass"))
                     .renderType("cutout")
                 ).build();
@@ -167,9 +167,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
 
     public void potPrefix(Block block, Block flower, String location, String prefix) {
         ModelFile pot = this.models().withExistingParent(this.nameID(block), mcLoc("block/flower_pot_cross"))
-            .texture("plant", this.modLoc(
-                "block/" + location + prefix
-                    + this.name(flower))
+            .texture("plant", this.texture(flower, location + prefix)
             ).renderType("cutout");
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
@@ -177,17 +175,17 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void tintedPotDualGloverlay(Block block, Block flower, String location) {
         ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_dual_gloverlay"))
-            .texture("plant", this.modLoc("block/" + location + this.name(flower)))
-            .texture("glow", this.modLoc("block/" + location + this.name(flower) + "_glow"))
-            .texture("overlay", this.modLoc("block/" + location + this.name(flower) + "_overlay"))
+            .texture("plant", this.texture(flower, location))
+            .texture("glow", this.texture(flower, location, "_glow"))
+            .texture("overlay", this.texture(flower, location, "_overlay"))
             .renderType("cutout");
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
     public void tintedPotGlowOverlay(Block block, Block flower, String location) {
         ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_glowing_overlay"))
-            .texture("plant", this.modLoc("block/" + location + this.name(flower)))
-            .texture("overlay", this.modLoc("block/" + location + this.name(flower) + "_glow"))
+            .texture("plant", this.texture(flower, location))
+            .texture("overlay", this.texture(flower, location, "_glow"))
             .renderType("cutout");
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
@@ -202,15 +200,15 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void tintedPotOverlay(Block block, Block flower, String location) {
         ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_overlay"))
-            .texture("plant", this.modLoc("block/" + location + this.name(flower)))
-            .texture("overlay", this.modLoc("block/" + location + this.name(flower) + "_overlay"))
+            .texture("plant", this.texture(flower, location))
+            .texture("overlay", this.texture(flower, location, "_overlay"))
             .renderType("cutout");
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
     public void tintedPot(Block block, Block flower, String location) {
         ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted"))
-            .texture("plant", this.modLoc("block/" + location + this.name(flower)))
+            .texture("plant", this.texture(flower, location))
             .renderType("cutout");
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
@@ -245,7 +243,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
                     .renderType("cutout")
                     : this.models().singleTexture(
                         this.nameID(block) + "_size_" + state.getValue(LeafPileBlock.LAYERS),
-                        this.modLoc("block/template/layer/layer_size" + state.getValue(LeafPileBlock.LAYERS)),
+                        Unity.loc("block/template/layer/layer_size" + state.getValue(LeafPileBlock.LAYERS)),
                         "block", this.texture(baseBlock, location))
                     .renderType("cutout")
             ).build());
@@ -255,14 +253,14 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
         this.getVariantBuilder(block).forAllStatesExcept(state -> {
             BlockModelBuilder on = this.models().withExistingParent(this.nameID(block),
                     Unity.loc("block/template/campfire"))
-                .texture("log", this.modLoc("block/" + location + this.name(block) + "_log"))
-                .texture("fire", this.modLoc("block/" + location + this.name(block) + "_fire"))
-                .texture("lit_log", this.modLoc("block/" + location + this.name(block) + "_log_lit"))
+                .texture("log", this.texture(block, location, "_log"))
+                .texture("fire", this.texture(block, location, "_fire"))
+                .texture("lit_log", this.texture(block, location, "_log_lit"))
                 .renderType("cutout");
             
             BlockModelBuilder off = this.models().singleTexture(
                 this.nameID(block) + "_off", Unity.loc("block/template/campfire_off"),
-                "log", this.modLoc("block/" + location + this.name(block) + "_log")
+                "log", this.texture(block, location, "_log")
             ) .renderType("cutout");
 
             Direction d = state.getValue(CampfireBlock.FACING);
@@ -306,5 +304,4 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
         ResourceLocation rl = BuiltInRegistries.BLOCK.getKey(block);
         return rl.getNamespace() + ":" + String.format(format, rl.getPath());
     }
-
 }

@@ -40,7 +40,6 @@ public class UnityBlockStateData extends UnityBlockStateProvider {
     }
     
     public static class Grass extends UnityBlockStateProvider {
-        
         public Grass(PackOutput output, String id, ExistingFileHelper helper) {
             super(output, id, helper);
         }

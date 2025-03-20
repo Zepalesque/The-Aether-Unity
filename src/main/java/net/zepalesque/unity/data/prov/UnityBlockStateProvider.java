@@ -19,7 +19,7 @@ import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.unity.block.state.UnityStates;
 
 @SuppressWarnings("unused")
-public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
+public abstract class UnityBlockStateProvider extends AetherBlockStateProvider implements TextureExtensions {
 
     public UnityBlockStateProvider(PackOutput output, String id, ExistingFileHelper helper) {
         super(output, id, helper);
@@ -281,18 +281,6 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void mossSet(Block moss, Block carpet, String location) {
         this.block(moss, location);
         this.carpet(carpet, moss, location);
-    }
-    
-    public ResourceLocation texture(Block block) {
-        return BuiltInRegistries.BLOCK.getKey(block).withPath("block/" + name(block));
-    }
-
-    public ResourceLocation texture(Block block, String location) {
-        return BuiltInRegistries.BLOCK.getKey(block).withPath("block/" + location + name(block));
-    }
-    
-    public ResourceLocation texture(Block block, String location, String suffix) {
-        return BuiltInRegistries.BLOCK.getKey(block).withPath("block/" + location + name(block) + suffix);
     }
     
     public String nameID(Block block) {

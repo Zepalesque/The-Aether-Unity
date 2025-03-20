@@ -1,5 +1,6 @@
 package net.zepalesque.unity.data.gen;
 
+import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.unity.Unity;
@@ -15,7 +16,7 @@ public class UnityItemModelData extends UnityItemModelProvider {
 
     @Override
     protected void registerModels() {
-        this.itemBlockFlatCustomTexture(UnityBlocks.SHORT_AETHER_GRASS.get(), "natural/aether_medium_grass");
+        this.itemBlockFlatCustomTexture(UnityBlocks.SHORT_AETHER_GRASS.get(), Unity.loc(BLOCK_FOLDER + "/natural/aether_medium_grass"));
         this.itemBlockFlat(UnityBlocks.SKYFERN.get(), "natural/");
         this.leafPile(UnityBlocks.GOLDEN_OAK_LEAF_PILE.get());
         this.leafPile(UnityBlocks.SKYROOT_LEAF_PILE.get());
@@ -43,5 +44,17 @@ public class UnityItemModelData extends UnityItemModelProvider {
 
         this.item(UnityItems.VALKYRIE_CLAY_BALL.get(), "materials/");
         this.item(UnityItems.VALKYRIE_BRICK.get(), "materials/");
+    }
+    
+    public static class Grass extends UnityItemModelProvider {
+        public Grass(PackOutput output, String id, ExistingFileHelper helper) {
+            super(output, id, helper);
+        }
+        
+        @Override
+        protected void registerModels() {
+            this.itemBlockFlatTintOverlay(AetherBlocks.WHITE_FLOWER.get(), "natural/");
+            this.itemBlockFlatTintOverlay(AetherBlocks.PURPLE_FLOWER.get(), "natural/");
+        }
     }
 }

@@ -68,7 +68,10 @@ public class UnityData extends UnityDataBuilders {
             )
         );
         
-        createPack(event, PackType.CLIENT_RESOURCES, output, (out, modid) -> new UnityBlockStateData.Grass(out, modid, existing), "tintable_grass", Unity.MODID);
-        createPack(event, PackType.CLIENT_RESOURCES, output, UnityLangOverridesData::new, "lang_overrides", Unity.MODID);
+        createPack(event, PackType.CLIENT_RESOURCES, output, "tintable_grass", Unity.MODID,
+            (out, modid) -> new UnityBlockStateData.Grass(out, modid, existing),
+            (out, modid) -> new UnityItemModelData.Grass(out, modid, existing)
+        );
+        createPack(event, PackType.CLIENT_RESOURCES, output, "lang_overrides", Unity.MODID, UnityLangOverridesData::new);
     }
 }

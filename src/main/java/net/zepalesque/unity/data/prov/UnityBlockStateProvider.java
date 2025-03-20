@@ -194,8 +194,8 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void tintedPotGlowOverlayAlt(Block block, Block flower, String location) {
         ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_glowing_overlay"))
-            .texture("plant", this.modLoc("block/" + location + "potted_" + this.name(flower)))
-            .texture("overlay", this.modLoc("block/" + location + "potted_" + this.name(flower) + "_glow"))
+            .texture("plant", this.texture(flower, location + "potted_"))
+            .texture("overlay", this.texture(flower, location + "potted_", "_glow"))
             .renderType("cutout");
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
@@ -217,8 +217,8 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider {
     public void tintedPotOverlayAlt(Block block, Block flower, String location) {
         ModelFile pot = this.models().withExistingParent(this.nameID(block),
                 Unity.loc("block/template/pot/flower_pot_tinted_overlay"))
-            .texture("plant", this.modLoc("block/" + location + "potted_" + this.name(flower)))
-            .texture("overlay", this.modLoc("block/" + location + "potted_" + this.name(flower) + "_overlay"))
+            .texture("plant", this.texture(flower, location + "potted_"))
+            .texture("overlay", this.texture(flower, location + "potted_", "_overlay"))
             .renderType("cutout");
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }

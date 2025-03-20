@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "aether:block/natural/purple_flower_overlay",
+    "layer1": "aether:block/natural/purple_flower"
+  }
+}

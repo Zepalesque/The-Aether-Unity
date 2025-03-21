@@ -80,7 +80,7 @@ public class UnityColors {
             if (level != null && pos != null) {
 
                 for (AetherShortGrassBlock.TintOverride override : AetherShortGrassBlock.COLOR_OVERRIDES) {
-                    @Nullable Integer i = override.tint(state, level, pos, index, indexGoal, useBelowProperties);
+                    @Nullable Integer i = override.tint(state, level, pos, useBelowProperties);
                     if (i != null) return i;
                 }
 
@@ -95,10 +95,10 @@ public class UnityColors {
     /**
      * See {@link AetherShortGrassBlock#COLOR_OVERRIDES} and {@link UnityColors#getColor}
      */
-    public static Integer unityColors(BlockState state, BlockAndTintGetter level, BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties) {
+    public static Integer unityColors(BlockState state, BlockAndTintGetter level, BlockPos pos, boolean useBelowProperties) {
         if (state.hasProperty(UnityStates.ENCHANTED) && state.getValue(UnityStates.ENCHANTED))
             return 0xFFFFFF;
-        else if (level.getBlockState(pos.below()).is(UnityTags.Blocks.SHORT_AETHER_GRASS_DEFAULT_COLORING))
+        else if (useBelowProperties && level.getBlockState(pos.below()).is(UnityTags.Blocks.SHORT_AETHER_GRASS_DEFAULT_COLORING))
             return AETHER_GRASS_COLOR;
         return null;
     }

@@ -8,6 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.SpreadingSnowyDirtBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -17,6 +19,8 @@ import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.natural.AetherShortGrassBlock;
 import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.unity.block.state.UnityStates;
+
+import java.util.function.Function;
 
 @SuppressWarnings("unused")
 public abstract class UnityBlockStateProvider extends AetherBlockStateProvider implements TextureExtensions {
@@ -47,21 +51,21 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider i
         });
     }
     
-    public void tintableGrassBlock(Block block, Block dirt, String location, String dirtLocation) {
-        tintableGrassBlock(block, dirt, location, dirtLocation, (snow, bottom, top) -> models().cubeBottomTop(texture(block).getNamespace() + ":" + name(block) + "_snow", snow, bottom, top));
+    public void tintableGrassBlock(Block block, Block dirt, String location, String dirtLocation, Property<?>... ignored) {
+        tintableGrassBlock(block, dirt, location, dirtLocation, (snow, bottom, top) -> models().cubeBottomTop(texture(block).getNamespace() + ":" + name(block) + "_snow", snow, bottom, top), ignored);
     }
     
-    public void tintableGrassBlockOverride(Block block, Block dirt, String location, String dirtLocation) {
-        tintableGrassBlock(block, dirt, location, dirtLocation, (snow, bottom, top) -> models().getExistingFile(texture(block, "", "_snow")));
+    public void tintableGrassBlockOverride(Block block, Block dirt, String location, String dirtLocation, Property<?>... ignored) {
+        tintableGrassBlock(block, dirt, location, dirtLocation, (snow, bottom, top) -> models().getExistingFile(texture(block, "", "_snow")), ignored);
     }
     
-    public void tintableGrassBlock(Block block, Block dirt, String location, String dirtLocation, SnowGrassModelMaker snowModel) {
+    public void tintableGrassBlock(Block block, Block dirt, String location, String dirtLocation, SnowGrassModelMaker snowModel, Property<?>... ignored) {
         ResourceLocation bottom = texture(dirt, dirtLocation);
         ResourceLocation top = texture(block, location, "_top");
         ResourceLocation overlay = texture(block, location, "_side_overlay");
         ResourceLocation side = texture(block, location, "_side");
         ResourceLocation snow = texture(block, location, "_side_snow");
-        tintableGrassBlock(block, bottom, top, overlay, side, snowModel.create(snow, bottom, top));
+        tintableGrassBlock(block, bottom, top, overlay, side, snowModel.create(snow, bottom, top), ignored);
     }
     
     @FunctionalInterface
@@ -73,7 +77,7 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider i
                                    ResourceLocation top,
                                    ResourceLocation overlay,
                                    ResourceLocation side,
-                                   ModelFile snowModel) {
+                                   ModelFile snowModel, Property<?>... ignored) {
         
         ModelFile model = models().withExistingParent(texture(block).getNamespace() + ":" + name(block), Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/tinted_grass_block"))
             .texture("overlay", overlay)
@@ -81,10 +85,13 @@ public abstract class UnityBlockStateProvider extends AetherBlockStateProvider i
             .texture("top", top)
             .texture("bottom", bottom)
             .texture("particle", bottom);
-        this.getVariantBuilder(block).forAllStates(state -> {
+        Function<BlockState, ConfiguredModel[]> mapper = state -> {
             boolean isSnowy = state.getValue(SpreadingSnowyDirtBlock.SNOWY);
             return ConfiguredModel.allYRotations(isSnowy ? snowModel : model, 0, false);
-        });
+        };
+        
+        if (ignored.length == 0) this.getVariantBuilder(block).forAllStates(mapper);
+        else this.getVariantBuilder(block).forAllStatesExcept(mapper, ignored);
     }
 
 

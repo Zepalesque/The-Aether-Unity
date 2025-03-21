@@ -121,8 +121,7 @@ public class AetherShortGrassBlock extends AetherBushBlock {
         Integer tint(
                 BlockState state,
                 @Nullable BlockAndTintGetter level,
-                @Nullable BlockPos pos, int index,
-                Predicate<Integer> indexGoal,
+                @Nullable BlockPos pos,
                 boolean useBelowProperties
         );
     }

@@ -1,6 +1,8 @@
 package net.zepalesque.unity;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.neoforged.api.distmarker.Dist;
@@ -22,7 +24,7 @@ import net.zepalesque.unity.client.UnityColors;
 import net.zepalesque.unity.config.UnityConfig;
 import net.zepalesque.unity.config.UnityConfigHandler;
 import net.zepalesque.unity.data.UnityData;
-import net.zepalesque.unity.extendablestate.UnityStateLists;
+import net.zepalesque.unity.extstate.UnityStateLists;
 import net.zepalesque.unity.item.UnityDispenserBehaviors;
 import net.zepalesque.unity.item.UnityItems;
 import net.zepalesque.unity.tile.UnityTiles;
@@ -96,5 +98,15 @@ public final class Unity {
 
     public static ResourceLocation loc(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
+    
+    // courtesy of juni(deergirl) :3
+    //  tis peak, like her,,
+    public static <T> DeferredRegister<T> reg(Registry<T> type) {
+        return DeferredRegister.create(type, MODID);
+    }
+    
+    public static <T> DeferredRegister<T> reg(ResourceKey<? extends Registry<T>> type) {
+        return DeferredRegister.create(type, MODID);
     }
 }

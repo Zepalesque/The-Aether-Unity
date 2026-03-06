@@ -1,4 +1,4 @@
-package net.zepalesque.unity.extendablestate;
+package net.zepalesque.unity.extstate;
 
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.level.block.state.BlockState;
@@ -7,12 +7,12 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.unity.Unity;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.resource.builders.base.BaseFeatureBuilders;
-import net.zepalesque.zenith.api.extendablestate.ExtendableStateList;
+import net.zepalesque.zenith.api.extstate.ExtendableStateList;
 import net.zepalesque.zenith.core.Zenith;
 
 public class UnityStateLists {
 
-    public static final DeferredRegister<ExtendableStateList> STATE_LISTS = DeferredRegister.create(Zenith.Keys.EXTENDABLE_STATE_LIST, Unity.MODID);
+    public static final DeferredRegister<ExtendableStateList> STATE_LISTS = Unity.reg(Zenith.Keys.EXTENDABLE_STATE_LIST);
 
     public static final DeferredHolder<ExtendableStateList, ExtendableStateList> FLUTEMOSS =
         STATE_LISTS.register("flutemoss",

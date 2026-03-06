@@ -20,7 +20,7 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.UnityTags;
 import net.zepalesque.unity.data.resource.builders.UnityFeatureBuilders;
-import net.zepalesque.unity.extendablestate.UnityStateLists;
+import net.zepalesque.unity.extstate.UnityStateLists;
 import net.zepalesque.zenith.api.world.feature.gen.ExtendableStateListBlockFeature;
 import net.zepalesque.zenith.core.registry.ZenithFeatures;
 

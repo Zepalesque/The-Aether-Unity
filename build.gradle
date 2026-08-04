@@ -174,8 +174,8 @@ publishing {
 			name = "GitHubPackages"
 			url = "https://maven.pkg.github.com/Zepalesque/The-Aether-Unity"
 			credentials {
-				var user = System.getenv("GITHUB_ACTOR")
-				var tok = System.getenv("GITHUB_TOKEN")
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
 			}
 		}
 	}

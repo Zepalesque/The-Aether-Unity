@@ -15,54 +15,56 @@ import net.zepalesque.zenith.util.item.TabUtil;
 @EventBusSubscriber(modid = Unity.MODID, bus = Bus.MOD)
 public class UnityTabs {
     
-    @SuppressWarnings("SingleStatementInBlock")
+    @SuppressWarnings({"deprecation", "SingleStatementInBlock"})
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_NATURAL_BLOCKS)) {
-
+            
             TabUtil.putAfter(event, AetherBlocks.AETHER_GRASS_BLOCK,
-                    UnityBlocks.SHORT_AETHER_GRASS,
-                    UnityBlocks.SKYFERN
+                UnityBlocks.SHORT_AETHER_GRASS,
+                UnityBlocks.SKYFERN
             );
-
+            
             TabUtil.putAfter(event, AetherBlocks.AETHER_DIRT,
-                    UnityBlocks.COARSE_AETHER_DIRT
+                UnityBlocks.COARSE_AETHER_DIRT
             );
-
+            
             TabUtil.putAfter(event, AetherBlocks.AETHER_FARMLAND,
-                    UnityBlocks.AETHER_MUD,
-                    UnityBlocks.VALKYRIE_CLAY
+                UnityBlocks.AETHER_MUD,
+                UnityBlocks.VALKYRIE_CLAY
             );
-
+            
             TabUtil.putBefore(event,AetherBlocks.HOLYSTONE,
-                    UnityBlocks.FLUTEMOSS_CARPET,
-                    UnityBlocks.FLUTEMOSS_BLOCK
+                UnityBlocks.FLUTEMOSS_CARPET,
+                UnityBlocks.FLUTEMOSS_BLOCK
             );
-
+            
             TabUtil.putAfter(event,AetherBlocks.SKYROOT_LEAVES,
-                    UnityBlocks.SKYROOT_LEAF_PILE
+                UnityBlocks.SKYROOT_LEAF_PILE
             );
-
+            
             TabUtil.putAfter(event, AetherBlocks.GOLDEN_OAK_LEAVES, UnityBlocks.GOLDEN_OAK_LEAF_PILE);
+            TabUtil.putAfter(event, AetherBlocks.CRYSTAL_LEAVES, UnityBlocks.CRYSTAL_LEAF_PILE);
+            TabUtil.putAfter(event, AetherBlocks.HOLIDAY_LEAVES, UnityBlocks.HOLIDAY_LEAF_PILE);
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS)) {
             TabUtil.putAfter(event, AetherBlocks.SUN_ALTAR, UnityBlocks.AMBROSIUM_CAMPFIRE);
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_BUILDING_BLOCKS)) {
             TabUtil.putBefore(event, AetherBlocks.ICESTONE,
-                    UnityBlocks.AETHER_MUD_BRICK_WALL,
-                    UnityBlocks.AETHER_MUD_BRICK_SLAB,
-                    UnityBlocks.AETHER_MUD_BRICK_STAIRS,
-                    UnityBlocks.AETHER_MUD_BRICKS,
-                    UnityBlocks.PACKED_AETHER_MUD,
-                    AetherBlocks.PILLAR_TOP,
-                    AetherBlocks.PILLAR,
-                    UnityBlocks.VALKYRIE_TILE_WALL,
-                    UnityBlocks.VALKYRIE_TILE_SLAB,
-                    UnityBlocks.VALKYRIE_TILE_STAIRS,
-                    UnityBlocks.VALKYRIE_TILES,
-                    UnityBlocks.VALKYRIE_BRICK_WALL,
-                    UnityBlocks.VALKYRIE_BRICK_SLAB,
-                    UnityBlocks.VALKYRIE_BRICK_STAIRS,
-                    UnityBlocks.VALKYRIE_BRICKS
+                UnityBlocks.AETHER_MUD_BRICK_WALL,
+                UnityBlocks.AETHER_MUD_BRICK_SLAB,
+                UnityBlocks.AETHER_MUD_BRICK_STAIRS,
+                UnityBlocks.AETHER_MUD_BRICKS,
+                UnityBlocks.PACKED_AETHER_MUD,
+                AetherBlocks.PILLAR_TOP,
+                AetherBlocks.PILLAR,
+                UnityBlocks.VALKYRIE_TILE_WALL,
+                UnityBlocks.VALKYRIE_TILE_SLAB,
+                UnityBlocks.VALKYRIE_TILE_STAIRS,
+                UnityBlocks.VALKYRIE_TILES,
+                UnityBlocks.VALKYRIE_BRICK_WALL,
+                UnityBlocks.VALKYRIE_BRICK_SLAB,
+                UnityBlocks.VALKYRIE_BRICK_STAIRS,
+                UnityBlocks.VALKYRIE_BRICKS
             );
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_INGREDIENTS)) {
             TabUtil.putBefore(event, AetherItems.SWET_BALL, UnityItems.VALKYRIE_BRICK, UnityItems.VALKYRIE_CLAY_BALL);

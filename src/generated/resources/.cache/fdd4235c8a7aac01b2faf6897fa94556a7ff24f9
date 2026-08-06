@@ -1,6 +1,6 @@
-// 1.21.1	2025-03-19T18:50:04.4926056	Tags for minecraft:block mod id aether_unity
+// 1.21.1	2026-08-06T12:48:10.4009602	Tags for minecraft:block mod id aether_unity
 c7963d222eafa5e91a026582fff0d956de2e84c4 data/aether/tags/block/aether_dirt.json
-27618700f6a23f549f8366a8605faaa75f086b30 data/aether/tags/block/treated_as_aether_block.json
+6dc33e18e7fb3d6541ad38223d21fbc5f6f357c1 data/aether/tags/block/treated_as_aether_block.json
 a1face86e90d0679530d54d194ab9dfc9588c9ea data/aether_unity/tags/block/aether_carver_replaceables.json
 bed6a7a4b2a51b76513123557acaef512271ad7c data/aether_unity/tags/block/aether_lake_skip_replacement.json
 25c720d44176ecb14bd3b979a26cfa71b41341d8 data/aether_unity/tags/block/convertable_to_aether_mud.json
@@ -9,7 +9,7 @@ f88e31ba010e8b41d4256635de26d1cf8a0aa221 data/aether_unity/tags/block/short_aeth
 eff07a8637935b9be7d8450e3dbe6d1d55424d55 data/minecraft/tags/block/campfires.json
 d07cb90d4673a80e8aeed50d79bc809a7419c5a2 data/minecraft/tags/block/convertable_to_mud.json
 eff07a8637935b9be7d8450e3dbe6d1d55424d55 data/minecraft/tags/block/mineable/axe.json
-358f56275f6ec732b6cef0b2e90fcb6d43b83504 data/minecraft/tags/block/mineable/hoe.json
+b16e04a3bbd7139b10bdf3f3d34f7b89a4346ee4 data/minecraft/tags/block/mineable/hoe.json
 4522be98c0452fa682a2d4841704418ba307ed56 data/minecraft/tags/block/mineable/pickaxe.json
 e95944109888878df9f02e5d5ee67b1ec7a00962 data/minecraft/tags/block/mineable/shovel.json
 560e0b718cda417dab710a65ab69dd8f901405f6 data/minecraft/tags/block/replaceable.json

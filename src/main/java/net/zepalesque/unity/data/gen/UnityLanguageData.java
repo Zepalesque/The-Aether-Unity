@@ -23,6 +23,12 @@ public class UnityLanguageData extends UnityLanguageProvider {
         addBlock(UnityBlocks.GOLDEN_OAK_LEAF_PILE);
         addLore(UnityBlocks.GOLDEN_OAK_LEAF_PILE, "A pile of Golden Oak Leaves. These can be stacked on top of eachother to make various sizes!");
 
+        addBlock(UnityBlocks.CRYSTAL_LEAF_PILE);
+        addLore(UnityBlocks.CRYSTAL_LEAF_PILE, "A pile of Crystal Leaves. These can be stacked on top of eachother to make various sizes!");
+
+        addBlock(UnityBlocks.HOLIDAY_LEAF_PILE);
+        addLore(UnityBlocks.HOLIDAY_LEAF_PILE, "A pile of Holiday Leaves. These can be stacked on top of eachother to make various sizes!");
+
         addBlock(UnityBlocks.SKYROOT_LEAF_PILE);
         addLore(UnityBlocks.SKYROOT_LEAF_PILE, "A pile of Skyroot Leaves. These can be stacked on top of eachother to make various sizes!");
 

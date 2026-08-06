@@ -19,6 +19,8 @@ public class UnityItemModelData extends UnityItemModelProvider {
         this.itemBlockFlatCustomTexture(UnityBlocks.SHORT_AETHER_GRASS.get(), Unity.loc(BLOCK_FOLDER + "/natural/aether_medium_grass"));
         this.itemBlockFlat(UnityBlocks.SKYFERN.get(), "natural/");
         this.leafPile(UnityBlocks.GOLDEN_OAK_LEAF_PILE.get());
+        this.leafPile(UnityBlocks.CRYSTAL_LEAF_PILE.get());
+        this.leafPile(UnityBlocks.HOLIDAY_LEAF_PILE.get());
         this.leafPile(UnityBlocks.SKYROOT_LEAF_PILE.get());
         this.item(UnityBlocks.AMBROSIUM_CAMPFIRE.asItem(), "misc/");
 

@@ -52,6 +52,12 @@ public class UnityBlocks extends UnityBlockBuilders {
     public static final DeferredBlock<LeafPileBlock> GOLDEN_OAK_LEAF_PILE = register("golden_oak_leaf_pile",
             () -> new LeafPileBlock(AetherBlocks.GOLDEN_OAK_LEAVES));
 
+    public static final DeferredBlock<LeafPileBlock> CRYSTAL_LEAF_PILE = register("crystal_leaf_pile",
+            () -> new LeafPileBlock(AetherBlocks.CRYSTAL_LEAVES));
+    
+    public static final DeferredBlock<LeafPileBlock> HOLIDAY_LEAF_PILE = register("holiday_leaf_pile",
+            () -> new LeafPileBlock(AetherBlocks.HOLIDAY_LEAVES));
+
     public static final DeferredBlock<CampfireBlock> AMBROSIUM_CAMPFIRE = register("ambrosium_campfire",
             () -> new CampfireBlock(false, 1, Properties.ofFullCopy(Blocks.CAMPFIRE)));
 

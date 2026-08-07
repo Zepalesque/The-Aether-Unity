@@ -44,8 +44,8 @@ public class UnityTabs {
             );
             
             TabUtil.putAfter(event, AetherBlocks.GOLDEN_OAK_LEAVES, UnityBlocks.GOLDEN_OAK_LEAF_PILE);
-            TabUtil.putAfter(event, AetherBlocks.CRYSTAL_LEAVES, UnityBlocks.CRYSTAL_LEAF_PILE);
-            TabUtil.putAfter(event, AetherBlocks.HOLIDAY_LEAVES, UnityBlocks.HOLIDAY_LEAF_PILE);
+            TabUtil.putAfter(event, AetherBlocks.CRYSTAL_FRUIT_LEAVES, UnityBlocks.CRYSTAL_LEAF_PILE);
+            TabUtil.putAfter(event, AetherBlocks.DECORATED_HOLIDAY_LEAVES, UnityBlocks.HOLIDAY_LEAF_PILE);
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS)) {
             TabUtil.putAfter(event, AetherBlocks.SUN_ALTAR, UnityBlocks.AMBROSIUM_CAMPFIRE);
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_BUILDING_BLOCKS)) {

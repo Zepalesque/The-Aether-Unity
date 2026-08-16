@@ -64,7 +64,7 @@ public class UnityFeatureConfig extends UnityFeatureBuilders {
         register(context, AetherConfiguredFeatures.GRASS_PATCH_CONFIGURATION, Feature.RANDOM_PATCH,
             patch(48, 7, 3,
                 prov(UnityBlocks.SHORT_AETHER_GRASS),
-                NOT_ON_COARSE_DIRT.get())
+                CANNOT_SPAWN_AETHER_GRASS.get())
         );
         
         register(context, AetherConfiguredFeatures.TALL_GRASS_PATCH_CONFIGURATION, Feature.NO_OP,

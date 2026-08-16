@@ -20,6 +20,8 @@ public class UnityTags {
         public static final TagKey<Block> SHORT_AETHER_GRASS_STATE_ENCHANTING = tag("short_aether_grass_state_enchanting");
         // Blocks that should make Short Aether Grass use its default color rather than any biome colors when placed on top of
         public static final TagKey<Block> SHORT_AETHER_GRASS_DEFAULT_COLORING = tag("short_aether_grass_default_coloring");
+        // Blocks that Aether Grass should not spawn on top of
+        public static final TagKey<Block> CANNOT_SPAWN_AETHER_GRASS = tag("cannot_spawn_aether_grass");
         public static final TagKey<Block> AETHER_CARVER_REPLACEABLES = tag("aether_carver_replaceables");
 
         public static final TagKey<Block> CONVERTABLE_TO_AETHER_MUD = tag("convertable_to_aether_mud");

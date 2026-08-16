@@ -27,6 +27,7 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.zepalesque.unity.block.UnityBlocks;
+import net.zepalesque.unity.data.UnityTags;
 import net.zepalesque.zenith.api.block.predicate.NoisePredicate;
 import net.zepalesque.zenith.api.world.feature.gen.BlockWithPredicateFeature;
 import net.zepalesque.zenith.api.world.feature.gen.RuleBasedLakeFeature;
@@ -67,7 +68,7 @@ public class BaseFeatureBuilders {
     public static final Vec3i OFFSET_ABOVE = new Vec3i(0, 1, 0);
     public static final Vec3i OFFSET_BELOW = new Vec3i(0, -1, 0);
 
-    public static final Lazy<BlockPredicate> NOT_ON_COARSE_DIRT = Lazy.of(() -> BlockPredicate.not(BlockPredicate.matchesBlocks(OFFSET_BELOW, UnityBlocks.COARSE_AETHER_DIRT.get())));
+    public static final Lazy<BlockPredicate> CANNOT_SPAWN_AETHER_GRASS = Lazy.of(() -> BlockPredicate.not(BlockPredicate.matchesTag(OFFSET_BELOW, UnityTags.Blocks.CANNOT_SPAWN_AETHER_GRASS)));
 
     public static RandomPatchConfiguration patch(int tries, int xz, int y, BlockStateProvider state) {
         return new RandomPatchConfiguration(tries, xz, y, PlacementUtils.onlyWhenEmpty(
